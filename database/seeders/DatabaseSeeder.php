@@ -10,6 +10,10 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        if (Product::count() > 0) {
+            return;
+        }
+
         // 1. Data Katalog Produk Baking & Minuman (Estetik & Lengkap)
         $products = [
             [
