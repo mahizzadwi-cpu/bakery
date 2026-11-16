@@ -365,32 +365,42 @@
                     Kami melayani pemesanan langsung di gerai, pesanan katering snack box acara, kue ulang tahun, serta layanan kurir antar langsung ke alamat Anda.
                 </p>
 
-                <div class="space-y-2.5 pt-1 text-xs text-[#5A544F] bg-[#FFFDF9] p-4 rounded-2xl border border-[#E2DDD5] shadow-[0_2px_0_#E0D9CE]">
+                <div class="space-y-3 pt-1 text-xs text-[#5A544F] bg-[#FFFDF9] p-4 sm:p-5 rounded-2xl border-2 border-[#D8C7B5] shadow-[0_3px_0_#CFC1AF]">
                     <div>
-                        <span class="text-[#7A7570] font-semibold block text-[10px] uppercase">Alamat Gerai:</span>
-                        <p class="font-bold text-[#2C1A11]">Jl. Cempaka No. 24, Sentra Kuliner Kota</p>
+                        <span class="text-[#7A7570] font-black block text-[10px] uppercase tracking-wider mb-1">Alamat Gerai Resmi:</span>
+                        <p class="font-bold text-sm text-[#1D120B] leading-snug">Desa Sidomukti, Kecamatan Brondong, Kabupaten Lamongan, Jawa Timur 62263</p>
+                        <a href="https://maps.app.goo.gl/t3jdgJkREApyAzREA" target="_blank" 
+                            class="inline-flex items-center gap-1.5 text-[#A85816] hover:text-[#DF9A28] font-bold text-xs mt-2 transition group">
+                            <span class="text-sm">📍</span>
+                            <span class="underline group-hover:no-underline">Buka Titik Lokasi di Google Maps ↗</span>
+                        </a>
                     </div>
-                    <div>
-                        <span class="text-[#7A7570] font-semibold block text-[10px] uppercase">Jam Buka:</span>
-                        <p class="font-bold text-[#2C1A11]">Buka Setiap Hari: 07.30 – 21.00 WIB</p>
+                    <div class="pt-2 border-t border-[#EAE4DC]">
+                        <span class="text-[#7A7570] font-black block text-[10px] uppercase tracking-wider mb-0.5">Jam Buka:</span>
+                        <p class="font-bold text-[#1D120B]">Buka Setiap Hari: 07.30 – 21.00 WIB</p>
                     </div>
-                    <div>
-                        <span class="text-[#7A7570] font-semibold block text-[10px] uppercase">Pilihan Layanan & Kontak:</span>
-                        <p class="font-bold text-[#2C1A11]">Kurir Pengantaran Toko, Ambil Sendiri (Pick-up), & Bayar di Tempat (COD)</p>
+                    <div class="pt-2 border-t border-[#EAE4DC]">
+                        <span class="text-[#7A7570] font-black block text-[10px] uppercase tracking-wider mb-0.5">Pilihan Layanan & Kontak:</span>
+                        <p class="font-bold text-[#1D120B]">Kurir Pengantaran Toko, Ambil Sendiri (Pick-up), & Bayar di Tempat (COD)</p>
                         <p class="text-[#A85816] font-bold text-xs mt-1">WhatsApp CS: 0812-3456-7890</p>
                     </div>
                 </div>
             </div>
 
             <!-- Map Frame: Lis Abu & Latar Vanila -->
-            <div class="md:col-span-6 h-72 sm:h-80 rounded-2xl overflow-hidden border border-[#E2DDD5] shadow-[0_3px_0_#E0D9CE] bg-[#F5EFE4]">
+            <div class="md:col-span-6 h-72 sm:h-84 rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-[#D8C7B5] shadow-[0_4px_0_#CFC1AF] bg-[#F5EFE4] relative group">
                 <iframe 
                     class="w-full h-full"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56347862248!2d107.5731165!3d-6.9034443!2m3!1f0!2f0!3f0!3m2!1i1024!2f768!4f13.1!3m3!1m2!1s0x2e68e6398252477f%3A0x146a1f93d3e815b2!2sBandung!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                    src="https://maps.google.com/maps?q=-6.898962,112.197332&z=15&output=embed" 
                     style="border:0;" 
                     allowfullscreen="" 
                     loading="lazy">
                 </iframe>
+                <a href="https://maps.app.goo.gl/t3jdgJkREApyAzREA" target="_blank"
+                    class="absolute bottom-3 right-3 bg-white/95 hover:bg-white text-[#1D120B] text-xs font-bold px-3 py-1.5 rounded-xl border border-[#D8C7B5] shadow-md flex items-center gap-1.5 transition">
+                    <span>Lihat di Maps</span>
+                    <span>↗</span>
+                </a>
             </div>
 
         </div>

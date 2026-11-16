@@ -612,16 +612,17 @@
 
     <!-- 7. CLEAN & MODERN CLASSIC FOOTER (COKLAT PEKAT, TEKS ABU & AKSEN GOLD) -->
     <footer class="bg-[#1D120B] text-[#9E948C] py-6 sm:py-8 border-t border-[#312015] text-xs mt-10">
-        <div class="w-full max-w-[1440px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div class="w-full max-w-[1440px] 2xl:max-w-[1680px] mx-auto px-3 sm:px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div>
                 <span class="font-serif font-black text-white text-base">Mey Bakery.</span>
-                <p class="text-[10px] text-[#8C7D70] mt-0.5">Artisan Pâtisserie & Specialty Bakes • Batam, ID</p>
+                <p class="text-[10px] text-[#8C7D70] mt-0.5">Artisan Pâtisserie & Specialty Bakes • Desa Sidomukti, Brondong, Lamongan</p>
             </div>
-            <div class="flex items-center gap-4 text-xs text-[#D5C4B5]">
+            <div class="flex items-center gap-4 text-xs text-[#D5C4B5] flex-wrap justify-center">
                 <a href="{{ route('landing') }}" class="hover:text-[#DF9A28] transition">Beranda</a>
+                <a href="https://maps.app.goo.gl/t3jdgJkREApyAzREA" target="_blank" class="hover:text-[#DF9A28] transition">Lokasi Maps ↗</a>
                 <a href="https://wa.me/6281234567890" target="_blank" class="hover:text-[#DF9A28] transition">WhatsApp Admin</a>
                 <a href="{{ route('login') }}" class="hover:text-[#DF9A28] transition text-[#7A7570]">Admin</a>
-                <span class="text-[#5C4533]">•</span>
+                <span class="text-[#5C4533] hidden sm:inline">•</span>
                 <span class="text-[#7A7570] text-[11px]">&copy; {{ date('Y') }} Mey Bakery</span>
             </div>
         </div>

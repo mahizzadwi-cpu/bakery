@@ -101,7 +101,7 @@
                             <span class="text-[10px] font-bold uppercase tracking-widest text-[#8C7D70]">Official Digital Receipt</span>
                         </div>
                         <h1 class="text-2xl md:text-3xl font-serif font-black text-[#2C1A11] tracking-tight">Mey Bakery.</h1>
-                        <p class="text-xs text-[#7A7570] mt-0.5">Artisan Pâtisserie & Specialty Bakes • Batam, ID</p>
+                        <p class="text-xs text-[#7A7570] mt-0.5">Artisan Pâtisserie & Specialty Bakes • Desa Sidomukti, Brondong, Lamongan</p>
                     </div>
 
                     <!-- Order Code & Status -->

@@ -196,7 +196,12 @@
                     <div class="space-y-3 pt-2 text-xs text-[#3D4F42]">
                         <p class="flex items-start gap-2.5">
                             <span class="font-bold text-[#16241B] min-w-[70px]">Alamat:</span>
-                            <span>Jl. Cempaka Patisserie No. 24, Area Heritage</span>
+                            <span>
+                                <strong>Desa Sidomukti, Kecamatan Brondong, Kabupaten Lamongan, Jawa Timur 62263</strong>
+                                <a href="https://maps.app.goo.gl/t3jdgJkREApyAzREA" target="_blank" class="text-[#B07844] hover:underline font-bold block mt-0.5">
+                                    Buka Titik Lokasi di Google Maps ↗
+                                </a>
+                            </span>
                         </p>
                         <p class="flex items-start gap-2.5">
                             <span class="font-bold text-[#16241B] min-w-[70px]">Jam Buka:</span>
@@ -229,7 +234,7 @@
                 <div class="md:col-span-6 h-80 rounded-3xl overflow-hidden border-2 border-[#E3EAE4] shadow-sm">
                     <iframe 
                         class="w-full h-full"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56347862248!2d107.5731165!3d-6.9034443!2m3!1f0!2f0!3f0!3m2!1i1024!2f768!4f13.1!3m3!1m2!1s0x2e68e6398252477f%3A0x146a1f93d3e815b2!2sBandung!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                        src="https://maps.google.com/maps?q=-6.898962,112.197332&z=15&output=embed" 
                         style="border:0;" 
                         allowfullscreen="" 
                         loading="lazy">

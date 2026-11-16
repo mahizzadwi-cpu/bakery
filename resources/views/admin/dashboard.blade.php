@@ -407,33 +407,34 @@
         <!-- TAB 2: KATALOG & HARGA (FORM PENAMBAHAN MENU HIGH DEFINITION & PROMINENT 3D) -->
         <div id="section-products" class="tab-pane space-y-5 hidden">
             
-            <!-- FORM TAMBAH MENU BARU (CRISP WHITE CARD 3D HD) -->
-            <div class="bg-white rounded-2xl sm:rounded-3xl border-2 border-[#D8C7B5] shadow-[0_8px_0_#CFC1AF,0_16px_32px_rgba(29,18,11,0.08)] p-4 sm:p-6 md:p-7 space-y-4 sm:space-y-5">
+            <!-- FORM TAMBAH MENU BARU (CRISP MODERN CLASSIC 3D HD) -->
+            <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] shadow-[0_4px_24px_rgba(44,26,17,0.06)] p-4 sm:p-6 md:p-7 space-y-4 sm:space-y-5">
                 
-                <!-- Header Form dengan Tombol Toggle Buka/Tutup -->
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-4 border-b-2 border-[#E2DDD5]">
+                <!-- Header Form dengan Icon Circle Brown + & Tombol Toggle Buka/Tutup -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-4 border-b border-[#ECE5DD]">
                     <div class="flex items-center gap-3">
-                        <span class="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl bg-gradient-to-tr from-[#3D251A] via-[#A85816] to-[#DF9A28] text-white flex items-center justify-center font-black text-sm shadow-[0_3px_0_#120A06] border-2 border-white/30 shrink-0">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#2C1A11] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-sm">
                             +
-                        </span>
+                        </div>
                         <div>
                             <div class="flex items-center gap-2 flex-wrap">
-                                <h3 class="text-xs sm:text-sm font-black uppercase tracking-wider text-[#1D120B]">Tambah Menu Baru</h3>
-                                <span class="text-[9px] sm:text-[10px] bg-[#FFF8E7] text-[#9A6216] font-black px-2.5 py-0.5 rounded-full border border-[#FCD34D]">Koneksi Database Aktif</span>
+                                <h3 class="text-xs sm:text-sm font-black uppercase tracking-wider text-[#2C1A11]">Tambah Menu Baru</h3>
+                                <span class="text-[10px] sm:text-[11px] bg-[#F7F2EB] text-[#7A624E] font-bold px-2.5 py-0.5 rounded-full border border-[#E2DDD5]">Katalog & Harga</span>
                             </div>
-                            <p class="text-[11px] sm:text-xs text-[#6B5E52] mt-0.5 font-medium">Input varian kue tart, artisan pastry, atau minuman botol langsung ke database etalase</p>
+                            <p class="text-[11px] sm:text-xs text-[#7A6E65] mt-0.5 font-normal">Input varian kue tart, artisan pastry, atau minuman botol langsung ke database etalase</p>
                         </div>
                     </div>
 
                     <button type="button" onclick="document.getElementById('productFormBody').classList.toggle('hidden')" 
-                        class="text-[11px] sm:text-xs font-black text-[#1D120B] bg-white hover:bg-[#FAF7F0] px-3 sm:px-4 py-2 rounded-xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer self-end sm:self-auto">
-                        Buka / Tutup Form ▾
+                        class="text-[11px] sm:text-xs font-semibold text-[#2C1A11] bg-[#F7F4EE] hover:bg-[#EFE9DF] px-3.5 sm:px-4 py-2 rounded-xl border border-[#D5CBC0] shadow-sm transition-all cursor-pointer flex items-center gap-1.5 self-end sm:self-auto">
+                        <span>Buka / Tutup Form</span>
+                        <span>▾</span>
                     </button>
                 </div>
 
-                <!-- Konten Formulir Penambahan Menu (Struktur HD, Input Putih Bersih & Border Tebal 2px) -->
+                <!-- Konten Formulir Penambahan Menu (Struktur HD Bersih Sesuai Desain Modern Klasik) -->
                 <div id="productFormBody" class="{{ $errors->has('name') || $errors->has('price_idr') || $errors->has('stock') || $errors->has('category') ? '' : '' }}">
-                    <form action="{{ route('admin.products.store', ['tab' => 'products'], false) }}" method="POST" class="space-y-3 sm:space-y-4">
+                    <form action="{{ route('admin.products.store', ['tab' => 'products'], false) }}" method="POST" class="space-y-3.5 sm:space-y-4">
                         @csrf
                         
                         <datalist id="categoryList">
@@ -445,14 +446,14 @@
                         </datalist>
 
                         <!-- BARIS 1: IDENTITAS PRODUK (NAMA, KATEGORI, HARGA, STOK) -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-3.5 items-end">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3.5 sm:gap-4 items-end">
                             <!-- Nama Menu -->
                             <div class="sm:col-span-1 lg:col-span-4">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                    NAMA MENU <span class="text-[#A85816]">*</span>
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
+                                    NAMA MENU <span class="text-[#DF851A]">*</span>
                                 </label>
                                 <input type="text" name="name" value="{{ old('name') }}" required placeholder="Contoh: Earl Grey Chiffon Cake"
-                                    class="w-full bg-[#FFFDF9] border-2 {{ $errors->has('name') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#C8B8A6]' }} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
+                                    class="w-full bg-[#FAF7F2] border {{ $errors->has('name') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#D5CBC0]' }} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#2C1A11] placeholder-[#9E9085] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 outline-none transition shadow-sm">
                                 @error('name')
                                     <span class="text-[10px] text-rose-600 font-bold block mt-1">{{ $message }}</span>
                                 @enderror
@@ -460,11 +461,11 @@
 
                             <!-- Kategori -->
                             <div class="sm:col-span-1 lg:col-span-3">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                    KATEGORI <span class="text-[#A85816]">*</span>
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
+                                    KATEGORI <span class="text-[#DF851A]">*</span>
                                 </label>
                                 <input type="text" name="category" list="categoryList" value="{{ old('category', 'Tart & Cake') }}" required placeholder="Pilih / ketik kategori"
-                                    class="w-full bg-[#FFFDF9] border-2 {{ $errors->has('category') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#C8B8A6]' }} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
+                                    class="w-full bg-[#FAF7F2] border {{ $errors->has('category') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#D5CBC0]' }} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#2C1A11] placeholder-[#9E9085] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 outline-none transition shadow-sm">
                                 @error('category')
                                     <span class="text-[10px] text-rose-600 font-bold block mt-1">{{ $message }}</span>
                                 @enderror
@@ -472,11 +473,11 @@
 
                             <!-- Harga Jual -->
                             <div class="sm:col-span-1 lg:col-span-3">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                    HARGA (RP) <span class="text-[#A85816]">*</span>
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
+                                    HARGA (RP) <span class="text-[#DF851A]">*</span>
                                 </label>
                                 <input type="text" name="price_idr" value="{{ old('price_idr') }}" required placeholder="Contoh: 150000 / 150.000"
-                                    class="w-full bg-[#FFFDF9] border-2 {{ $errors->has('price_idr') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#C8B8A6]' }} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-black text-[#A85816] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
+                                    class="w-full bg-[#FAF7F2] border {{ $errors->has('price_idr') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#D5CBC0]' }} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#2C1A11] placeholder-[#9E9085] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 outline-none transition shadow-sm">
                                 @error('price_idr')
                                     <span class="text-[10px] text-rose-600 font-bold block mt-1">{{ $message }}</span>
                                 @enderror
@@ -484,11 +485,11 @@
 
                             <!-- Stok Awal -->
                             <div class="sm:col-span-1 lg:col-span-2">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                    STOK AWAL <span class="text-[#A85816]">*</span>
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
+                                    STOK AWAL <span class="text-[#DF851A]">*</span>
                                 </label>
                                 <input type="number" name="stock" value="{{ old('stock', 10) }}" min="0" required placeholder="10"
-                                    class="w-full bg-[#FFFDF9] border-2 {{ $errors->has('stock') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#C8B8A6]' }} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-black text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
+                                    class="w-full bg-[#FAF7F2] border {{ $errors->has('stock') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#D5CBC0]' }} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#2C1A11] placeholder-[#9E9085] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 outline-none transition shadow-sm">
                                 @error('stock')
                                     <span class="text-[10px] text-rose-600 font-bold block mt-1">{{ $message }}</span>
                                 @enderror
@@ -496,26 +497,27 @@
                         </div>
 
                         <!-- BARIS 2: DESKRIPSI RASA, URL FOTO & TOMBOL SIMPAN -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-3.5 items-end">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3.5 sm:gap-4 items-end">
                             <div class="sm:col-span-1 lg:col-span-5">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
                                     DESKRIPSI RASA (OPSIONAL)
                                 </label>
                                 <input type="text" name="description" value="{{ old('description') }}" placeholder="Bahan baku pilihan, diameter loyang, tekstur..."
-                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
+                                    class="w-full bg-[#FAF7F2] border border-[#D5CBC0] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#2C1A11] placeholder-[#9E9085] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 outline-none transition shadow-sm">
                             </div>
 
                             <div class="sm:col-span-1 lg:col-span-4">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
                                     URL FOTO PRODUK (LINK GAMBAR)
                                 </label>
                                 <input type="text" name="image_url" value="{{ old('image_url') }}" placeholder="https://images.unsplash.com/... atau kosongkan"
-                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
+                                    class="w-full bg-[#FAF7F2] border border-[#D5CBC0] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#2C1A11] placeholder-[#9E9085] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 outline-none transition shadow-sm">
                             </div>
 
                             <div class="sm:col-span-2 lg:col-span-3">
                                 <button type="submit" 
-                                    class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#DF9A28] via-[#C98224] to-[#A85816] border-t-2 border-white/40 shadow-[0_4px_0_#5C2E0D,0_10px_20px_rgba(201,130,36,0.3)] hover:-translate-y-0.5 active:translate-y-1 active:shadow-[0_1px_0_#5C2E0D] transition-all cursor-pointer select-none">
+                                    class="w-full h-[42px] sm:h-[45px] flex items-center justify-center text-center px-4 py-2 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm text-white tracking-wide shadow-[0_4px_0_#7A3E05,0_8px_16px_rgba(178,93,7,0.32)] hover:brightness-105 active:translate-y-1 active:shadow-[0_1px_0_#7A3E05] transition-all cursor-pointer select-none"
+                                    style="background: linear-gradient(180deg, #DF851A 0%, #B25D07 100%); border-top: 1.5px solid rgba(254, 215, 170, 0.55);">
                                     <span>+ Simpan Menu Baru</span>
                                 </button>
                             </div>
@@ -657,41 +659,42 @@
         <!-- TAB 3: DAFTAR PESANAN MASUK (FORMULIR TERSTRUKTUR RAPI & FITUR EKSTRAK OTOMATIS HIGH DEFINITION) -->
         <div id="section-orders" class="tab-pane space-y-5 hidden">
             
-            <!-- FORM CATAT PESANAN BARU MANUAL OLEH ADMIN (CRISP WHITE CARD 3D HD) -->
-            <div class="bg-white rounded-2xl sm:rounded-3xl border-2 border-[#D8C7B5] shadow-[0_8px_0_#CFC1AF,0_16px_32px_rgba(29,18,11,0.08)] p-4 sm:p-6 md:p-7 space-y-4 sm:space-y-5">
+            <!-- FORM CATAT PESANAN BARU MANUAL OLEH ADMIN (CRISP MODERN CLASSIC 3D HD SESUAI DESAIN GAMBAR) -->
+            <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] shadow-[0_4px_24px_rgba(44,26,17,0.06)] p-4 sm:p-6 md:p-7 space-y-4 sm:space-y-5">
                 
-                <!-- Header Form dengan Tombol Ekstrak Cepat & Buka/Tutup -->
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-4 border-b-2 border-[#E2DDD5]">
+                <!-- Header Form dengan Icon Circle Brown + & Tombol Buka/Tutup -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-4 border-b border-[#ECE5DD]">
                     <div class="flex items-center gap-3">
-                        <span class="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl bg-gradient-to-tr from-[#3D251A] via-[#A85816] to-[#DF9A28] text-white flex items-center justify-center font-black text-sm shadow-[0_3px_0_#120A06] border-2 border-white/30 shrink-0">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#2C1A11] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-sm">
                             +
-                        </span>
+                        </div>
                         <div>
                             <div class="flex items-center gap-2 flex-wrap">
-                                <h3 class="text-xs sm:text-sm font-black uppercase tracking-wider text-[#1D120B]">Catat Pesanan Baru (Manual Order)</h3>
-                                <span class="text-[9px] sm:text-[10px] bg-[#FFF8E7] text-[#9A6216] font-black px-2.5 py-0.5 rounded-full border border-[#FCD34D]">Admin Order Entry</span>
+                                <h3 class="text-xs sm:text-sm font-black uppercase tracking-wider text-[#2C1A11]">Catat Pesanan Baru (Manual Order)</h3>
+                                <span class="text-[10px] sm:text-[11px] bg-[#F7F2EB] text-[#7A624E] font-bold px-2.5 py-0.5 rounded-full border border-[#E2DDD5]">Admin Order Entry</span>
                             </div>
-                            <p class="text-[11px] sm:text-xs text-[#6B5E52] mt-0.5 font-medium">Catat transaksi pesanan offline, WhatsApp langsung, atau via telepon</p>
+                            <p class="text-[11px] sm:text-xs text-[#7A6E65] mt-0.5 font-normal">Catat transaksi pesanan offline, WhatsApp langsung, atau via telepon</p>
                         </div>
                     </div>
 
                     <div class="flex items-center gap-2 flex-wrap self-end sm:self-auto">
                         <!-- Tombol Buka Panel Ekstrak Cepat Chat WhatsApp -->
                         <button type="button" onclick="document.getElementById('quickExtractBox').classList.toggle('hidden')" 
-                            class="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-black text-white bg-gradient-to-r from-[#059669] via-[#0D9488] to-[#0891B2] hover:from-[#047857] hover:to-[#0f766e] px-3 sm:px-4 py-2 rounded-xl border-t-2 border-white/50 shadow-[0_3px_0_#064E3B] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer" title="Ekstrak Pesanan dari Teks Chat">
+                            class="text-[11px] sm:text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-3.5 py-2 rounded-xl border border-emerald-200 shadow-sm transition-all cursor-pointer flex items-center gap-1.5" title="Ekstrak Pesanan dari Teks Chat">
                             <span>⚡</span>
                             <span>Ekstrak WhatsApp</span>
                         </button>
 
                         <button type="button" onclick="document.getElementById('manualOrderFormContainer').classList.toggle('hidden')" 
-                            class="text-[11px] sm:text-xs font-black text-[#1D120B] bg-white hover:bg-[#FAF7F0] px-3 sm:px-4 py-2 rounded-xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer">
-                            Buka / Tutup Form ▾
+                            class="text-[11px] sm:text-xs font-semibold text-[#2C1A11] bg-[#F7F4EE] hover:bg-[#EFE9DF] px-3.5 sm:px-4 py-2 rounded-xl border border-[#D5CBC0] shadow-sm transition-all cursor-pointer flex items-center gap-1.5">
+                            <span>Buka / Tutup Form</span>
+                            <span>▾</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- PANEL EKSTRAK LANGSUNG (SMART WHATSAPP ORDER EXTRACTOR) -->
-                <div id="quickExtractBox" class="hidden p-4 sm:p-5 rounded-2xl bg-[#FFF8E7] border-2 border-[#FCD34D] shadow-[0_4px_0_#F59E0B] space-y-3 transition-all">
+                <div id="quickExtractBox" class="hidden p-4 sm:p-5 rounded-2xl bg-[#FFF8E7] border border-[#FCD34D] shadow-sm space-y-3 transition-all">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2 text-xs font-black text-[#92400E]">
                             <span>⚡ Ekstraksi Instan Format Pesanan WhatsApp</span>
@@ -704,33 +707,34 @@
                         Salin dan tempel format pesan dari pembeli di bawah ini, lalu klik tombol <strong>"Ekstrak Otomatis"</strong>.
                     </p>
                     <textarea id="quickExtractInput" rows="3" placeholder="Contoh:&#10;Nama: Sarah Angelina&#10;WA: 081298765432&#10;Menu: Chiffon Cake&#10;Jumlah: 2 unit&#10;Alamat: Jl. Melati No. 15 Batam"
-                        class="w-full bg-white border-2 border-[#FCD34D] rounded-xl p-3 text-xs font-mono font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]"></textarea>
+                        class="w-full bg-white border border-[#FCD34D] rounded-xl p-3 text-xs font-mono font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-2 focus:ring-[#DF9A28]/25 shadow-sm"></textarea>
                     <div class="flex items-center gap-2 flex-wrap">
                         <button type="button" onclick="extractOrderFromText()"
-                            class="inline-flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-black text-white bg-gradient-to-r from-[#DF9A28] via-[#C98224] to-[#A85816] border-t-2 border-white/60 shadow-[0_3px_0_#5C2E0D] active:translate-y-0.5 active:shadow-none cursor-pointer">
+                            class="inline-flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-bold text-white shadow-[0_3px_0_#7A3E05] active:translate-y-0.5 active:shadow-none cursor-pointer"
+                            style="background: linear-gradient(180deg, #DF851A 0%, #B25D07 100%);">
                             <span>⚡ Ekstrak Otomatis ke Form</span>
                         </button>
                         <button type="button" onclick="document.getElementById('quickExtractInput').value = ''"
-                            class="px-3.5 py-2 rounded-xl text-xs font-bold text-[#1D120B] bg-white hover:bg-[#FAF7F0] border-2 border-[#DDD5C8] shadow-[0_2px_0_#CEC3B4] transition cursor-pointer">
+                            class="px-3.5 py-2 rounded-xl text-xs font-bold text-[#1D120B] bg-white hover:bg-[#FAF7F0] border border-[#DDD5C8] shadow-sm transition cursor-pointer">
                             Bersihkan Teks
                         </button>
                     </div>
                 </div>
 
-                <!-- KONTEN FORMULIR MANUAL ORDER (TERSTRUKTUR RAPI, BERSIH & EKONOMIS FLEKSIBEL MOBILE/DESKTOP) -->
+                <!-- KONTEN FORMULIR MANUAL ORDER (TERSTRUKTUR RAPI, BERSIH SESUAI GAMBAR 2) -->
                 <div id="manualOrderFormContainer" class="{{ $errors->has('customer_name') || $errors->has('product_id') ? '' : '' }}">
-                    <form action="{{ route('admin.orders.store', ['tab' => 'orders'], false) }}" method="POST" class="space-y-3 sm:space-y-4">
+                    <form action="{{ route('admin.orders.store', ['tab' => 'orders'], false) }}" method="POST" class="space-y-3.5 sm:space-y-4">
                         @csrf
                         
                         <!-- BARIS 1: PILIH MENU, NAMA, NO WA, JUMLAH QTY (4 KOLOM DESKTOP, FLUID MOBILE) -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-3.5 items-end">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 items-end">
                             <!-- 1. Pilih Menu Kue/Roti -->
-                            <div class="sm:col-span-1 lg:col-span-3">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                    PILIH MENU KUE/ROTI <span class="text-[#A85816]">*</span>
+                            <div>
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
+                                    PILIH MENU KUE/ROTI <span class="text-[#DF851A]">*</span>
                                 </label>
                                 <select name="product_id" id="manualOrderProductId" required onchange="updateManualOrderTotal()"
-                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                    class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#2C1A11] outline-none transition shadow-sm">
                                     <option value="" data-price="0">-- Pilih Menu Terdaftar --</option>
                                     @foreach($products as $p)
                                         <option value="{{ $p->id }}" data-price="{{ (int)$p->price_idr }}" {{ old('product_id') == $p->id ? 'selected' : '' }}>
@@ -741,104 +745,100 @@
                             </div>
 
                             <!-- 2. Nama Lengkap Pemesan -->
-                            <div class="sm:col-span-1 lg:col-span-3">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                    NAMA PEMESAN <span class="text-[#A85816]">*</span>
+                            <div>
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
+                                    NAMA PEMESAN <span class="text-[#DF851A]">*</span>
                                 </label>
                                 <input type="text" name="customer_name" id="manualOrderName" value="{{ old('customer_name') }}" required placeholder="Nama lengkap pelanggan"
-                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                    class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#2C1A11] placeholder-[#9E9085] outline-none transition shadow-sm">
                             </div>
 
                             <!-- 3. Nomor WhatsApp -->
-                            <div class="sm:col-span-1 lg:col-span-3">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                    NO. WHATSAPP <span class="text-[#A85816]">*</span>
+                            <div>
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
+                                    NO. WHATSAPP <span class="text-[#DF851A]">*</span>
                                 </label>
                                 <input type="text" name="customer_phone" id="manualOrderPhone" value="{{ old('customer_phone') }}" required placeholder="08xxxxxxxxxx"
-                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                    class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#2C1A11] placeholder-[#9E9085] outline-none transition shadow-sm">
                             </div>
 
                             <!-- 4. Jumlah Qty -->
-                            <div class="sm:col-span-1 lg:col-span-3">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                    JUMLAH (QTY) <span class="text-[#A85816]">*</span>
+                            <div>
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
+                                    JUMLAH (QTY) <span class="text-[#DF851A]">*</span>
                                 </label>
                                 <input type="number" name="quantity" id="manualOrderQty" value="{{ old('quantity', 1) }}" min="1" required oninput="updateManualOrderTotal()" placeholder="1"
-                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-black text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                    class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#2C1A11] outline-none transition shadow-sm">
                             </div>
                         </div>
 
-                        <!-- BARIS 2: TANGGAL, METODE KIRIM, STATUS AWAL, TOMBOL SIMPAN KE DATABASE (SESUAI GAMBAR 1 & 2) -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-3.5 items-end">
+                        <!-- BARIS 2: TANGGAL, METODE KIRIM, STATUS AWAL, TOMBOL SIMPAN KE DATABASE (SESUAI GAMBAR 2) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 items-end">
                             <!-- 1. Target Tanggal Kirim -->
-                            <div class="sm:col-span-1 lg:col-span-3">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                    TARGET TANGGAL KIRIM <span class="text-[#A85816]">*</span>
+                            <div>
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
+                                    TARGET TANGGAL KIRIM <span class="text-[#DF851A]">*</span>
                                 </label>
                                 <input type="date" name="delivery_date" id="manualOrderDate" value="{{ old('delivery_date', date('Y-m-d')) }}" required
-                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                    class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#2C1A11] outline-none transition shadow-sm">
                             </div>
 
                             <!-- 2. Metode Pengiriman -->
-                            <div class="sm:col-span-1 lg:col-span-3">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                            <div>
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
                                     METODE PENGIRIMAN
                                 </label>
                                 <select name="order_type" id="manualOrderType" 
-                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                    class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#2C1A11] outline-none transition shadow-sm">
                                     <option value="delivery" {{ old('order_type') == 'delivery' ? 'selected' : '' }}>Kurir Toko (Delivery)</option>
                                     <option value="pickup" {{ old('order_type') == 'pickup' ? 'selected' : '' }}>Ambil di Gerai (Pick-up)</option>
                                 </select>
                             </div>
 
                             <!-- 3. Status Awal -->
-                            <div class="sm:col-span-1 lg:col-span-3">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                            <div>
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
                                     STATUS AWAL
                                 </label>
                                 <select name="status" 
-                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-black text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                    class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#2C1A11] outline-none transition shadow-sm">
                                     <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }}>Pending (Menunggu)</option>
                                     <option value="confirmed" {{ old('status') == 'confirmed' ? 'selected' : '' }}>Confirmed (Dikonfirmasi)</option>
                                     <option value="completed" {{ old('status') == 'completed' ? 'selected' : '' }}>Completed (Lunas)</option>
                                 </select>
                             </div>
 
-                            <!-- 4. Tombol Simpan Pesanan (Gambar 2 Oren Gold Tactile 3D Button) -->
-                            <div class="sm:col-span-1 lg:col-span-3">
+                            <!-- 4. Tombol Oren Gold 3D: + Simpan Pesanan ke Database (SESUAI PERSIS GAMBAR 2) -->
+                            <div>
                                 <button type="submit" 
-                                    class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#DF9A28] via-[#C98224] to-[#A85816] border-t-2 border-white/40 shadow-[0_4px_0_#5C2E0D,0_10px_20px_rgba(201,130,36,0.3)] hover:-translate-y-0.5 active:translate-y-1 active:shadow-[0_1px_0_#5C2E0D] transition-all cursor-pointer select-none">
-                                    <span>+ Simpan Pesanan ke Database</span>
+                                    class="w-full h-[42px] sm:h-[45px] flex items-center justify-center text-center px-3 py-2 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm text-white tracking-wide shadow-[0_4px_0_#7A3E05,0_8px_16px_rgba(178,93,7,0.32)] hover:brightness-105 active:translate-y-1 active:shadow-[0_1px_0_#7A3E05] transition-all cursor-pointer select-none"
+                                    style="background: linear-gradient(180deg, #DF851A 0%, #B25D07 100%); border-top: 1.5px solid rgba(254, 215, 170, 0.55);">
+                                    <span class="block leading-tight text-center">+ Simpan Pesanan ke<br class="hidden sm:inline lg:inline xl:hidden"> Database</span>
                                 </button>
                             </div>
                         </div>
 
-                        <!-- BARIS 3: ALAMAT ANTAR, CATATAN KHUSUS & ESTIMASI TOTAL -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-3.5 items-end">
+                        <!-- BARIS 3: ALAMAT ANTAR (50%) & CATATAN KHUSUS PESANAN (50%) - SESUAI GAMBAR 2 -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-4 items-end">
                             <!-- Alamat Antar -->
-                            <div class="sm:col-span-1 lg:col-span-6">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                            <div>
+                                <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider mb-1.5">
                                     ALAMAT ANTAR (KOSONGKAN JIKA PICK-UP)
                                 </label>
                                 <input type="text" name="address" id="manualOrderAddress" value="{{ old('address') }}" placeholder="Jalan, nomor rumah, patokan..."
-                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                    class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#2C1A11] placeholder-[#9E9085] outline-none transition shadow-sm">
                             </div>
 
-                            <!-- Catatan Khusus Pesanan -->
-                            <div class="sm:col-span-1 lg:col-span-4">
-                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                    CATATAN KHUSUS PESANAN
-                                </label>
-                                <input type="text" name="order_notes" id="manualOrderNotes" value="{{ old('order_notes') }}" placeholder="Misal: Tulisan ucapan / lilin / request hiasan"
-                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
-                            </div>
-
-                            <!-- Estimasi Subtotal Live Preview -->
-                            <div class="sm:col-span-2 lg:col-span-2">
-                                <div class="bg-[#FAF7F0] border-2 border-[#D8C7B5] rounded-xl p-2 sm:p-2.5 text-center shadow-[0_2px_0_#DDD2C4]">
-                                    <span class="text-[9px] uppercase font-black text-[#6B5E52] block">Total Tagihan</span>
-                                    <span id="manualOrderEstimatedTotal" class="text-xs sm:text-sm font-black text-[#A85816] truncate block">Rp 0</span>
+                            <!-- Catatan Khusus Pesanan & Info Subtotal -->
+                            <div>
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <label class="block text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider">
+                                        CATATAN KHUSUS PESANAN
+                                    </label>
+                                    <span id="manualOrderEstimatedTotal" class="text-[11px] font-bold text-[#A85816]">Rp 0</span>
                                 </div>
+                                <input type="text" name="order_notes" id="manualOrderNotes" value="{{ old('order_notes') }}" placeholder="Misal: Tulisan ucapan / lilin / request hiasan"
+                                    class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white focus:ring-2 focus:ring-[#DF851A]/20 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#2C1A11] placeholder-[#9E9085] outline-none transition shadow-sm">
                             </div>
                         </div>
 
@@ -1021,7 +1021,8 @@
 
                         <div class="sm:col-span-1 lg:col-span-4">
                             <button type="submit" 
-                                class="w-full relative inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#DF9A28] via-[#C98224] to-[#A85816] border-t-2 border-white/40 shadow-[0_4px_0_#5C2E0D,0_10px_20px_rgba(201,130,36,0.3)] hover:-translate-y-0.5 active:translate-y-1 active:shadow-[0_1px_0_#5C2E0D] transition-all cursor-pointer">
+                                class="w-full h-[42px] sm:h-[45px] flex items-center justify-center text-center px-4 py-2 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm text-white tracking-wide shadow-[0_4px_0_#7A3E05,0_8px_16px_rgba(178,93,7,0.32)] hover:brightness-105 active:translate-y-1 active:shadow-[0_1px_0_#7A3E05] transition-all cursor-pointer"
+                                style="background: linear-gradient(180deg, #DF851A 0%, #B25D07 100%); border-top: 1.5px solid rgba(254, 215, 170, 0.55);">
                                 <span>+ Simpan Rekening Bank</span>
                             </button>
                         </div>
