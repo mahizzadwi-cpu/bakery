@@ -38,46 +38,178 @@
         }
     </style>
 </head>
-<body class="bg-[#FAF7F0] text-[#2C1A11] antialiased min-h-screen flex selection:bg-[#F3E5C8] selection:text-[#3D251A] relative">
+<body class="bg-[#FAF7F0] text-[#2C1A11] antialiased min-h-screen flex flex-col md:flex-row selection:bg-[#F3E5C8] selection:text-[#3D251A] relative">
 
     <!-- FLOATING TOAST NOTIFICATION CONTAINER -->
-    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2.5 max-w-md w-full px-4 pointer-events-none">
+    <div id="toast-container" class="fixed top-3 right-3 sm:top-5 sm:right-5 z-50 flex flex-col gap-2 max-w-xs sm:max-w-md w-full px-2 sm:px-4 pointer-events-none">
         @if(session('success'))
-            <div class="toast-item toast-animate pointer-events-auto bg-[#FFFDF9] border-l-4 border-[#DF9A28] shadow-[0_10px_25px_rgba(44,26,17,0.12),0_2px_0_#E0D9CE] rounded-2xl p-4 flex items-start gap-3 border border-[#E2DDD5] transition-all duration-300">
-                <div class="w-8 h-8 rounded-xl bg-[#FFF8E7] text-[#9A6216] border border-[#F3DEB2] flex items-center justify-center font-bold text-sm shrink-0">✓</div>
-                <div class="flex-1 pr-2">
-                    <h5 class="text-xs font-bold text-[#2C1A11] uppercase tracking-wider">Aksi Berhasil Disimpan ke Database</h5>
-                    <p class="text-xs text-[#5A524A] mt-0.5 leading-relaxed">{{ session('success') }}</p>
+            <div class="toast-item toast-animate pointer-events-auto bg-[#FFFDF9] border-l-4 border-[#DF9A28] shadow-[0_10px_25px_rgba(44,26,17,0.12),0_2px_0_#E0D9CE] rounded-2xl p-3.5 sm:p-4 flex items-start gap-3 border border-[#E2DDD5] transition-all duration-300">
+                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#FFF8E7] text-[#9A6216] border border-[#F3DEB2] flex items-center justify-center font-bold text-xs sm:text-sm shrink-0">✓</div>
+                <div class="flex-1 pr-1 sm:pr-2">
+                    <h5 class="text-[11px] sm:text-xs font-bold text-[#2C1A11] uppercase tracking-wider">Aksi Berhasil Disimpan ke Database</h5>
+                    <p class="text-[11px] sm:text-xs text-[#5A524A] mt-0.5 leading-relaxed">{{ session('success') }}</p>
                 </div>
-                <button onclick="this.closest('.toast-item').remove()" class="text-[#8C7D70] hover:text-[#2C1A11] font-bold text-sm cursor-pointer">✕</button>
+                <button onclick="this.closest('.toast-item').remove()" class="text-[#8C7D70] hover:text-[#2C1A11] font-bold text-xs sm:text-sm cursor-pointer">✕</button>
             </div>
         @endif
 
         @if(session('error'))
-            <div class="toast-item toast-animate pointer-events-auto bg-[#FFFDF9] border-l-4 border-rose-500 shadow-[0_10px_25px_rgba(44,26,17,0.12)] rounded-2xl p-4 flex items-start gap-3 border border-rose-200 transition-all duration-300">
-                <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-700 border border-rose-200 flex items-center justify-center font-bold text-sm shrink-0">✕</div>
-                <div class="flex-1 pr-2">
-                    <h5 class="text-xs font-bold text-rose-950 uppercase tracking-wider">Terjadi Kesalahan</h5>
-                    <p class="text-xs text-rose-800 mt-0.5 leading-relaxed">{{ session('error') }}</p>
+            <div class="toast-item toast-animate pointer-events-auto bg-[#FFFDF9] border-l-4 border-rose-500 shadow-[0_10px_25px_rgba(44,26,17,0.12)] rounded-2xl p-3.5 sm:p-4 flex items-start gap-3 border border-rose-200 transition-all duration-300">
+                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-rose-50 text-rose-700 border border-rose-200 flex items-center justify-center font-bold text-xs sm:text-sm shrink-0">✕</div>
+                <div class="flex-1 pr-1 sm:pr-2">
+                    <h5 class="text-[11px] sm:text-xs font-bold text-rose-950 uppercase tracking-wider">Terjadi Kesalahan</h5>
+                    <p class="text-[11px] sm:text-xs text-rose-800 mt-0.5 leading-relaxed">{{ session('error') }}</p>
                 </div>
-                <button onclick="this.closest('.toast-item').remove()" class="text-gray-400 hover:text-gray-700 font-bold text-sm cursor-pointer">✕</button>
+                <button onclick="this.closest('.toast-item').remove()" class="text-gray-400 hover:text-gray-700 font-bold text-xs sm:text-sm cursor-pointer">✕</button>
             </div>
         @endif
 
         @if($errors->any())
-            <div class="toast-item toast-animate pointer-events-auto bg-[#FFFDF9] border-l-4 border-amber-500 shadow-[0_10px_25px_rgba(44,26,17,0.12)] rounded-2xl p-4 flex items-start gap-3 border border-amber-200 transition-all duration-300">
-                <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-700 border border-amber-200 flex items-center justify-center font-bold text-sm shrink-0">!</div>
-                <div class="flex-1 pr-2">
-                    <h5 class="text-xs font-bold text-amber-950 uppercase tracking-wider">Validasi Data Gagal</h5>
-                    <p class="text-xs text-amber-800 mt-0.5 leading-relaxed">{{ $errors->first() }}</p>
+            <div class="toast-item toast-animate pointer-events-auto bg-[#FFFDF9] border-l-4 border-amber-500 shadow-[0_10px_25px_rgba(44,26,17,0.12)] rounded-2xl p-3.5 sm:p-4 flex items-start gap-3 border border-amber-200 transition-all duration-300">
+                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-50 text-amber-700 border border-amber-200 flex items-center justify-center font-bold text-xs sm:text-sm shrink-0">!</div>
+                <div class="flex-1 pr-1 sm:pr-2">
+                    <h5 class="text-[11px] sm:text-xs font-bold text-amber-950 uppercase tracking-wider">Validasi Data Gagal</h5>
+                    <p class="text-[11px] sm:text-xs text-amber-800 mt-0.5 leading-relaxed">{{ $errors->first() }}</p>
                 </div>
-                <button onclick="this.closest('.toast-item').remove()" class="text-gray-400 hover:text-gray-700 font-bold text-sm cursor-pointer">✕</button>
+                <button onclick="this.closest('.toast-item').remove()" class="text-gray-400 hover:text-gray-700 font-bold text-xs sm:text-sm cursor-pointer">✕</button>
             </div>
         @endif
     </div>
 
-    <!-- SIDEBAR KIRI (COKLAT PEKAT KLASIK, AKSEN OREN GOLD & ABU) -->
-    <aside class="w-64 bg-[#1D120B] text-[#F5EFE4] flex flex-col justify-between shrink-0 min-h-screen sticky top-0 h-screen border-r border-[#312015] shadow-2xl z-20">
+    <!-- STICKY MOBILE TOPBAR & HORIZONTAL QUICK TAB BAR (MINIMALIS & FLEKSIBEL UNTUK HP) -->
+    <header class="md:hidden sticky top-0 z-30 bg-[#1D120B] text-[#F5EFE4] border-b border-[#312015] shadow-lg shrink-0">
+        <div class="px-3.5 py-2.5 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5 min-w-0">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#3D251A] via-[#A85816] to-[#DF9A28] text-white flex items-center justify-center font-serif font-black text-sm shadow-[0_2px_0_#120A06] border border-white/20 shrink-0">
+                    M
+                </div>
+                <div class="truncate">
+                    <h2 class="text-xs font-bold text-white font-serif tracking-tight truncate leading-tight">Mey Bakery Admin</h2>
+                    <div class="flex items-center gap-1.5 mt-0.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#DF9A28] animate-pulse"></span>
+                        <span id="mobileActiveTabLabel" class="text-[10px] text-[#D5C4B5] font-semibold truncate uppercase tracking-wider">Ringkasan Bisnis</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-1.5 shrink-0">
+                <a href="{{ route('landing') }}" target="_blank" title="Buka Toko"
+                    class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-gradient-to-r from-[#DF9A28] to-[#A85816] text-white text-[11px] font-bold border-t border-white/30 shadow-[0_2px_0_#5C2E0D]">
+                    <span>Toko</span>
+                    <span>↗</span>
+                </a>
+                <button type="button" onclick="toggleMobileDrawer(true)" 
+                    class="w-8 h-8 rounded-lg bg-[#2C1A11] border border-[#4A3225] text-white flex items-center justify-center text-sm shadow-[0_2px_0_#120A06] active:translate-y-0.5 transition cursor-pointer" title="Buka Menu Lengkap">
+                    ☰
+                </button>
+            </div>
+        </div>
+
+        <!-- Quick Tab Bar Mobile: Scroll Horizontal Bebas Halangan -->
+        <div class="flex items-center gap-1.5 px-3 py-2 bg-[#170E08] border-t border-[#2C1A11] overflow-x-auto no-scrollbar text-xs">
+            <button onclick="switchTab('overview')" id="mobile-tab-overview"
+                class="mobile-tab-btn shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-bold bg-[#2C1A11] text-white border border-[#4A3225] transition cursor-pointer">
+                <span>📊 Ringkasan</span>
+            </button>
+            <button onclick="switchTab('products')" id="mobile-tab-products"
+                class="mobile-tab-btn shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium text-[#B5A89E] hover:text-white transition cursor-pointer">
+                <span>🎂 Menu ({{ $totalProducts }})</span>
+            </button>
+            <button onclick="switchTab('orders')" id="mobile-tab-orders"
+                class="mobile-tab-btn shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium text-[#B5A89E] hover:text-white transition cursor-pointer">
+                <span>📦 Pesanan ({{ $orders->count() }})</span>
+                @if($pendingOrders > 0)
+                    <span class="w-2 h-2 rounded-full bg-[#DF9A28]"></span>
+                @endif
+            </button>
+            <button onclick="switchTab('banks')" id="mobile-tab-banks"
+                class="mobile-tab-btn shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium text-[#B5A89E] hover:text-white transition cursor-pointer">
+                <span>💳 Rekening ({{ $bankAccounts->count() }})</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE SLIDE-OVER DRAWER -->
+    <div id="mobileDrawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs hidden transition-all duration-300 md:hidden" onclick="if(event.target === this) toggleMobileDrawer(false)">
+        <div class="w-72 max-w-[85vw] h-full bg-[#1D120B] text-[#F5EFE4] flex flex-col justify-between p-4 shadow-2xl border-r border-[#312015] transform -translate-x-full transition-transform duration-300" id="mobileDrawerPanel">
+            <div>
+                <div class="flex items-center justify-between pb-3.5 border-b border-[#2C1A11]">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#3D251A] via-[#A85816] to-[#DF9A28] text-white flex items-center justify-center font-serif font-black text-sm shadow-[0_2px_0_#120A06] border border-white/20">
+                            M
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-bold text-white font-serif">Mey Bakery</h3>
+                            <span class="text-[9px] uppercase tracking-wider text-[#8C7D70] font-bold">Admin Panel</span>
+                        </div>
+                    </div>
+                    <button type="button" onclick="toggleMobileDrawer(false)" class="w-7 h-7 rounded-lg bg-[#2C1A11] text-[#8C7D70] hover:text-white flex items-center justify-center font-bold text-xs border border-[#3D251A] cursor-pointer">
+                        ✕
+                    </button>
+                </div>
+
+                <div class="py-4 space-y-1.5">
+                    <p class="px-2 text-[10px] uppercase font-black tracking-widest text-[#8C7D70] mb-2">Navigasi Studio</p>
+
+                    <button onclick="switchTab('overview'); toggleMobileDrawer(false);"
+                        class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold text-white bg-[#2C1A11] border border-[#4A3225] transition cursor-pointer">
+                        <span>📊</span>
+                        <span>Ringkasan Bisnis</span>
+                    </button>
+
+                    <button onclick="switchTab('products'); toggleMobileDrawer(false);"
+                        class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium text-[#B5A89E] hover:text-white hover:bg-[#2C1A11]/60 transition cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <span>🎂</span>
+                            <span>Katalog & Harga</span>
+                        </div>
+                        <span class="bg-[#2C1A11] text-[#DF9A28] font-black text-[10px] px-2 py-0.5 rounded-full border border-[#4A3225]">{{ $totalProducts }}</span>
+                    </button>
+
+                    <button onclick="switchTab('orders'); toggleMobileDrawer(false);"
+                        class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium text-[#B5A89E] hover:text-white hover:bg-[#2C1A11]/60 transition cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <span>📦</span>
+                            <span>Pesanan Masuk</span>
+                        </div>
+                        <span class="bg-gradient-to-r from-[#DF9A28] to-[#A85816] text-white font-bold text-[10px] px-2 py-0.5 rounded-full">{{ $orders->count() }}</span>
+                    </button>
+
+                    <button onclick="switchTab('banks'); toggleMobileDrawer(false);"
+                        class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium text-[#B5A89E] hover:text-white hover:bg-[#2C1A11]/60 transition cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <span>💳</span>
+                            <span>Rekening & QRIS</span>
+                        </div>
+                        <span class="bg-[#2C1A11] text-[#DF9A28] font-black text-[10px] px-2 py-0.5 rounded-full border border-[#4A3225]">{{ $bankAccounts->count() }}</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-[#2C1A11] space-y-2.5">
+                <a href="{{ route('landing') }}" target="_blank"
+                    class="w-full flex items-center justify-center gap-2 text-xs text-white font-black py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#DF9A28] via-[#C98224] to-[#A85816] border-t border-white/30 shadow-[0_3px_0_#5C2E0D]">
+                    <span>Buka Web Toko</span>
+                    <span>↗</span>
+                </a>
+                <div class="flex items-center justify-between pt-1">
+                    <div class="overflow-hidden">
+                        <p class="text-xs font-bold text-white truncate">{{ session('admin_name', 'Mey Bakery Admin') }}</p>
+                        <p class="text-[10px] text-[#8C7D70] truncate">{{ session('admin_email', 'admin@toko.com') }}</p>
+                    </div>
+                    <form action="{{ route('logout', [], false) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="text-xs bg-[#2C1A11] hover:bg-rose-950 text-rose-300 px-2.5 py-1.5 rounded-lg font-bold border border-[#3D251A] cursor-pointer">
+                            Keluar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIDEBAR KIRI DESKTOP (COKLAT PEKAT KLASIK, AKSEN OREN GOLD & ABU) -->
+    <aside class="hidden md:flex md:w-64 bg-[#1D120B] text-[#F5EFE4] flex-col justify-between shrink-0 min-h-screen sticky top-0 h-screen border-r border-[#312015] shadow-2xl z-20">
         <div>
             <!-- Header Brand Mey Bakery -->
             <div class="h-20 px-6 flex items-center gap-3.5 border-b border-[#2C1A11]">
@@ -156,13 +288,13 @@
         </div>
     </aside>
 
-    <!-- AREA KONTEN UTAMA (MODERN, SIMPEL, EKONOMIS, INFORMATIF & 3D) -->
-    <main class="flex-1 p-6 md:p-8 max-w-6xl mx-auto space-y-6 overflow-y-auto">
+    <!-- AREA KONTEN UTAMA (MODERN, SIMPEL, EKONOMIS, INFORMATIF & 3D FLEKSIBEL MOBILE/DESKTOP) -->
+    <main class="flex-1 w-full min-w-0 p-3.5 sm:p-5 md:p-8 max-w-6xl mx-auto space-y-4 sm:space-y-6 overflow-y-auto">
 
         <!-- Top Header Status (Vanila Cream & Abu Border dengan Multi-Harmonic Accent) -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#E2DDD5]">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-4 border-b border-[#E2DDD5]">
             <div>
-                <h1 class="text-xl md:text-2xl font-serif font-bold text-[#2C1A11] tracking-tight">Pusat Kendali Mey Bakery</h1>
+                <h1 class="text-lg sm:text-xl md:text-2xl font-serif font-bold text-[#2C1A11] tracking-tight">Pusat Kendali Mey Bakery</h1>
                 <p class="text-xs text-[#7A7570] mt-0.5">Kelola penyesuaian harga menu, ketersediaan stok kue, dan transaksi pesanan pelanggan</p>
             </div>
             <div class="flex items-center gap-2">
@@ -177,44 +309,44 @@
         </div>
 
         <!-- TAB 1: RINGKASAN BISNIS -->
-        <div id="section-overview" class="tab-pane space-y-5">
-            <!-- 3D Stat Cards (High Definition & Bold 2px Borders) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-                <div class="bg-white p-6 rounded-3xl border-2 border-[#D8C7B5] shadow-[0_6px_0_#D4C4B3,0_12px_24px_rgba(29,18,11,0.06)] hover:border-[#DF9A28] hover:shadow-[0_8px_0_#A85816,0_16px_28px_rgba(201,130,36,0.18)] hover:-translate-y-1 transition-all">
-                    <span class="text-xs font-black uppercase tracking-wider text-[#6B5E52] block">Total Omzet Lunas</span>
-                    <p class="text-3xl font-serif font-black text-[#A85816] mt-2">Rp {{ number_format($totalRevenue, 0, ',', '.') }}</p>
-                    <p class="text-xs text-[#5A524A] font-semibold mt-1.5">100% diterima utuh tanpa potongan komisi</p>
+        <div id="section-overview" class="tab-pane space-y-4 sm:space-y-5">
+            <!-- 3D Stat Cards (High Definition & Bold 2px Borders Responsive) -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
+                <div class="bg-white p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl border-2 border-[#D8C7B5] shadow-[0_4px_0_#D4C4B3,0_8px_16px_rgba(29,18,11,0.05)] hover:border-[#DF9A28] hover:shadow-[0_6px_0_#A85816,0_12px_24px_rgba(201,130,36,0.18)] hover:-translate-y-0.5 transition-all">
+                    <span class="text-[11px] sm:text-xs font-black uppercase tracking-wider text-[#6B5E52] block">Total Omzet Lunas</span>
+                    <p class="text-2xl sm:text-3xl font-serif font-black text-[#A85816] mt-1.5 sm:mt-2">Rp {{ number_format($totalRevenue, 0, ',', '.') }}</p>
+                    <p class="text-[11px] sm:text-xs text-[#5A524A] font-semibold mt-1 sm:mt-1.5">100% diterima utuh tanpa potongan komisi</p>
                 </div>
 
-                <div class="bg-white p-6 rounded-3xl border-2 border-[#D8C7B5] shadow-[0_6px_0_#D4C4B3,0_12px_24px_rgba(29,18,11,0.06)] hover:border-[#DF9A28] hover:shadow-[0_8px_0_#A85816,0_16px_28px_rgba(201,130,36,0.18)] hover:-translate-y-1 transition-all cursor-pointer" onclick="switchTab('orders')">
+                <div class="bg-white p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl border-2 border-[#D8C7B5] shadow-[0_4px_0_#D4C4B3,0_8px_16px_rgba(29,18,11,0.05)] hover:border-[#DF9A28] hover:shadow-[0_6px_0_#A85816,0_12px_24px_rgba(201,130,36,0.18)] hover:-translate-y-0.5 transition-all cursor-pointer" onclick="switchTab('orders')">
                     <div class="flex items-center justify-between">
-                        <span class="text-xs font-black uppercase tracking-wider text-[#6B5E52] block">Antrean Pesanan Masuk</span>
-                        <span class="text-xs font-black text-[#A85816] hover:underline">Lihat Semua →</span>
+                        <span class="text-[11px] sm:text-xs font-black uppercase tracking-wider text-[#6B5E52] block">Antrean Pesanan Masuk</span>
+                        <span class="text-[11px] sm:text-xs font-black text-[#A85816] hover:underline">Lihat Semua →</span>
                     </div>
-                    <p class="text-3xl font-serif font-black text-[#C98224] mt-2">{{ $pendingOrders }} Pesanan</p>
-                    <p class="text-xs text-[#6B5E52] font-semibold mt-1.5">Perlu dijadwalkan baking / pengiriman</p>
+                    <p class="text-2xl sm:text-3xl font-serif font-black text-[#C98224] mt-1.5 sm:mt-2">{{ $pendingOrders }} Pesanan</p>
+                    <p class="text-[11px] sm:text-xs text-[#6B5E52] font-semibold mt-1 sm:mt-1.5">Perlu dijadwalkan baking / pengiriman</p>
                 </div>
 
-                <div class="bg-white p-6 rounded-3xl border-2 border-[#D8C7B5] shadow-[0_6px_0_#D4C4B3,0_12px_24px_rgba(29,18,11,0.06)] hover:border-[#DF9A28] hover:shadow-[0_8px_0_#A85816,0_16px_28px_rgba(201,130,36,0.18)] hover:-translate-y-1 transition-all cursor-pointer" onclick="switchTab('products')">
+                <div class="bg-white p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl border-2 border-[#D8C7B5] shadow-[0_4px_0_#D4C4B3,0_8px_16px_rgba(29,18,11,0.05)] hover:border-[#DF9A28] hover:shadow-[0_6px_0_#A85816,0_12px_24px_rgba(201,130,36,0.18)] hover:-translate-y-0.5 transition-all cursor-pointer" onclick="switchTab('products')">
                     <div class="flex items-center justify-between">
-                        <span class="text-xs font-black uppercase tracking-wider text-[#6B5E52] block">Total Menu Terdaftar</span>
-                        <span class="text-xs font-black text-[#1D120B] hover:underline">Kelola Menu →</span>
+                        <span class="text-[11px] sm:text-xs font-black uppercase tracking-wider text-[#6B5E52] block">Total Menu Terdaftar</span>
+                        <span class="text-[11px] sm:text-xs font-black text-[#1D120B] hover:underline">Kelola Menu →</span>
                     </div>
-                    <p class="text-3xl font-serif font-black text-[#1D120B] mt-2">{{ $totalProducts }} Produk</p>
-                    <p class="text-xs text-[#6B5E52] font-semibold mt-1.5">Kue tart, artisan pastry & minuman botol</p>
+                    <p class="text-2xl sm:text-3xl font-serif font-black text-[#1D120B] mt-1.5 sm:mt-2">{{ $totalProducts }} Produk</p>
+                    <p class="text-[11px] sm:text-xs text-[#6B5E52] font-semibold mt-1 sm:mt-1.5">Kue tart, artisan pastry & minuman botol</p>
                 </div>
             </div>
 
             <!-- Tinjauan Cepat Menu Terbaru & Pesanan Terbaru -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 pt-2">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 pt-1 sm:pt-2">
                 <!-- Box Menu Aktif -->
-                <div class="bg-white p-6 rounded-3xl border-2 border-[#D8C7B5] shadow-[0_6px_0_#D4C4B3] space-y-4">
-                    <div class="flex items-center justify-between border-b-2 border-[#F1EDE6] pb-3.5">
+                <div class="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border-2 border-[#D8C7B5] shadow-[0_4px_0_#D4C4B3] space-y-3 sm:space-y-4">
+                    <div class="flex items-center justify-between border-b-2 border-[#F1EDE6] pb-3 sm:pb-3.5">
                         <div>
                             <h3 class="text-xs font-black uppercase tracking-wider text-[#1D120B]">Menu Toko Terbaru</h3>
-                            <p class="text-xs text-[#6B5E52] mt-0.5 font-medium">Ringkasan produk aktif di etalase</p>
+                            <p class="text-[11px] sm:text-xs text-[#6B5E52] mt-0.5 font-medium">Ringkasan produk aktif di etalase</p>
                         </div>
-                        <button onclick="switchTab('products')" class="text-xs font-black text-[#1D120B] bg-white hover:bg-[#FAF7F0] border-2 border-[#D8C7B5] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none px-3.5 py-1.5 rounded-xl transition cursor-pointer">
+                        <button onclick="switchTab('products')" class="text-xs font-black text-[#1D120B] bg-white hover:bg-[#FAF7F0] border-2 border-[#D8C7B5] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none px-3 py-1.5 rounded-xl transition cursor-pointer">
                             + Tambah Menu
                         </button>
                     </div>
@@ -276,32 +408,32 @@
         <div id="section-products" class="tab-pane space-y-5 hidden">
             
             <!-- FORM TAMBAH MENU BARU (CRISP WHITE CARD 3D HD) -->
-            <div class="bg-white rounded-3xl border-2 border-[#D8C7B5] shadow-[0_8px_0_#CFC1AF,0_16px_32px_rgba(29,18,11,0.08)] p-6 sm:p-7 space-y-5">
+            <div class="bg-white rounded-2xl sm:rounded-3xl border-2 border-[#D8C7B5] shadow-[0_8px_0_#CFC1AF,0_16px_32px_rgba(29,18,11,0.08)] p-4 sm:p-6 md:p-7 space-y-4 sm:space-y-5">
                 
                 <!-- Header Form dengan Tombol Toggle Buka/Tutup -->
-                <div class="flex items-center justify-between pb-4 border-b-2 border-[#E2DDD5]">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-4 border-b-2 border-[#E2DDD5]">
                     <div class="flex items-center gap-3">
-                        <span class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-[#3D251A] via-[#A85816] to-[#DF9A28] text-white flex items-center justify-center font-black text-sm shadow-[0_3px_0_#120A06] border-2 border-white/30">
+                        <span class="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl bg-gradient-to-tr from-[#3D251A] via-[#A85816] to-[#DF9A28] text-white flex items-center justify-center font-black text-sm shadow-[0_3px_0_#120A06] border-2 border-white/30 shrink-0">
                             +
                         </span>
                         <div>
-                            <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-2 flex-wrap">
                                 <h3 class="text-xs sm:text-sm font-black uppercase tracking-wider text-[#1D120B]">Tambah Menu Baru</h3>
-                                <span class="text-[10px] bg-[#FFF8E7] text-[#9A6216] font-black px-2.5 py-0.5 rounded-full border border-[#FCD34D]">Koneksi Database Aktif</span>
+                                <span class="text-[9px] sm:text-[10px] bg-[#FFF8E7] text-[#9A6216] font-black px-2.5 py-0.5 rounded-full border border-[#FCD34D]">Koneksi Database Aktif</span>
                             </div>
-                            <p class="text-xs text-[#6B5E52] mt-0.5 font-medium">Input varian kue tart, artisan pastry, atau minuman botol langsung ke database etalase</p>
+                            <p class="text-[11px] sm:text-xs text-[#6B5E52] mt-0.5 font-medium">Input varian kue tart, artisan pastry, atau minuman botol langsung ke database etalase</p>
                         </div>
                     </div>
 
                     <button type="button" onclick="document.getElementById('productFormBody').classList.toggle('hidden')" 
-                        class="text-xs font-black text-[#1D120B] bg-white hover:bg-[#FAF7F0] px-4 py-2 rounded-xl border-2 border-[#D8C7B5] shadow-[0_3px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer">
+                        class="text-[11px] sm:text-xs font-black text-[#1D120B] bg-white hover:bg-[#FAF7F0] px-3 sm:px-4 py-2 rounded-xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer self-end sm:self-auto">
                         Buka / Tutup Form ▾
                     </button>
                 </div>
 
                 <!-- Konten Formulir Penambahan Menu (Struktur HD, Input Putih Bersih & Border Tebal 2px) -->
                 <div id="productFormBody" class="{{ $errors->has('name') || $errors->has('price_idr') || $errors->has('stock') || $errors->has('category') ? '' : '' }}">
-                    <form action="{{ route('admin.products.store', ['tab' => 'products'], false) }}" method="POST" class="space-y-4">
+                    <form action="{{ route('admin.products.store', ['tab' => 'products'], false) }}" method="POST" class="space-y-3 sm:space-y-4">
                         @csrf
                         
                         <datalist id="categoryList">
@@ -312,89 +444,81 @@
                             <option value="Roti & Donat">
                         </datalist>
 
-                        <!-- GRUP 1: IDENTITAS PRODUK (NAMA, KATEGORI, HARGA, STOK) -->
-                        <div class="bg-[#FAF7F0] p-4 sm:p-5 rounded-2xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#DDD2C4] space-y-3">
-                            <span class="text-xs font-black uppercase tracking-wider text-[#1D120B] block">Informasi Utama Produk</span>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3.5 items-end">
-                                <!-- Nama Menu -->
-                                <div class="lg:col-span-4">
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                        Nama Menu <span class="text-[#A85816]">*</span>
-                                    </label>
-                                    <input type="text" name="name" value="{{ old('name') }}" required placeholder="Contoh: Earl Grey Chiffon Cake"
-                                        class="w-full bg-white border-2 {{ $errors->has('name') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#C8B8A6]' }} rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
-                                    @error('name')
-                                        <span class="text-[10px] text-rose-600 font-bold block mt-1">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                        <!-- BARIS 1: IDENTITAS PRODUK (NAMA, KATEGORI, HARGA, STOK) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-3.5 items-end">
+                            <!-- Nama Menu -->
+                            <div class="sm:col-span-1 lg:col-span-4">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    NAMA MENU <span class="text-[#A85816]">*</span>
+                                </label>
+                                <input type="text" name="name" value="{{ old('name') }}" required placeholder="Contoh: Earl Grey Chiffon Cake"
+                                    class="w-full bg-[#FFFDF9] border-2 {{ $errors->has('name') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#C8B8A6]' }} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
+                                @error('name')
+                                    <span class="text-[10px] text-rose-600 font-bold block mt-1">{{ $message }}</span>
+                                @enderror
+                            </div>
 
-                                <!-- Kategori -->
-                                <div class="lg:col-span-3">
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                        Kategori <span class="text-[#A85816]">*</span>
-                                    </label>
-                                    <input type="text" name="category" list="categoryList" value="{{ old('category', 'Tart & Cake') }}" required placeholder="Pilih / ketik kategori"
-                                        class="w-full bg-white border-2 {{ $errors->has('category') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#C8B8A6]' }} rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
-                                    @error('category')
-                                        <span class="text-[10px] text-rose-600 font-bold block mt-1">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                            <!-- Kategori -->
+                            <div class="sm:col-span-1 lg:col-span-3">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    KATEGORI <span class="text-[#A85816]">*</span>
+                                </label>
+                                <input type="text" name="category" list="categoryList" value="{{ old('category', 'Tart & Cake') }}" required placeholder="Pilih / ketik kategori"
+                                    class="w-full bg-[#FFFDF9] border-2 {{ $errors->has('category') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#C8B8A6]' }} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
+                                @error('category')
+                                    <span class="text-[10px] text-rose-600 font-bold block mt-1">{{ $message }}</span>
+                                @enderror
+                            </div>
 
-                                <!-- Harga Jual -->
-                                <div class="lg:col-span-3">
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                        Harga (Rp) <span class="text-[#A85816]">*</span>
-                                    </label>
-                                    <input type="text" name="price_idr" value="{{ old('price_idr') }}" required placeholder="Contoh: 150000 / 150.000"
-                                        class="w-full bg-white border-2 {{ $errors->has('price_idr') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#C8B8A6]' }} rounded-xl px-4 py-2.5 text-xs sm:text-sm font-black text-[#A85816] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
-                                    @error('price_idr')
-                                        <span class="text-[10px] text-rose-600 font-bold block mt-1">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                            <!-- Harga Jual -->
+                            <div class="sm:col-span-1 lg:col-span-3">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    HARGA (RP) <span class="text-[#A85816]">*</span>
+                                </label>
+                                <input type="text" name="price_idr" value="{{ old('price_idr') }}" required placeholder="Contoh: 150000 / 150.000"
+                                    class="w-full bg-[#FFFDF9] border-2 {{ $errors->has('price_idr') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#C8B8A6]' }} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-black text-[#A85816] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
+                                @error('price_idr')
+                                    <span class="text-[10px] text-rose-600 font-bold block mt-1">{{ $message }}</span>
+                                @enderror
+                            </div>
 
-                                <!-- Stok Awal -->
-                                <div class="lg:col-span-2">
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                        Stok Awal <span class="text-[#A85816]">*</span>
-                                    </label>
-                                    <input type="number" name="stock" value="{{ old('stock', 10) }}" min="0" required placeholder="10"
-                                        class="w-full bg-white border-2 {{ $errors->has('stock') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#C8B8A6]' }} rounded-xl px-4 py-2.5 text-xs sm:text-sm font-black text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
-                                    @error('stock')
-                                        <span class="text-[10px] text-rose-600 font-bold block mt-1">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                            <!-- Stok Awal -->
+                            <div class="sm:col-span-1 lg:col-span-2">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    STOK AWAL <span class="text-[#A85816]">*</span>
+                                </label>
+                                <input type="number" name="stock" value="{{ old('stock', 10) }}" min="0" required placeholder="10"
+                                    class="w-full bg-[#FFFDF9] border-2 {{ $errors->has('stock') ? 'border-rose-500 ring-2 ring-rose-200' : 'border-[#C8B8A6]' }} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-black text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
+                                @error('stock')
+                                    <span class="text-[10px] text-rose-600 font-bold block mt-1">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
-                        <!-- GRUP 2: DESKRIPSI RASA & URL FOTO PRODUK -->
-                        <div class="bg-[#FAF7F0] p-4 sm:p-5 rounded-2xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#DDD2C4] space-y-3">
-                            <span class="text-xs font-black uppercase tracking-wider text-[#1D120B] block">Detail & Media Produk</span>
-                            <div class="grid grid-cols-1 sm:grid-cols-12 gap-3.5">
-                                <div class="sm:col-span-7">
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">Deskripsi / Detail Rasa (Opsional)</label>
-                                    <input type="text" name="description" value="{{ old('description') }}" placeholder="Bahan baku pilihan, diameter loyang, tekstur lembut..."
-                                        class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
-                                </div>
-
-                                <div class="sm:col-span-5">
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">URL Foto Produk (Link Gambar)</label>
-                                    <input type="text" name="image_url" value="{{ old('image_url') }}" placeholder="https://images.unsplash.com/... atau kosongkan"
-                                        class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
-                                </div>
+                        <!-- BARIS 2: DESKRIPSI RASA, URL FOTO & TOMBOL SIMPAN -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-3.5 items-end">
+                            <div class="sm:col-span-1 lg:col-span-5">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    DESKRIPSI RASA (OPSIONAL)
+                                </label>
+                                <input type="text" name="description" value="{{ old('description') }}" placeholder="Bahan baku pilihan, diameter loyang, tekstur..."
+                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
                             </div>
-                        </div>
 
-                        <!-- GRUP 3: FOOTER ACTION BAR (TOMBOL 3D TACTILE VIBRANT IMAGE 1 STYLE) -->
-                        <div class="pt-3 flex flex-col sm:flex-row items-center justify-between gap-4 border-t-2 border-[#E2DDD5]">
-                            <p class="text-xs text-[#6B5E52] text-center sm:text-left font-medium">
-                                Menu baru yang disimpan langsung terbit di etalase web dan dapat langsung dipesan oleh pelanggan.
-                            </p>
+                            <div class="sm:col-span-1 lg:col-span-4">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    URL FOTO PRODUK (LINK GAMBAR)
+                                </label>
+                                <input type="text" name="image_url" value="{{ old('image_url') }}" placeholder="https://images.unsplash.com/... atau kosongkan"
+                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
+                            </div>
 
-                            <button type="submit" 
-                                class="w-full sm:w-auto relative inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-2xl font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#FF7A00] via-[#FF5722] to-[#FF3B56] border-t-2 border-white/60 shadow-[0_6px_0_#A82424,0_16px_30px_rgba(255,59,86,0.38)] hover:-translate-y-0.5 hover:shadow-[0_7px_0_#A82424,0_20px_36px_rgba(255,59,86,0.45)] active:translate-y-1.5 active:shadow-[0_1px_0_#A82424] transition-all cursor-pointer select-none">
-                                <span>+ Simpan Menu Baru</span>
-                                <span>→</span>
-                            </button>
+                            <div class="sm:col-span-2 lg:col-span-3">
+                                <button type="submit" 
+                                    class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#DF9A28] via-[#C98224] to-[#A85816] border-t-2 border-white/40 shadow-[0_4px_0_#5C2E0D,0_10px_20px_rgba(201,130,36,0.3)] hover:-translate-y-0.5 active:translate-y-1 active:shadow-[0_1px_0_#5C2E0D] transition-all cursor-pointer select-none">
+                                    <span>+ Simpan Menu Baru</span>
+                                </button>
+                            </div>
                         </div>
 
                     </form>
@@ -420,61 +544,61 @@
 
                 <div class="divide-y-2 divide-[#F1EDE6]">
                     @forelse($products as $product)
-                    <div class="p-4 px-6 hover:bg-[#FAF7F0]/80 transition">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                            <div class="flex items-center gap-3.5 min-w-[280px]">
+                    <div class="p-3.5 sm:p-4 px-4 sm:px-6 hover:bg-[#FAF7F0]/80 transition">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                            <div class="flex items-center gap-3 min-w-0 flex-1">
                                 <img src="{{ $product->image_url ?? 'https://placehold.co/80x80/F5EFE4/2C1A11?text=Cake' }}" 
-                                    class="w-12 h-12 rounded-xl object-cover border-2 border-[#DDD5C8] shrink-0" alt="{{ $product->name }}">
-                                <div>
-                                    <h4 class="font-bold text-sm text-[#1D120B]">{{ $product->name }}</h4>
-                                    <span class="inline-block bg-[#FFF8E7] text-[#9A6216] font-black text-[10px] px-2.5 py-0.5 rounded-md mt-0.5 border border-[#FCD34D]">
+                                    class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl object-cover border-2 border-[#DDD5C8] shrink-0" alt="{{ $product->name }}">
+                                <div class="min-w-0">
+                                    <h4 class="font-bold text-xs sm:text-sm text-[#1D120B] truncate">{{ $product->name }}</h4>
+                                    <span class="inline-block bg-[#FFF8E7] text-[#9A6216] font-black text-[9px] sm:text-[10px] px-2 py-0.5 rounded-md mt-0.5 border border-[#FCD34D]">
                                         {{ $product->category }}
                                     </span>
-                                    <p class="text-xs text-[#6B5E52] truncate max-w-xs mt-0.5 font-medium">{{ $product->description }}</p>
+                                    <p class="text-[11px] text-[#6B5E52] truncate max-w-xs mt-0.5 font-medium">{{ $product->description }}</p>
                                 </div>
                             </div>
 
-                            <div class="flex items-center gap-7">
+                            <div class="flex items-center justify-between sm:justify-end gap-3 sm:gap-6 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#F1EDE6]">
                                 <div>
-                                    <span class="text-[10px] uppercase font-black text-[#6B5E52] block">Harga Toko</span>
-                                    <span class="text-sm font-black text-[#A85816]">Rp {{ number_format($product->price_idr, 0, ',', '.') }}</span>
+                                    <span class="text-[9px] sm:text-[10px] uppercase font-black text-[#6B5E52] block">Harga Toko</span>
+                                    <span class="text-xs sm:text-sm font-black text-[#A85816]">Rp {{ number_format($product->price_idr, 0, ',', '.') }}</span>
                                 </div>
 
                                 <div>
-                                    <span class="text-[10px] uppercase font-black text-[#6B5E52] block">Status Stok</span>
+                                    <span class="text-[9px] sm:text-[10px] uppercase font-black text-[#6B5E52] block">Status Stok</span>
                                     @if($product->stock <= 0)
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-black bg-[#F1EDE6] text-[#475569] border border-[#DDD5C8]">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-[#F1EDE6] text-[#475569] border border-[#DDD5C8]">
                                             Habis (0 unit)
                                         </span>
                                     @elseif($product->stock < 5)
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-black bg-[#FFF8E7] text-[#9A6216] border border-[#FCD34D]">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-[#FFF8E7] text-[#9A6216] border border-[#FCD34D]">
                                             {{ $product->stock }} unit (Menipis)
                                         </span>
                                     @else
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-black bg-[#EBF7EE] text-[#166534] border border-[#86EFAC]">
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black bg-[#EBF7EE] text-[#166534] border border-[#86EFAC]">
                                             {{ $product->stock }} unit (Ready)
                                         </span>
                                     @endif
                                 </div>
-                            </div>
 
-                            <div class="flex items-center gap-2">
-                                <button onclick="toggleRowEdit({{ $product->id }})" 
-                                    class="bg-white hover:bg-[#FAF7F0] text-[#1D120B] text-xs font-black px-3.5 py-2 rounded-xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none transition cursor-pointer">
-                                    Edit ▾
-                                </button>
-                                <form action="{{ route('admin.products.destroy', ['id' => $product->id, 'tab' => 'products'], false) }}" method="POST" 
-                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus menu \'{{ addslashes($product->name) }}\' dari database?')">
-                                    @csrf @method('DELETE')
-                                    <button type="submit" class="text-rose-700 hover:text-rose-950 text-xs font-bold px-2 py-1.5 cursor-pointer">
-                                        Hapus
+                                <div class="flex items-center gap-1.5 shrink-0">
+                                    <button onclick="toggleRowEdit({{ $product->id }})" 
+                                        class="bg-white hover:bg-[#FAF7F0] text-[#1D120B] text-xs font-black px-3 py-1.5 rounded-xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none transition cursor-pointer">
+                                        Edit ▾
                                     </button>
-                                </form>
+                                    <form action="{{ route('admin.products.destroy', ['id' => $product->id, 'tab' => 'products'], false) }}" method="POST" 
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus menu \'{{ addslashes($product->name) }}\' dari database?')">
+                                        @csrf @method('DELETE')
+                                        <button type="submit" class="text-rose-700 hover:text-rose-950 text-xs font-bold px-1.5 py-1.5 cursor-pointer">
+                                            Hapus
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Baris Formulir Edit Cepat (3D Style HD) -->
-                        <div id="edit-row-{{ $product->id }}" class="hidden mt-4 pt-4 border-t-2 border-dashed border-[#DDD5C8] bg-[#FAF7F0] -mx-6 -mb-4 p-4 px-6 rounded-b-2xl">
+                        <div id="edit-row-{{ $product->id }}" class="hidden mt-3 sm:mt-4 pt-3 sm:pt-4 border-t-2 border-dashed border-[#DDD5C8] bg-[#FAF7F0] -mx-4 sm:-mx-6 -mb-3.5 sm:-mb-4 p-3 sm:p-4 px-4 sm:px-6 rounded-b-2xl">
                             <form action="{{ route('admin.products.update', ['id' => $product->id, 'tab' => 'products'], false) }}" method="POST" class="space-y-3">
                                 @csrf @method('PUT')
                                 <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
@@ -534,40 +658,40 @@
         <div id="section-orders" class="tab-pane space-y-5 hidden">
             
             <!-- FORM CATAT PESANAN BARU MANUAL OLEH ADMIN (CRISP WHITE CARD 3D HD) -->
-            <div class="bg-white rounded-3xl border-2 border-[#D8C7B5] shadow-[0_8px_0_#CFC1AF,0_16px_32px_rgba(29,18,11,0.08)] p-6 sm:p-7 space-y-5">
+            <div class="bg-white rounded-2xl sm:rounded-3xl border-2 border-[#D8C7B5] shadow-[0_8px_0_#CFC1AF,0_16px_32px_rgba(29,18,11,0.08)] p-4 sm:p-6 md:p-7 space-y-4 sm:space-y-5">
                 
                 <!-- Header Form dengan Tombol Ekstrak Cepat & Buka/Tutup -->
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 pb-4 border-b-2 border-[#E2DDD5]">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-4 border-b-2 border-[#E2DDD5]">
                     <div class="flex items-center gap-3">
-                        <span class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-[#3D251A] via-[#A85816] to-[#DF9A28] text-white flex items-center justify-center font-black text-sm shadow-[0_3px_0_#120A06] border-2 border-white/30">
+                        <span class="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl bg-gradient-to-tr from-[#3D251A] via-[#A85816] to-[#DF9A28] text-white flex items-center justify-center font-black text-sm shadow-[0_3px_0_#120A06] border-2 border-white/30 shrink-0">
                             +
                         </span>
                         <div>
-                            <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-2 flex-wrap">
                                 <h3 class="text-xs sm:text-sm font-black uppercase tracking-wider text-[#1D120B]">Catat Pesanan Baru (Manual Order)</h3>
-                                <span class="text-[10px] bg-[#FFF8E7] text-[#9A6216] font-black px-2.5 py-0.5 rounded-full border border-[#FCD34D]">Admin Order Entry</span>
+                                <span class="text-[9px] sm:text-[10px] bg-[#FFF8E7] text-[#9A6216] font-black px-2.5 py-0.5 rounded-full border border-[#FCD34D]">Admin Order Entry</span>
                             </div>
-                            <p class="text-xs text-[#6B5E52] mt-0.5 font-medium">Form pencatatan pesanan langsung untuk transaksi offline, WhatsApp, atau telepon</p>
+                            <p class="text-[11px] sm:text-xs text-[#6B5E52] mt-0.5 font-medium">Catat transaksi pesanan offline, WhatsApp langsung, atau via telepon</p>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-2.5">
-                        <!-- Tombol Buka Panel Ekstrak Cepat Chat WhatsApp (Emerald Teal Image 1 Style) -->
+                    <div class="flex items-center gap-2 flex-wrap self-end sm:self-auto">
+                        <!-- Tombol Buka Panel Ekstrak Cepat Chat WhatsApp -->
                         <button type="button" onclick="document.getElementById('quickExtractBox').classList.toggle('hidden')" 
-                            class="inline-flex items-center gap-2 text-xs font-black text-white bg-gradient-to-r from-[#059669] via-[#0D9488] to-[#0891B2] hover:from-[#047857] hover:to-[#0f766e] px-4 py-2.5 rounded-xl border-t-2 border-white/50 shadow-[0_4px_0_#064E3B,0_10px_20px_rgba(5,150,105,0.35)] active:translate-y-1 active:shadow-[0_1px_0_#064E3B] transition-all cursor-pointer" title="Ekstrak Pesanan dari Teks Chat">
+                            class="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-black text-white bg-gradient-to-r from-[#059669] via-[#0D9488] to-[#0891B2] hover:from-[#047857] hover:to-[#0f766e] px-3 sm:px-4 py-2 rounded-xl border-t-2 border-white/50 shadow-[0_3px_0_#064E3B] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer" title="Ekstrak Pesanan dari Teks Chat">
                             <span>⚡</span>
-                            <span>Ekstrak dari Chat WhatsApp</span>
+                            <span>Ekstrak WhatsApp</span>
                         </button>
 
                         <button type="button" onclick="document.getElementById('manualOrderFormContainer').classList.toggle('hidden')" 
-                            class="text-xs font-black text-[#1D120B] bg-white hover:bg-[#FAF7F0] px-4 py-2.5 rounded-xl border-2 border-[#D8C7B5] shadow-[0_3px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer">
+                            class="text-[11px] sm:text-xs font-black text-[#1D120B] bg-white hover:bg-[#FAF7F0] px-3 sm:px-4 py-2 rounded-xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer">
                             Buka / Tutup Form ▾
                         </button>
                     </div>
                 </div>
 
                 <!-- PANEL EKSTRAK LANGSUNG (SMART WHATSAPP ORDER EXTRACTOR) -->
-                <div id="quickExtractBox" class="hidden p-5 rounded-2xl bg-[#FFF8E7] border-2 border-[#FCD34D] shadow-[0_4px_0_#F59E0B] space-y-3 transition-all">
+                <div id="quickExtractBox" class="hidden p-4 sm:p-5 rounded-2xl bg-[#FFF8E7] border-2 border-[#FCD34D] shadow-[0_4px_0_#F59E0B] space-y-3 transition-all">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2 text-xs font-black text-[#92400E]">
                             <span>⚡ Ekstraksi Instan Format Pesanan WhatsApp</span>
@@ -576,149 +700,164 @@
                             ✓ Berhasil Ekstrak ke Form di Bawah!
                         </span>
                     </div>
-                    <p class="text-xs text-[#78350F] leading-relaxed font-semibold">
-                        Salin dan tempel (paste) format pesan dari pembeli di bawah ini, lalu klik tombol <strong>"Ekstrak Otomatis"</strong>. Kolom nama, no. WA, menu, jumlah, tanggal, dan alamat akan terisi otomatis ke formulir di bawah.
+                    <p class="text-[11px] sm:text-xs text-[#78350F] leading-relaxed font-semibold">
+                        Salin dan tempel format pesan dari pembeli di bawah ini, lalu klik tombol <strong>"Ekstrak Otomatis"</strong>.
                     </p>
-                    <textarea id="quickExtractInput" rows="3" placeholder="Contoh teks chat WhatsApp:&#10;Nama: Sarah Angelina&#10;WA: 081298765432&#10;Menu: Classic Chocolate Fudge Cake&#10;Jumlah: 2 unit&#10;Alamat: Jl. Melati No. 15 Batam Centre&#10;Catatan: Tulisan Happy Birthday lilin 2"
-                        class="w-full bg-white border-2 border-[#FCD34D] rounded-xl p-3.5 text-xs font-mono font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]"></textarea>
-                    <div class="flex items-center gap-2.5">
+                    <textarea id="quickExtractInput" rows="3" placeholder="Contoh:&#10;Nama: Sarah Angelina&#10;WA: 081298765432&#10;Menu: Chiffon Cake&#10;Jumlah: 2 unit&#10;Alamat: Jl. Melati No. 15 Batam"
+                        class="w-full bg-white border-2 border-[#FCD34D] rounded-xl p-3 text-xs font-mono font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]"></textarea>
+                    <div class="flex items-center gap-2 flex-wrap">
                         <button type="button" onclick="extractOrderFromText()"
-                            class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs font-black text-white bg-gradient-to-r from-[#FF7A00] via-[#FF5722] to-[#FF3B56] border-t-2 border-white/60 shadow-[0_4px_0_#A82424,0_10px_20px_rgba(255,59,86,0.35)] active:translate-y-1 active:shadow-[0_1px_0_#A82424] cursor-pointer">
+                            class="inline-flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-black text-white bg-gradient-to-r from-[#DF9A28] via-[#C98224] to-[#A85816] border-t-2 border-white/60 shadow-[0_3px_0_#5C2E0D] active:translate-y-0.5 active:shadow-none cursor-pointer">
                             <span>⚡ Ekstrak Otomatis ke Form</span>
                         </button>
                         <button type="button" onclick="document.getElementById('quickExtractInput').value = ''"
-                            class="px-4 py-2.5 rounded-xl text-xs font-black text-[#1D120B] bg-white hover:bg-[#FAF7F0] border-2 border-[#DDD5C8] shadow-[0_2px_0_#CEC3B4] transition cursor-pointer">
+                            class="px-3.5 py-2 rounded-xl text-xs font-bold text-[#1D120B] bg-white hover:bg-[#FAF7F0] border-2 border-[#DDD5C8] shadow-[0_2px_0_#CEC3B4] transition cursor-pointer">
                             Bersihkan Teks
                         </button>
                     </div>
                 </div>
 
-                <!-- KONTEN FORMULIR MANUAL ORDER (TERSTRUKTUR RAPI, BERSIH & SIMPEL SEPERTI FORM PRO) -->
+                <!-- KONTEN FORMULIR MANUAL ORDER (TERSTRUKTUR RAPI, BERSIH & EKONOMIS FLEKSIBEL MOBILE/DESKTOP) -->
                 <div id="manualOrderFormContainer" class="{{ $errors->has('customer_name') || $errors->has('product_id') ? '' : '' }}">
-                    <form action="{{ route('admin.orders.store', ['tab' => 'orders'], false) }}" method="POST" class="space-y-4">
+                    <form action="{{ route('admin.orders.store', ['tab' => 'orders'], false) }}" method="POST" class="space-y-3 sm:space-y-4">
                         @csrf
                         
-                        <!-- BAGIAN 1: PILIHAN PRODUK & KUANTITAS -->
-                        <div class="bg-[#FAF7F0] p-4 sm:p-5 rounded-2xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#DDD2C4] space-y-3">
-                            <span class="text-xs font-black uppercase tracking-wider text-[#1D120B] block">1. Pilihan Menu & Kuantitas</span>
-                            <div class="grid grid-cols-1 sm:grid-cols-12 gap-3.5 items-end">
-                                <div class="sm:col-span-8">
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                        Pilih Menu Kue/Roti <span class="text-[#A85816]">*</span>
-                                    </label>
-                                    <select name="product_id" id="manualOrderProductId" required onchange="updateManualOrderTotal()"
-                                        class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
-                                        <option value="" data-price="0">-- Pilih Menu Terdaftar --</option>
-                                        @foreach($products as $p)
-                                            <option value="{{ $p->id }}" data-price="{{ (int)$p->price_idr }}" {{ old('product_id') == $p->id ? 'selected' : '' }}>
-                                                {{ $p->name }} — Rp {{ number_format($p->price_idr, 0, ',', '.') }} (Sisa Stok: {{ $p->stock }})
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="sm:col-span-4">
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                        Jumlah Pesanan (Qty) <span class="text-[#A85816]">*</span>
-                                    </label>
-                                    <input type="number" name="quantity" id="manualOrderQty" value="{{ old('quantity', 1) }}" min="1" required oninput="updateManualOrderTotal()"
-                                        class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-black text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
-                                </div>
+                        <!-- BARIS 1: PILIH MENU, NAMA, NO WA, JUMLAH QTY (4 KOLOM DESKTOP, FLUID MOBILE) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-3.5 items-end">
+                            <!-- 1. Pilih Menu Kue/Roti -->
+                            <div class="sm:col-span-1 lg:col-span-3">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    PILIH MENU KUE/ROTI <span class="text-[#A85816]">*</span>
+                                </label>
+                                <select name="product_id" id="manualOrderProductId" required onchange="updateManualOrderTotal()"
+                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                    <option value="" data-price="0">-- Pilih Menu Terdaftar --</option>
+                                    @foreach($products as $p)
+                                        <option value="{{ $p->id }}" data-price="{{ (int)$p->price_idr }}" {{ old('product_id') == $p->id ? 'selected' : '' }}>
+                                            {{ $p->name }} — Rp {{ number_format($p->price_idr, 0, ',', '.') }} (Sisa: {{ $p->stock }})
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <!-- 2. Nama Lengkap Pemesan -->
+                            <div class="sm:col-span-1 lg:col-span-3">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    NAMA PEMESAN <span class="text-[#A85816]">*</span>
+                                </label>
+                                <input type="text" name="customer_name" id="manualOrderName" value="{{ old('customer_name') }}" required placeholder="Nama lengkap pelanggan"
+                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                            </div>
+
+                            <!-- 3. Nomor WhatsApp -->
+                            <div class="sm:col-span-1 lg:col-span-3">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    NO. WHATSAPP <span class="text-[#A85816]">*</span>
+                                </label>
+                                <input type="text" name="customer_phone" id="manualOrderPhone" value="{{ old('customer_phone') }}" required placeholder="08xxxxxxxxxx"
+                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                            </div>
+
+                            <!-- 4. Jumlah Qty -->
+                            <div class="sm:col-span-1 lg:col-span-3">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    JUMLAH (QTY) <span class="text-[#A85816]">*</span>
+                                </label>
+                                <input type="number" name="quantity" id="manualOrderQty" value="{{ old('quantity', 1) }}" min="1" required oninput="updateManualOrderTotal()" placeholder="1"
+                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-black text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
                             </div>
                         </div>
 
-                        <!-- BAGIAN 2: DATA PEMESAN & KONTAK -->
-                        <div class="bg-[#FAF7F0] p-4 sm:p-5 rounded-2xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#DDD2C4] space-y-3">
-                            <span class="text-xs font-black uppercase tracking-wider text-[#1D120B] block">2. Data Pemesan & Kontak WhatsApp</span>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                                <div>
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                        Nama Lengkap Pemesan <span class="text-[#A85816]">*</span>
-                                    </label>
-                                    <input type="text" name="customer_name" id="manualOrderName" value="{{ old('customer_name') }}" required placeholder="Contoh: Sarah Angelina"
-                                        class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                        Nomor WhatsApp Aktif <span class="text-[#A85816]">*</span>
-                                    </label>
-                                    <input type="text" name="customer_phone" id="manualOrderPhone" value="{{ old('customer_phone') }}" required placeholder="Contoh: 081234567890"
-                                        class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
-                                </div>
+                        <!-- BARIS 2: TANGGAL, METODE KIRIM, STATUS AWAL, TOMBOL SIMPAN KE DATABASE (SESUAI GAMBAR 1 & 2) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-3.5 items-end">
+                            <!-- 1. Target Tanggal Kirim -->
+                            <div class="sm:col-span-1 lg:col-span-3">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    TARGET TANGGAL KIRIM <span class="text-[#A85816]">*</span>
+                                </label>
+                                <input type="date" name="delivery_date" id="manualOrderDate" value="{{ old('delivery_date', date('Y-m-d')) }}" required
+                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                            </div>
+
+                            <!-- 2. Metode Pengiriman -->
+                            <div class="sm:col-span-1 lg:col-span-3">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    METODE PENGIRIMAN
+                                </label>
+                                <select name="order_type" id="manualOrderType" 
+                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                    <option value="delivery" {{ old('order_type') == 'delivery' ? 'selected' : '' }}>Kurir Toko (Delivery)</option>
+                                    <option value="pickup" {{ old('order_type') == 'pickup' ? 'selected' : '' }}>Ambil di Gerai (Pick-up)</option>
+                                </select>
+                            </div>
+
+                            <!-- 3. Status Awal -->
+                            <div class="sm:col-span-1 lg:col-span-3">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    STATUS AWAL
+                                </label>
+                                <select name="status" 
+                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-black text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                    <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }}>Pending (Menunggu)</option>
+                                    <option value="confirmed" {{ old('status') == 'confirmed' ? 'selected' : '' }}>Confirmed (Dikonfirmasi)</option>
+                                    <option value="completed" {{ old('status') == 'completed' ? 'selected' : '' }}>Completed (Lunas)</option>
+                                </select>
+                            </div>
+
+                            <!-- 4. Tombol Simpan Pesanan (Gambar 2 Oren Gold Tactile 3D Button) -->
+                            <div class="sm:col-span-1 lg:col-span-3">
+                                <button type="submit" 
+                                    class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#DF9A28] via-[#C98224] to-[#A85816] border-t-2 border-white/40 shadow-[0_4px_0_#5C2E0D,0_10px_20px_rgba(201,130,36,0.3)] hover:-translate-y-0.5 active:translate-y-1 active:shadow-[0_1px_0_#5C2E0D] transition-all cursor-pointer select-none">
+                                    <span>+ Simpan Pesanan ke Database</span>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- BAGIAN 3: PENGIRIMAN, JADWAL & STATUS -->
-                        <div class="bg-[#FAF7F0] p-4 sm:p-5 rounded-2xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#DDD2C4] space-y-3">
-                            <span class="text-xs font-black uppercase tracking-wider text-[#1D120B] block">3. Pengantaran, Jadwal & Status Transaksi</span>
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-                                <div>
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                        Target Tanggal Kirim <span class="text-[#A85816]">*</span>
-                                    </label>
-                                    <input type="date" name="delivery_date" id="manualOrderDate" value="{{ old('delivery_date', date('Y-m-d')) }}" required
-                                        class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">Metode Pengiriman</label>
-                                    <select name="order_type" id="manualOrderType" class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
-                                        <option value="delivery" {{ old('order_type') == 'delivery' ? 'selected' : '' }}>Kurir Toko (Delivery)</option>
-                                        <option value="pickup" {{ old('order_type') == 'pickup' ? 'selected' : '' }}>Ambil di Gerai (Pick-up)</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">Status Awal Pesanan</label>
-                                    <select name="status" class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-black text-[#1D120B] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
-                                        <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }}>Pending (Menunggu Pembayaran)</option>
-                                        <option value="confirmed" {{ old('status') == 'confirmed' ? 'selected' : '' }}>Confirmed (Dikonfirmasi Admin)</option>
-                                        <option value="completed" {{ old('status') == 'completed' ? 'selected' : '' }}>Completed (Selesai / Lunas)</option>
-                                    </select>
-                                </div>
+                        <!-- BARIS 3: ALAMAT ANTAR, CATATAN KHUSUS & ESTIMASI TOTAL -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-3.5 items-end">
+                            <!-- Alamat Antar -->
+                            <div class="sm:col-span-1 lg:col-span-6">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    ALAMAT ANTAR (KOSONGKAN JIKA PICK-UP)
+                                </label>
+                                <input type="text" name="address" id="manualOrderAddress" value="{{ old('address') }}" placeholder="Jalan, nomor rumah, patokan..."
+                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
                             </div>
 
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
-                                <div>
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">Alamat Lengkap Pengantaran (Kosongkan jika Pick-up)</label>
-                                    <input type="text" name="address" id="manualOrderAddress" value="{{ old('address') }}" placeholder="Jalan, nomor rumah, kelurahan, patokan lokasi..."
-                                        class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">Catatan Khusus Pesanan (Opsional)</label>
-                                    <input type="text" name="order_notes" id="manualOrderNotes" value="{{ old('order_notes') }}" placeholder="Misal: Tulisan ucapan kue, request lilin, instruksi kurir..."
-                                        class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ACTION FOOTER: ESTIMASI TOTAL & TOMBOL SIMPAN DI POSISI SEMESTINYA (BAWAH FORM) -->
-                        <div class="pt-3 flex flex-col sm:flex-row items-center justify-between gap-4 border-t-2 border-[#E2DDD5]">
-                            <div class="flex items-center gap-3.5 bg-white px-5 py-3 rounded-2xl border-2 border-[#D8C7B5] shadow-[0_3px_0_#D4C4B3]">
-                                <span class="text-xs font-black uppercase text-[#6B5E52]">Estimasi Total Tagihan:</span>
-                                <span id="manualOrderEstimatedTotal" class="text-xl sm:text-2xl font-black text-[#A85816]">Rp 0</span>
+                            <!-- Catatan Khusus Pesanan -->
+                            <div class="sm:col-span-1 lg:col-span-4">
+                                <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                    CATATAN KHUSUS PESANAN
+                                </label>
+                                <input type="text" name="order_notes" id="manualOrderNotes" value="{{ old('order_notes') }}" placeholder="Misal: Tulisan ucapan / lilin / request hiasan"
+                                    class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] placeholder-[#8C7D70] outline-none focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
                             </div>
 
-                            <button type="submit" 
-                                class="w-full sm:w-auto relative inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-2xl font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#FF7A00] via-[#FF5722] to-[#FF3B56] border-t-2 border-white/60 shadow-[0_6px_0_#A82424,0_16px_30px_rgba(255,59,86,0.38)] hover:-translate-y-0.5 hover:shadow-[0_7px_0_#A82424,0_20px_36px_rgba(255,59,86,0.45)] active:translate-y-1.5 active:shadow-[0_1px_0_#A82424] transition-all cursor-pointer select-none">
-                                <span>+ Simpan Pesanan ke Database</span>
-                                <span>→</span>
-                            </button>
+                            <!-- Estimasi Subtotal Live Preview -->
+                            <div class="sm:col-span-2 lg:col-span-2">
+                                <div class="bg-[#FAF7F0] border-2 border-[#D8C7B5] rounded-xl p-2 sm:p-2.5 text-center shadow-[0_2px_0_#DDD2C4]">
+                                    <span class="text-[9px] uppercase font-black text-[#6B5E52] block">Total Tagihan</span>
+                                    <span id="manualOrderEstimatedTotal" class="text-xs sm:text-sm font-black text-[#A85816] truncate block">Rp 0</span>
+                                </div>
+                            </div>
                         </div>
 
                     </form>
                 </div>
             </div>
 
-            <!-- TABEL DAFTAR PESANAN MASUK (CRISP WHITE CARD 3D HD) -->
-            <div class="bg-white rounded-3xl border-2 border-[#D8C7B5] shadow-[0_6px_0_#D4C4B3] overflow-hidden">
-                <div class="p-5 px-6 border-b-2 border-[#E2DDD5] bg-[#FAF7F0] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <!-- TABEL DAFTAR PESANAN MASUK (CRISP WHITE CARD 3D HD RESPONSIVE) -->
+            <div class="bg-white rounded-2xl sm:rounded-3xl border-2 border-[#D8C7B5] shadow-[0_6px_0_#D4C4B3] overflow-hidden">
+                <div class="p-4 sm:p-5 px-4 sm:px-6 border-b-2 border-[#E2DDD5] bg-[#FAF7F0] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div>
                         <h3 class="text-xs font-black uppercase tracking-wider text-[#1D120B]">Daftar Pesanan Masuk (Total: {{ $orders->count() }})</h3>
-                        <p class="text-xs text-[#6B5E52] mt-0.5 font-medium">Pantau rincian pesanan, metode kirim, dan sesuaikan status transaksi</p>
+                        <p class="text-[11px] sm:text-xs text-[#6B5E52] mt-0.5 font-medium">Pantau rincian pesanan, metode kirim, dan sesuaikan status transaksi</p>
                     </div>
 
                     <!-- Tombol Ekstrak / Ekspor Rekap Pesanan -->
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-2 self-start sm:self-auto">
                         <button type="button" onclick="exportOrdersToCSV()" 
-                            class="inline-flex items-center gap-2 text-xs font-black text-[#1D120B] bg-white hover:bg-[#FAF7F0] px-4 py-2 rounded-xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer" title="Ekstrak data pesanan ke format CSV/Excel">
+                            class="inline-flex items-center gap-2 text-xs font-black text-[#1D120B] bg-white hover:bg-[#FAF7F0] px-3.5 sm:px-4 py-2 rounded-xl border-2 border-[#D8C7B5] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer" title="Ekstrak data pesanan ke format CSV/Excel">
                             <span>📥</span>
                             <span>Ekstrak Rekap CSV</span>
                         </button>
@@ -726,7 +865,7 @@
                 </div>
 
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs">
+                    <table class="w-full min-w-[640px] text-left text-xs">
                         <thead class="bg-[#FAF7F0] text-[#1D120B] uppercase font-black text-xs tracking-wider border-b-2 border-[#E2DDD5]">
                             <tr>
                                 <th class="py-3.5 px-6">Invoice</th>
@@ -825,26 +964,26 @@
             </div>
 
             <!-- Form Tambah Rekening Baru (CRISP WHITE CARD 3D HD) -->
-            <div class="bg-white rounded-3xl border-2 border-[#D8C7B5] shadow-[0_8px_0_#CFC1AF] p-6 sm:p-7 space-y-4">
-                <div class="pb-4 border-b-2 border-[#E2DDD5] flex items-center justify-between">
+            <div class="bg-white rounded-2xl sm:rounded-3xl border-2 border-[#D8C7B5] shadow-[0_8px_0_#CFC1AF] p-4 sm:p-6 md:p-7 space-y-4">
+                <div class="pb-3 sm:pb-4 border-b-2 border-[#E2DDD5] flex items-center justify-between">
                     <div>
-                        <h3 class="text-xs font-black uppercase tracking-wider text-[#1D120B] flex items-center gap-2">
+                        <h3 class="text-xs sm:text-sm font-black uppercase tracking-wider text-[#1D120B] flex items-center gap-2">
                             <span>💳</span>
                             <span>Tambah Rekening Bank / Pembayaran Baru</span>
                         </h3>
-                        <p class="text-xs text-[#6B5E52] mt-0.5 font-medium">Input detail nomor rekening resmi toko Anda</p>
+                        <p class="text-[11px] sm:text-xs text-[#6B5E52] mt-0.5 font-medium">Input detail nomor rekening resmi toko Anda</p>
                     </div>
                 </div>
 
-                <form action="{{ route('admin.banks.store') }}" method="POST" class="space-y-4">
+                <form action="{{ route('admin.banks.store') }}" method="POST" class="space-y-3 sm:space-y-4">
                     @csrf
-                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-3.5 items-end">
-                        <div class="sm:col-span-4">
-                            <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                Nama Bank <span class="text-[#A85816]">*</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-3.5 items-end">
+                        <div class="sm:col-span-1 lg:col-span-4">
+                            <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                NAMA BANK <span class="text-[#A85816]">*</span>
                             </label>
                             <input type="text" name="bank_name" list="bankPresets" required placeholder="Contoh: BCA, Mandiri, BRI, BNI"
-                                class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
                             <datalist id="bankPresets">
                                 <option value="BCA">Bank Central Asia (BCA)</option>
                                 <option value="Bank Mandiri">Bank Mandiri</option>
@@ -856,23 +995,23 @@
                             </datalist>
                         </div>
 
-                        <div class="sm:col-span-4">
-                            <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                Nomor Rekening <span class="text-[#A85816]">*</span>
+                        <div class="sm:col-span-1 lg:col-span-4">
+                            <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                NOMOR REKENING <span class="text-[#A85816]">*</span>
                             </label>
                             <input type="text" name="account_number" required placeholder="Contoh: 821-098-7654"
-                                class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-mono font-black text-[#1D120B] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-mono font-black text-[#1D120B] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
                         </div>
 
-                        <div class="sm:col-span-4">
-                            <label class="block text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
-                                Atas Nama Rekening <span class="text-[#A85816]">*</span>
+                        <div class="sm:col-span-2 lg:col-span-4">
+                            <label class="block text-[11px] sm:text-xs font-black text-[#1D120B] uppercase tracking-wider mb-1.5">
+                                ATAS NAMA REKENING <span class="text-[#A85816]">*</span>
                             </label>
                             <input type="text" name="account_name" required placeholder="Contoh: Mey Bakery Official"
-                                class="w-full bg-white border-2 border-[#C8B8A6] rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                class="w-full bg-[#FFFDF9] border-2 border-[#C8B8A6] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#1D120B] focus:border-[#DF9A28] focus:ring-4 focus:ring-[#DF9A28]/25 outline-none shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
                         </div>
 
-                        <div class="sm:col-span-8 flex items-center gap-2 pt-1">
+                        <div class="sm:col-span-1 lg:col-span-8 flex items-center gap-2 pt-1">
                             <input type="checkbox" name="is_active" id="new_bank_active" value="1" checked
                                 class="w-4 h-4 rounded text-[#1D120B] border-[#DDD5C8] focus:ring-0 cursor-pointer">
                             <label for="new_bank_active" class="text-xs text-[#1D120B] font-bold cursor-pointer">
@@ -880,9 +1019,9 @@
                             </label>
                         </div>
 
-                        <div class="sm:col-span-4">
+                        <div class="sm:col-span-1 lg:col-span-4">
                             <button type="submit" 
-                                class="w-full relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl font-black text-xs text-white tracking-wide bg-gradient-to-r from-[#FF7A00] via-[#FF5722] to-[#FF3B56] border-t-2 border-white/60 shadow-[0_4px_0_#A82424,0_10px_20px_rgba(255,59,86,0.35)] hover:-translate-y-0.5 active:translate-y-1 active:shadow-[0_1px_0_#A82424] transition-all cursor-pointer">
+                                class="w-full relative inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#DF9A28] via-[#C98224] to-[#A85816] border-t-2 border-white/40 shadow-[0_4px_0_#5C2E0D,0_10px_20px_rgba(201,130,36,0.3)] hover:-translate-y-0.5 active:translate-y-1 active:shadow-[0_1px_0_#5C2E0D] transition-all cursor-pointer">
                                 <span>+ Simpan Rekening Bank</span>
                             </button>
                         </div>
@@ -891,43 +1030,43 @@
             </div>
 
             <!-- Daftar Rekening Toko yang Sudah Tersedia (CRISP WHITE CARD 3D HD) -->
-            <div class="bg-white rounded-3xl border-2 border-[#D8C7B5] shadow-[0_6px_0_#D4C4B3] overflow-hidden">
-                <div class="p-5 px-6 border-b-2 border-[#E2DDD5] flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[#FAF7F0]">
+            <div class="bg-white rounded-2xl sm:rounded-3xl border-2 border-[#D8C7B5] shadow-[0_6px_0_#D4C4B3] overflow-hidden">
+                <div class="p-4 sm:p-5 px-4 sm:px-6 border-b-2 border-[#E2DDD5] flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[#FAF7F0]">
                     <div>
                         <h3 class="text-xs font-black uppercase tracking-wider text-[#1D120B]">Daftar Rekening Bank Terdaftar (Total: {{ $bankAccounts->count() }})</h3>
-                        <p class="text-xs text-[#6B5E52] mt-0.5 font-medium">Rekening yang aktif langsung dipilih pembeli saat memilih metode "Transfer Bank"</p>
+                        <p class="text-[11px] sm:text-xs text-[#6B5E52] mt-0.5 font-medium">Rekening yang aktif langsung dipilih pembeli saat memilih metode "Transfer Bank"</p>
                     </div>
                 </div>
 
                 <div class="divide-y divide-[#F1EDE6]">
                     @forelse($bankAccounts as $bank)
-                    <div class="p-4 px-6 hover:bg-[#FAF7F0]/60 transition">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                            <div class="flex items-center gap-3.5 min-w-[280px]">
-                                <div class="w-12 h-10 rounded-xl bg-[#2C1A11] text-white flex items-center justify-center font-black text-xs uppercase tracking-wider shrink-0 shadow-2xs">
+                    <div class="p-3.5 sm:p-4 px-4 sm:px-6 hover:bg-[#FAF7F0]/60 transition">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                            <div class="flex items-center gap-3 min-w-0 flex-1">
+                                <div class="w-11 h-10 sm:w-12 sm:h-10 rounded-xl bg-[#2C1A11] text-white flex items-center justify-center font-black text-xs uppercase tracking-wider shrink-0 shadow-2xs">
                                     {{ substr($bank->bank_name, 0, 4) }}
                                 </div>
-                                <div>
+                                <div class="min-w-0">
                                     <div class="flex items-center gap-2">
-                                        <h4 class="font-bold text-xs text-[#2C1A11]">{{ $bank->bank_name }}</h4>
+                                        <h4 class="font-bold text-xs sm:text-sm text-[#2C1A11] truncate">{{ $bank->bank_name }}</h4>
                                         @if($bank->is_active)
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold bg-[#F1EDE6] text-[#2C1A11] border border-[#DDD5C8]">
-                                                ✓ Aktif di Web
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold bg-[#F1EDE6] text-[#2C1A11] border border-[#DDD5C8] shrink-0">
+                                                ✓ Aktif
                                             </span>
                                         @else
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold bg-[#F1EDE6] text-[#7A7570] border border-[#DDD5C8]">
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold bg-[#F1EDE6] text-[#7A7570] border border-[#DDD5C8] shrink-0">
                                                 Nonaktif
                                             </span>
                                         @endif
                                     </div>
                                     <p class="text-xs font-mono font-bold text-[#A85816] mt-0.5">{{ $bank->account_number }}</p>
-                                    <p class="text-[11px] text-[#7A7570]">a.n {{ $bank->account_name }}</p>
+                                    <p class="text-[11px] text-[#7A7570] truncate">a.n {{ $bank->account_name }}</p>
                                 </div>
                             </div>
 
-                            <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-2 self-end sm:self-center shrink-0">
                                 <button onclick="toggleBankEdit({{ $bank->id }})" 
-                                    class="bg-[#F1EDE6] hover:bg-[#E6DFD3] text-[#2C1A11] text-xs font-bold px-3 py-1.5 rounded-xl border border-[#DDD5C8] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none transition cursor-pointer">
+                                    class="bg-white hover:bg-[#FAF7F0] text-[#2C1A11] text-xs font-bold px-3 py-1.5 rounded-xl border border-[#DDD5C8] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none transition cursor-pointer">
                                     Edit ▾
                                 </button>
                                 <form action="{{ route('admin.banks.destroy', $bank->id) }}" method="POST" 
@@ -1016,6 +1155,23 @@
 
     <!-- JS SCRIPT LOGIC (NAVIGASI TAB, KALKULASI SUB-TOTAL, EKSTRAK TEKS WHATSAPP & EKSPOR CSV) -->
     <script>
+        function toggleMobileDrawer(show) {
+            const drawer = document.getElementById('mobileDrawer');
+            const panel = document.getElementById('mobileDrawerPanel');
+            if (!drawer || !panel) return;
+            if (show) {
+                drawer.classList.remove('hidden');
+                setTimeout(() => {
+                    panel.classList.remove('-translate-x-full');
+                }, 10);
+            } else {
+                panel.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    drawer.classList.add('hidden');
+                }, 300);
+            }
+        }
+
         function switchTab(tabKey) {
             document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
 
@@ -1026,6 +1182,7 @@
             url.searchParams.set('tab', tabKey);
             window.history.replaceState({}, '', url);
 
+            // Desktop Sidebar Navigation Active State
             document.querySelectorAll('.nav-item').forEach(btn => {
                 btn.classList.remove('text-white', 'bg-[#2C1A11]', 'border-[#4A3225]', 'shadow-[0_2px_0_#120A06]', 'font-bold');
                 btn.classList.add('text-[#B5A89E]', 'font-medium');
@@ -1035,6 +1192,30 @@
             if (activeBtn) {
                 activeBtn.classList.add('text-white', 'bg-[#2C1A11]', 'border-[#4A3225]', 'shadow-[0_2px_0_#120A06]', 'font-bold');
                 activeBtn.classList.remove('text-[#B5A89E]', 'font-medium');
+            }
+
+            // Mobile Quick Tab Navigation Active State
+            document.querySelectorAll('.mobile-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-[#2C1A11]', 'text-white', 'border', 'border-[#4A3225]', 'font-bold');
+                btn.classList.add('text-[#B5A89E]', 'font-medium');
+            });
+
+            const activeMobileBtn = document.getElementById('mobile-tab-' + tabKey);
+            if (activeMobileBtn) {
+                activeMobileBtn.classList.add('bg-[#2C1A11]', 'text-white', 'border', 'border-[#4A3225]', 'font-bold');
+                activeMobileBtn.classList.remove('text-[#B5A89E]', 'font-medium');
+            }
+
+            // Mobile Top Header Active Tab Title
+            const labels = {
+                'overview': 'Ringkasan Bisnis',
+                'products': 'Katalog & Harga',
+                'orders': 'Pesanan Masuk',
+                'banks': 'Rekening & QRIS'
+            };
+            const mobileLabel = document.getElementById('mobileActiveTabLabel');
+            if (mobileLabel && labels[tabKey]) {
+                mobileLabel.innerText = labels[tabKey];
             }
         }
 

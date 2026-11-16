@@ -99,10 +99,10 @@
                 </div>
 
                 <!-- Call to Actions: 3D Tactile HD Buttons (Vibrant Oren Coral & Emerald Teal) -->
-                <div class="pt-3 flex flex-wrap items-center gap-4">
+                <div class="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                     <!-- Tombol 1: Lihat Etalase Belanja (Vibrant Orange Coral 3D Pill) -->
                     <a href="{{ route('shop') }}" 
-                        class="relative inline-flex items-center justify-center gap-2.5 px-8 py-3.5 sm:py-4 rounded-full font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#FF7A00] via-[#FF5722] to-[#FF3B56] border-t-2 border-white/60 shadow-[0_6px_0_#A82424,0_16px_30px_rgba(255,59,86,0.38)] hover:-translate-y-0.5 hover:shadow-[0_7px_0_#A82424,0_20px_36px_rgba(255,59,86,0.45)] active:translate-y-1.5 active:shadow-[0_1px_0_#A82424] transition-all duration-150 select-none cursor-pointer group">
+                        class="w-full sm:w-auto relative inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#FF7A00] via-[#FF5722] to-[#FF3B56] border-t-2 border-white/60 shadow-[0_6px_0_#A82424,0_16px_30px_rgba(255,59,86,0.38)] hover:-translate-y-0.5 hover:shadow-[0_7px_0_#A82424,0_20px_36px_rgba(255,59,86,0.45)] active:translate-y-1.5 active:shadow-[0_1px_0_#A82424] transition-all duration-150 select-none cursor-pointer group">
                         <svg class="w-4 h-4 text-white shrink-0 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                         </svg>
@@ -112,7 +112,7 @@
 
                     <!-- Tombol 2: Hubungi Admin (Vivid Emerald Teal 3D Pill) -->
                     <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Mey%20Bakery,%20saya%20ingin%20tanya%20seputar%20menu%20dan%20pemesanan." target="_blank"
-                        class="relative inline-flex items-center justify-center gap-2.5 px-8 py-3.5 sm:py-4 rounded-full font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#059669] via-[#0D9488] to-[#0891B2] border-t-2 border-white/60 shadow-[0_6px_0_#064E3B,0_16px_30px_rgba(5,150,105,0.38)] hover:-translate-y-0.5 hover:shadow-[0_7px_0_#064E3B,0_20px_36px_rgba(5,150,105,0.45)] active:translate-y-1.5 active:shadow-[0_1px_0_#064E3B] transition-all duration-150 select-none cursor-pointer group">
+                        class="w-full sm:w-auto relative inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#059669] via-[#0D9488] to-[#0891B2] border-t-2 border-white/60 shadow-[0_6px_0_#064E3B,0_16px_30px_rgba(5,150,105,0.38)] hover:-translate-y-0.5 hover:shadow-[0_7px_0_#064E3B,0_20px_36px_rgba(5,150,105,0.45)] active:translate-y-1.5 active:shadow-[0_1px_0_#064E3B] transition-all duration-150 select-none cursor-pointer group">
                         <svg class="w-4 h-4 text-white shrink-0" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.303c-.087.087-.179.182-.077.357.101.174.453.748.973 1.211.669.595 1.233.78 1.407.867.173.087.275.072.376-.044.101-.116.433-.506.549-.679.116-.174.231-.145.39-.087s1.011.477 1.184.564c.173.087.289.13.332.202.044.072.044.419-.1.824z"/>
                         </svg>

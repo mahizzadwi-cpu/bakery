@@ -111,8 +111,8 @@
         </div>
     </header>
 
-    <!-- 2. MAIN STORE VIEW (SIMPEL & ADAPTIF MENYESUAIKAN DESKTOP) -->
-    <main class="w-full max-w-[1440px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-10 py-4 sm:py-6 flex-1 space-y-4">
+    <!-- 2. MAIN STORE VIEW (SIMPEL & ADAPTIF MENYESUAIKAN DESKTOP & MOBILE) -->
+    <main class="w-full max-w-[1440px] 2xl:max-w-[1680px] mx-auto px-3 sm:px-6 lg:px-10 py-3 sm:py-6 flex-1 space-y-3.5 sm:space-y-4">
 
         <!-- Flash Alert Feedback -->
         @if(session('success'))
@@ -183,7 +183,7 @@
         </div>
 
         <!-- 4. PRODUCT GRID (KOLOM 5 CARD DI DESKTOP, ASPEK 3:4, VANILA AESTHETIC & 3D TACTILE) -->
-        <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+        <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-2.5 sm:gap-4 lg:gap-5">
             @forelse($products as $product)
             @php
                 $rating = 4.8 + (($product->id * 2) % 3) / 10;
@@ -335,11 +335,11 @@
     </div>
 
     <!-- 6. ERGONOMIC & AESTHETIC CHECKOUT MODAL (HIGH DEFINITION & PROMINENT 3D) -->
-    <div id="checkoutModal" class="fixed inset-0 bg-[#1D120B]/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
-        <div class="relative bg-white rounded-3xl max-w-lg w-full p-5 sm:p-7 shadow-[0_25px_60px_-15px_rgba(29,18,11,0.5),0_8px_0_#CFC1AF] border-2 border-[#D8C7B5] my-auto max-h-[94vh] overflow-y-auto transition-all">
+    <div id="checkoutModal" class="fixed inset-0 bg-[#1D120B]/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto">
+        <div class="relative bg-white rounded-2xl sm:rounded-3xl max-w-lg w-full p-4 sm:p-7 shadow-[0_25px_60px_-15px_rgba(29,18,11,0.5),0_8px_0_#CFC1AF] border-2 border-[#D8C7B5] my-auto max-h-[94vh] overflow-y-auto transition-all">
             
             <!-- Top Slim Aesthetic Ribbon Line: Abu -> Coklat -> Oren Gold -> Vanila -->
-            <div class="h-2 w-full bg-gradient-to-r from-[#64748B] via-[#3D251A] via-[#DF9A28] to-[#F5EFE4] rounded-t-3xl -mt-5 sm:-mt-7 -mx-5 sm:-mx-7 mb-5"></div>
+            <div class="h-2 w-full bg-gradient-to-r from-[#64748B] via-[#3D251A] via-[#DF9A28] to-[#F5EFE4] rounded-t-2xl sm:rounded-t-3xl -mt-4 sm:-mt-7 -mx-4 sm:-mx-7 mb-4 sm:mb-5"></div>
 
             <!-- Modal Header (Bersih, Tajam HD, 3D Close Button) -->
             <div class="flex items-center justify-between pb-4 border-b-2 border-[#E2DDD5]">
