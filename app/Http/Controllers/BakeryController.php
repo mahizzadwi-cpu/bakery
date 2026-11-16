@@ -12,15 +12,15 @@ class BakeryController extends Controller
 {
     public function landing()
     {
-        $bestSellers = Product::where('stock', '>', 0)->take(4)->get();
-        return view('landing', compact('bestSellers'));
+        $products = Product::where('stock', '>', 0)->latest()->get();
+        $bankAccounts = BankAccount::where('is_active', true)->get();
+        $bestSellers = $products->take(4);
+        return view('landing', compact('products', 'bankAccounts', 'bestSellers'));
     }
 
     public function shop()
     {
-        $products = Product::where('stock', '>', 0)->latest()->get();
-        $bankAccounts = BankAccount::where('is_active', true)->get();
-        return view('shop', compact('products', 'bankAccounts'));
+        return redirect()->to('/#marketplace');
     }
 
     public function processOrder(Request $request)

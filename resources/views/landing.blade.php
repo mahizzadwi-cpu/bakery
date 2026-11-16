@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mey Bakery — Artisan Fresh Bakes & Pâtisserie</title>
+    <title>Mey Bakery — Selamat Datang</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Modern Classic Serif & Crisp Sans -->
@@ -13,417 +13,805 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-serif { font-family: 'Playfair Display', serif; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #FAF7F0; }
+        ::-webkit-scrollbar-thumb { background: #D5CBC0; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #B8A99A; }
+
+        .active-cat {
+            background: linear-gradient(180deg, #DF851A 0%, #B25D07 100%) !important;
+            color: #ffffff !important;
+            border-color: #7A3E05 !important;
+            box-shadow: 0 3px 0 #7A3E05 !important;
+        }
+        .inactive-cat {
+            background: #FFFFFF;
+            color: #2C1A11;
+            border-color: #E2DDD5;
+        }
+        .inactive-cat:hover {
+            background: #FAF7F2;
+            border-color: #C8B8A6;
+        }
     </style>
 </head>
 <body class="bg-[#FAF7F0] text-[#2C1A11] antialiased min-h-screen flex flex-col selection:bg-[#F3E5C8] selection:text-[#3D251A]">
 
-    <!-- 1. STICKY MODERN CLASSIC NAVBAR (PERPADUAN ABU, COKLAT, OREN GOLD & VANILA) -->
-    <header class="sticky top-0 z-40 transition-all duration-300">
-        <!-- Slim Multi-Harmonic Accent Ribbon: Abu Slate -> Coklat Pekat -> Oren Gold -> Vanila -->
-        <div class="h-[3px] bg-gradient-to-r from-[#64748B] via-[#3D251A] via-[#D49B35] to-[#F5EFE4] w-full"></div>
+    <!-- 1. HEADER & NAVBAR MINIMALIS MODERN (ABU, COKLAT, OREN GOLD & VANILA) -->
+    <header class="sticky top-0 z-40 bg-[#FFFDF9]/95 backdrop-blur-md border-b border-[#E2DDD5] shadow-xs">
+        <!-- Accent Ribbon -->
+        <div class="h-[3px] bg-gradient-to-r from-[#64748B] via-[#3D251A] via-[#DF851A] to-[#F5EFE4] w-full"></div>
 
-        <div class="bg-[#FFFDF9]/95 backdrop-blur-md border-b border-[#E2DDD5] shadow-xs relative">
-            <div class="w-full max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 h-16 sm:h-20 flex items-center justify-between gap-4">
-                
-                <!-- Brand Monogram & Title: Coklat Klasik & Oren Gold -->
-                <a href="{{ route('landing') }}" class="flex items-center gap-3 shrink-0 group">
-                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-[#3D251A] via-[#A85816] to-[#D49B35] text-white flex items-center justify-center font-serif font-black text-lg sm:text-xl shadow-[0_3px_0_#1D120B] border border-white/30 group-hover:scale-105 transition-transform duration-200">
-                        M
-                    </div>
-                    <div>
-                        <span class="text-lg sm:text-xl font-serif font-black tracking-tight text-[#2C1A11] block leading-tight">Mey Bakery.</span>
-                        <span class="text-[10px] tracking-widest uppercase text-[#7A7570] font-extrabold block mt-0.5">Artisan Bakes & Cakes</span>
-                    </div>
-                </a>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+            <!-- Brand Monogram -->
+            <a href="{{ route('landing') }}" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-[#3D251A] via-[#A85816] to-[#DF851A] text-white flex items-center justify-center font-serif font-black text-lg sm:text-xl shadow-[0_3px_0_#1D120B] border border-white/30 group-hover:scale-105 transition-transform duration-200">
+                    M
+                </div>
+                <div>
+                    <span class="text-lg sm:text-xl font-serif font-black tracking-tight text-[#2C1A11] block leading-tight">Mey Bakery.</span>
+                    <span class="text-[10px] tracking-widest uppercase text-[#7A6E65] font-bold block">Artisan Bakes & Cakes</span>
+                </div>
+            </a>
 
-                <!-- Tampilan Kanan: Status Operasional Abu-Vanila & Layanan -->
-                <div class="flex items-center gap-2 sm:gap-3">
-                    <!-- Status Dapur: Abu Modern & Aksen Emas Vanila -->
-                    <div class="inline-flex items-center gap-2 bg-[#F1EDE6] border border-[#E2DDD5] px-3.5 py-1.5 sm:py-2 rounded-full text-xs font-bold text-[#374151] shadow-2xs">
-                        <span class="relative flex h-2 w-2 shrink-0">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#DF9A28] opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#C98224]"></span>
-                        </span>
-                        <span>Dapur Buka <span class="text-[#6B6661] font-semibold">• 07.30 – 21.00 WIB</span></span>
-                    </div>
-
-                    <!-- Badge Layanan: Vanila & Garis Abu -->
-                    <div class="hidden sm:inline-flex items-center gap-1.5 bg-[#FFFDF9] border border-[#E2DDD5] text-[#5A544F] px-3 py-1.5 sm:py-2 rounded-full text-xs font-semibold shadow-2xs">
-                        <svg class="w-3.5 h-3.5 text-[#C98224]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
-                        </svg>
-                        <span>Antar Toko & COD</span>
-                    </div>
+            <!-- Dapur Status Pill & Troli Belanja -->
+            <div class="flex items-center gap-2.5 sm:gap-3">
+                <div class="hidden sm:inline-flex items-center gap-2 bg-[#FAF7F2] border border-[#E2DDD5] px-3.5 py-1.5 rounded-full text-xs font-semibold text-[#5A524A]">
+                    <span class="w-2 h-2 rounded-full bg-[#DF851A] animate-pulse"></span>
+                    <span>Dapur Buka • 07.30 – 21.00 WIB</span>
                 </div>
 
+                <!-- Tombol Troli Belanja -->
+                <button type="button" onclick="toggleCartDrawer(true)" 
+                    class="relative inline-flex items-center gap-2 bg-white hover:bg-[#FAF7F2] text-[#2C1A11] px-3.5 sm:px-4 py-2 rounded-xl border border-[#D5CBC0] shadow-sm active:translate-y-0.5 transition cursor-pointer text-xs font-bold">
+                    <svg class="w-4 h-4 text-[#A85816]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="hidden sm:inline">Troli</span>
+                    <span id="cartCountBadge" class="bg-[#DF851A] text-white font-black text-[10px] min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1">0</span>
+                </button>
+
+                <!-- Admin Link -->
+                <a href="{{ route('admin.dashboard') }}" class="p-2 sm:px-3 sm:py-2 rounded-xl text-[#7A6E65] hover:text-[#2C1A11] hover:bg-[#FAF7F2] text-xs font-semibold transition" title="Pusat Kendali Admin">
+                    <span class="hidden sm:inline">Admin ↗</span>
+                    <span class="sm:hidden">⚙</span>
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- 2. HERO SECTION (MODERN KLASIK ESTETIK: ABU, COKLAT, OREN GOLD & VANILA) -->
-    <section class="w-full max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-8 lg:py-14 xl:py-16">
-        <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
-            
-            <!-- Left Narrative -->
-            <div class="lg:col-span-7 xl:col-span-7 space-y-6">
-                
-                <div class="inline-flex items-center gap-2 bg-[#FFFDF9] border border-[#E2DDD5] text-[#6B6661] px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-2xs">
-                    <span class="w-2 h-2 rounded-full bg-[#DF9A28]"></span>
-                    <span>Panggang Hangat Setiap Pagi • Bahan Alami Tanpa Pengawet</span>
+    <!-- FLOATING TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full px-4 pointer-events-none">
+        @if(session('success'))
+            <div class="toast-item pointer-events-auto bg-[#FFFDF9] border-l-4 border-[#DF851A] shadow-[0_10px_25px_rgba(44,26,17,0.12)] rounded-2xl p-4 flex items-start gap-3 border border-[#E2DDD5]">
+                <div class="w-7 h-7 rounded-xl bg-[#FFF8E7] text-[#9A6216] flex items-center justify-center font-bold text-xs shrink-0">✓</div>
+                <div class="flex-1 pr-1">
+                    <h5 class="text-xs font-bold text-[#2C1A11] uppercase tracking-wider">Berhasil</h5>
+                    <p class="text-xs text-[#5A524A] mt-0.5 leading-relaxed">{{ session('success') }}</p>
+                </div>
+                <button onclick="this.closest('.toast-item').remove()" class="text-[#8C7D70] hover:text-[#2C1A11] font-bold text-xs cursor-pointer">✕</button>
+            </div>
+        @endif
+        @if(session('error'))
+            <div class="toast-item pointer-events-auto bg-[#FFFDF9] border-l-4 border-rose-500 shadow-[0_10px_25px_rgba(44,26,17,0.12)] rounded-2xl p-4 flex items-start gap-3 border border-rose-200">
+                <div class="w-7 h-7 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center font-bold text-xs shrink-0">✕</div>
+                <div class="flex-1 pr-1">
+                    <h5 class="text-xs font-bold text-rose-950 uppercase tracking-wider">Pemberitahuan</h5>
+                    <p class="text-xs text-rose-800 mt-0.5 leading-relaxed">{{ session('error') }}</p>
+                </div>
+                <button onclick="this.closest('.toast-item').remove()" class="text-gray-400 hover:text-gray-700 font-bold text-xs cursor-pointer">✕</button>
+            </div>
+        @endif
+    </div>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12 sm:space-y-16">
+
+        <!-- ==========================================
+             1. SECTION: SELAMAT DATANG (HERO MINIMALIS)
+             ========================================== -->
+        <section class="relative bg-white rounded-3xl sm:rounded-4xl border border-[#E8DFD5] shadow-[0_4px_30px_rgba(44,26,17,0.05)] p-6 sm:p-10 md:p-12 overflow-hidden text-center sm:text-left">
+            <!-- Subtle Radial Gold Glow Background -->
+            <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#DF851A]/10 blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-[#FAF7F2] blur-2xl pointer-events-none"></div>
+
+            <div class="relative z-10 max-w-3xl space-y-4">
+                <div class="inline-flex items-center gap-2 bg-[#FAF7F2] border border-[#E2DDD5] px-3.5 py-1.5 rounded-full text-[11px] font-bold text-[#A85816]">
+                    <span class="w-2 h-2 rounded-full bg-[#DF851A]"></span>
+                    <span>Mey Bakery • Fresh Daily</span>
                 </div>
 
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-serif font-bold text-[#2C1A11] leading-[1.18] tracking-tight">
-                    Roti & Kue Hangat Setiap Pagi, <span class="bg-gradient-to-r from-[#C98224] via-[#DF9A28] to-[#8C4610] bg-clip-text text-transparent italic">Lezat dan Ramah di Kantong.</span>
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-serif font-black text-[#2C1A11] tracking-tight leading-tight">
+                    Selamat Datang
                 </h1>
 
-                <p class="text-sm sm:text-base lg:text-lg text-[#6B6661] leading-relaxed max-w-2xl font-normal">
-                    Dipanggang baru setiap hari dengan resep rumahan autentik. Tekstur lembut mengembang alami, rasa manis yang pas, dan aroma mentega murni hangat untuk keluarga tercinta.
+                <p class="text-sm sm:text-base md:text-lg text-[#6B5E52] font-normal leading-relaxed max-w-xl">
+                    Artisan roti hangat dan kue istimewa, dipanggang segar setiap pagi untuk menemani momen berharga Anda.
                 </p>
 
-                <!-- Value Highlights (Vanila Cream & Abu 3D Cards) -->
-                <div class="grid grid-cols-3 gap-3 pt-1 max-w-xl">
-                    <div class="bg-white p-3.5 rounded-2xl border-2 border-[#D8C7B5] shadow-[0_3px_0_#CFC1AF] text-center">
-                        <p class="text-xs sm:text-sm font-serif font-black text-[#1D120B]">Selalu Segar</p>
-                        <p class="text-[11px] text-[#6B5E52] mt-0.5 leading-tight font-medium">Keluar oven tiap pagi</p>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-2xl border-2 border-[#D8C7B5] shadow-[0_3px_0_#CFC1AF] text-center">
-                        <p class="text-xs sm:text-sm font-serif font-black text-[#1D120B]">Harga Hemat</p>
-                        <p class="text-[11px] text-[#6B5E52] mt-0.5 leading-tight font-medium">Rasa istimewa bersahabat</p>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-2xl border-2 border-[#D8C7B5] shadow-[0_3px_0_#CFC1AF] text-center">
-                        <p class="text-xs sm:text-sm font-serif font-black text-[#1D120B]">Layanan Praktis</p>
-                        <p class="text-[11px] text-[#6B5E52] mt-0.5 leading-tight font-medium">Antar Toko & COD</p>
-                    </div>
-                </div>
-
-                <!-- Call to Actions: 3D Tactile HD Buttons (Vibrant Oren Coral & Emerald Teal) -->
-                <div class="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-                    <!-- Tombol 1: Lihat Etalase Belanja (Vibrant Orange Coral 3D Pill) -->
-                    <a href="{{ route('shop') }}" 
-                        class="w-full sm:w-auto relative inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#FF7A00] via-[#FF5722] to-[#FF3B56] border-t-2 border-white/60 shadow-[0_6px_0_#A82424,0_16px_30px_rgba(255,59,86,0.38)] hover:-translate-y-0.5 hover:shadow-[0_7px_0_#A82424,0_20px_36px_rgba(255,59,86,0.45)] active:translate-y-1.5 active:shadow-[0_1px_0_#A82424] transition-all duration-150 select-none cursor-pointer group">
-                        <svg class="w-4 h-4 text-white shrink-0 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                        </svg>
-                        <span>Lihat Etalase Belanja</span>
-                        <span class="group-hover:translate-x-1 transition-transform">→</span>
+                <div class="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-3">
+                    <a href="#menu-utama" 
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm text-white tracking-wide shadow-[0_4px_0_#7A3E05,0_8px_16px_rgba(178,93,7,0.3)] hover:brightness-105 active:translate-y-1 active:shadow-[0_1px_0_#7A3E05] transition-all cursor-pointer"
+                        style="background: linear-gradient(180deg, #DF851A 0%, #B25D07 100%); border-top: 1.5px solid rgba(254, 215, 170, 0.55);">
+                        <span>Lihat Menu Utama</span>
+                        <span>↓</span>
                     </a>
-
-                    <!-- Tombol 2: Hubungi Admin (Vivid Emerald Teal 3D Pill) -->
-                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Mey%20Bakery,%20saya%20ingin%20tanya%20seputar%20menu%20dan%20pemesanan." target="_blank"
-                        class="w-full sm:w-auto relative inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-black text-xs sm:text-sm text-white tracking-wide bg-gradient-to-r from-[#059669] via-[#0D9488] to-[#0891B2] border-t-2 border-white/60 shadow-[0_6px_0_#064E3B,0_16px_30px_rgba(5,150,105,0.38)] hover:-translate-y-0.5 hover:shadow-[0_7px_0_#064E3B,0_20px_36px_rgba(5,150,105,0.45)] active:translate-y-1.5 active:shadow-[0_1px_0_#064E3B] transition-all duration-150 select-none cursor-pointer group">
-                        <svg class="w-4 h-4 text-white shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.303c-.087.087-.179.182-.077.357.101.174.453.748.973 1.211.669.595 1.233.78 1.407.867.173.087.275.072.376-.044.101-.116.433-.506.549-.679.116-.174.231-.145.39-.087s1.011.477 1.184.564c.173.087.289.13.332.202.044.072.044.419-.1.824z"/>
-                        </svg>
-                        <span>Hubungi Admin</span>
+                    
+                    <a href="https://wa.me/6281234567890?text=Halo%20Mey%20Bakery,%20saya%20ingin%20tanya%20menu%20dan%20pesan" target="_blank"
+                        class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm text-[#2C1A11] bg-[#FAF7F2] hover:bg-[#F2ECE2] border border-[#D5CBC0] shadow-sm transition">
+                        <span>💬 Chat WhatsApp</span>
                     </a>
                 </div>
             </div>
+        </section>
 
-            <!-- Right Showcase Visual (Frame Vanila & Lis Abu) -->
-            <div class="lg:col-span-5 xl:col-span-5">
-                <div class="relative w-full rounded-3xl bg-[#FFFDF9] p-3 border border-[#E2DDD5] shadow-[0_10px_30px_rgba(44,26,17,0.08),0_4px_0_#E0D9CE] overflow-hidden">
-                    <div class="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3.3] rounded-2xl overflow-hidden bg-[#F5EFE4]">
-                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80" 
-                            alt="Menu Mey Bakery" 
-                            class="w-full h-full object-cover hover:scale-103 transition duration-500">
-                        
-                        <!-- Ambient Coklat & Oren Gold Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#1D120B]/85 via-[#1D120B]/20 to-transparent"></div>
-                        
-                        <div class="absolute bottom-4 left-4 right-4 text-white flex items-end justify-between">
-                            <div>
-                                <span class="text-[10px] uppercase font-bold text-[#FDE68A] tracking-wider">Favorit Pelanggan</span>
-                                <h3 class="font-serif text-base sm:text-lg font-bold leading-tight mt-0.5">Classic Chocolate Fudge Cake</h3>
-                                <p class="text-xs text-[#E5DFD7] mt-0.5">Lembut, kaya rasa, resep autentik rumahan.</p>
-                            </div>
-                            <div class="text-right shrink-0 ml-2">
-                                <span class="text-[10px] text-[#D4C8B8] block">Mulai</span>
-                                <span class="text-sm font-bold text-white bg-[#1D120B]/70 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/20">Rp 25.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-    </section>
-
-    <!-- 3. SECTION: TENTANG KAMI & KEUNGGULAN (VANILA, ABU & COKLAT) -->
-    <section id="tentang" class="py-12 md:py-16 border-t border-[#E2DDD5] bg-[#FFFDF9]">
-        <div class="w-full max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
-            <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
-                
-                <div class="md:col-span-6 space-y-4">
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#C98224] block">Kualitas Tanpa Kompromi</span>
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2C1A11] leading-tight">
-                        Rasa Istimewa yang Tetap Ramah di Kantong.
-                    </h2>
-                    <p class="text-xs sm:text-sm text-[#6B6661] leading-relaxed">
-                        Di Mey Bakery, kami percaya bahwa roti dan kue yang enak tidak harus mahal. Kami memadukan bahan alami pilihan dengan resep rumahan yang autentik, dipanggang setiap hari agar Anda sekeluarga selalu menikmati sajian yang segar, harum, dan higienis.
-                    </p>
-
-                    <div class="space-y-3 pt-2 text-xs text-[#5A544F]">
-                        <div class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded-full bg-[#F1EDE6] text-[#2C1A11] flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5 border border-[#E2DDD5]">✓</div>
-                            <span><strong>Bahan Segar Alami:</strong> Tanpa pengawet kimia dan tanpa pemanis buatan berlebih, aman untuk anak-anak dan keluarga.</span>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded-full bg-[#F1EDE6] text-[#2C1A11] flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5 border border-[#E2DDD5]">✓</div>
-                            <span><strong>Harga Jujur & Transparan:</strong> Pemesanan langsung dari gerai tanpa potongan komisi pihak ketiga, harga lebih bersahabat.</span>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded-full bg-[#F1EDE6] text-[#2C1A11] flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5 border border-[#E2DDD5]">✓</div>
-                            <span><strong>Praktis untuk Segala Acara:</strong> Siap melayani pesanan sarapan, camilan santai, hingga paket box snack untuk acara.</span>
-                        </div>
-                    </div>
-
-                    <div class="pt-2">
-                        <a href="{{ route('shop') }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C98224] hover:text-[#8C4610] transition">
-                            <span>Jelajahi Pilihan Menu Lengkap</span>
-                            <span>→</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="md:col-span-6">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="space-y-4">
-                            <div class="rounded-2xl overflow-hidden aspect-[4/5] shadow-[0_3px_0_#E0D9CE] border border-[#E2DDD5] bg-[#F5EFE4]">
-                                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80" 
-                                    alt="Roti Pastry Segar" class="w-full h-full object-cover hover:scale-103 transition duration-500">
-                            </div>
-                            <div class="bg-[#FAF7F0] p-3 rounded-2xl border border-[#E2DDD5] text-center shadow-2xs">
-                                <p class="text-sm font-serif font-bold text-[#2C1A11]">Tekstur Lembut</p>
-                                <p class="text-[10px] text-[#7A7570]">Adonan mengembang alami</p>
-                            </div>
-                        </div>
-
-                        <div class="space-y-4 pt-4">
-                            <div class="bg-[#FAF7F0] p-3 rounded-2xl border border-[#E2DDD5] text-center shadow-2xs">
-                                <p class="text-sm font-serif font-bold text-[#2C1A11]">Tanpa Pengawet</p>
-                                <p class="text-[10px] text-[#7A7570]">Aman dikonsumsi harian</p>
-                            </div>
-                            <div class="rounded-2xl overflow-hidden aspect-[4/5] shadow-[0_3px_0_#E0D9CE] border border-[#E2DDD5] bg-[#F5EFE4]">
-                                <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=700&q=80" 
-                                    alt="Cheesecake Mey Bakery" class="w-full h-full object-cover hover:scale-103 transition duration-500">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. SECTION: MENU UNGGULAN (KARTU VANILA & AKSEN OREN GOLD) -->
-    <section id="menu" class="py-12 md:py-16 w-full max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
-        
-        <!-- Header Section -->
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-            <div>
-                <span class="text-xs font-bold uppercase tracking-wider text-[#C98224] block">Paling Disukai</span>
-                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#2C1A11] mt-0.5">Menu Favorit Pelanggan</h2>
-                <p class="text-xs sm:text-sm text-[#7A7570] mt-1 max-w-md">Koleksi roti dan kue lezat yang paling sering dipesan setiap harinya.</p>
-            </div>
-
-            <a href="{{ route('shop') }}" 
-                class="inline-flex items-center gap-1.5 text-xs font-bold text-[#2C1A11] hover:text-[#C98224] transition group shrink-0">
-                <span>Lihat Seluruh Etalase</span>
-                <span class="group-hover:translate-x-0.5 transition">→</span>
-            </a>
-        </div>
-
-        <!-- Product Cards Grid: Vanila Ivory Cards with Abu Borders -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
-            @forelse($bestSellers as $item)
-            <div class="bg-[#FFFDF9] rounded-2xl border border-[#E2DDD5] p-3 sm:p-3.5 flex flex-col justify-between shadow-[0_3px_0_#E0D9CE] hover:border-[#D49B35] hover:shadow-[0_8px_20px_rgba(201,130,36,0.15),0_3px_0_#C98224] transition-all duration-200 group">
+        <!-- ==========================================
+             2. SECTION: MENU UTAMA (FILTER KATEGORI)
+             ========================================== -->
+        <section id="menu-utama" class="space-y-4 pt-2">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#ECE5DD] pb-4">
                 <div>
-                    <!-- Visual Image -->
-                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-[#F5EFE4]">
-                        <img src="{{ $item->image_url ?? 'https://placehold.co/500x500/F5EFE4/2C1A11?text=Mey+Bakery' }}" 
-                            alt="{{ $item->name }}" 
-                            class="w-full h-full object-cover group-hover:scale-103 transition duration-300">
-                        
-                        <!-- Vanila & Oren Gold Category Badge -->
-                        <span class="absolute top-2 left-2 bg-[#FFF8E7] text-[#9A6216] font-bold text-[9px] px-2.5 py-0.5 rounded-md border border-[#F3DEB2] shadow-2xs">
-                            {{ $item->category }}
-                        </span>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-black text-[#2C1A11] tracking-tight">Menu Utama</h2>
+                    <p class="text-xs sm:text-sm text-[#7A6E65] mt-0.5">Pilih kategori untuk memfilter pilihan kue dan roti.</p>
+                </div>
+                <span class="text-xs font-bold text-[#A85816] bg-[#FFF8E7] px-3 py-1 rounded-full border border-[#FCD34D] self-start sm:self-auto">
+                    {{ $products->count() }} Pilihan Tersedia
+                </span>
+            </div>
 
-                        @if($item->stock > 0)
-                            <span class="absolute bottom-2 right-2 bg-[#2C1A11]/85 backdrop-blur-sm text-white font-medium text-[9px] px-2 py-0.5 rounded">
-                                Stok: {{ $item->stock }}
+            <!-- Category Pills Buttons -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+                <button type="button" onclick="filterCategory('all', this)" 
+                    class="category-btn active-cat shrink-0 px-4 py-2.5 rounded-xl text-xs font-bold border transition cursor-pointer select-none">
+                    Semua Menu
+                </button>
+                <button type="button" onclick="filterCategory('Tart & Cake', this)" 
+                    class="category-btn inactive-cat shrink-0 px-4 py-2.5 rounded-xl text-xs font-bold border transition cursor-pointer select-none">
+                    Tart & Cake
+                </button>
+                <button type="button" onclick="filterCategory('Pastry', this)" 
+                    class="category-btn inactive-cat shrink-0 px-4 py-2.5 rounded-xl text-xs font-bold border transition cursor-pointer select-none">
+                    Pastry
+                </button>
+                <button type="button" onclick="filterCategory('Roti & Donat', this)" 
+                    class="category-btn inactive-cat shrink-0 px-4 py-2.5 rounded-xl text-xs font-bold border transition cursor-pointer select-none">
+                    Roti & Donat
+                </button>
+                <button type="button" onclick="filterCategory('Kue Basah', this)" 
+                    class="category-btn inactive-cat shrink-0 px-4 py-2.5 rounded-xl text-xs font-bold border transition cursor-pointer select-none">
+                    Kue Basah
+                </button>
+                <button type="button" onclick="filterCategory('Beverage', this)" 
+                    class="category-btn inactive-cat shrink-0 px-4 py-2.5 rounded-xl text-xs font-bold border transition cursor-pointer select-none">
+                    Minuman (Beverage)
+                </button>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             3. SECTION: MARKETPLACE LANGSUNG (PRODUK ETALASE)
+             ========================================== -->
+        <section id="marketplace" class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-black text-[#2C1A11] tracking-tight">Marketplace</h2>
+                    <p class="text-xs sm:text-sm text-[#7A6E65] mt-0.5">Pesan satuan atau masukkan troli untuk paket bundle.</p>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                @forelse($products as $product)
+                <div class="product-card bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] shadow-[0_4px_16px_rgba(44,26,17,0.05)] hover:shadow-[0_8px_24px_rgba(201,130,36,0.18)] hover:-translate-y-1 transition-all duration-200 p-3.5 sm:p-4 flex flex-col justify-between group"
+                    data-category="{{ $product->category }}">
+                    
+                    <div class="space-y-3">
+                        <!-- Product Image -->
+                        <div class="relative aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-[#FAF7F2] border border-[#ECE5DD]">
+                            <img src="{{ $product->image_url ?? 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80' }}" 
+                                alt="{{ $product->name }}" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            
+                            <!-- Category Badge -->
+                            <span class="absolute top-2.5 left-2.5 bg-white/90 backdrop-blur-xs text-[#7A624E] border border-[#E2DDD5] text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-xs">
+                                {{ $product->category }}
                             </span>
-                        @endif
+
+                            <!-- Stock Badge -->
+                            <span class="absolute top-2.5 right-2.5 bg-[#FFF8E7]/95 text-[#9A6216] border border-[#FCD34D] text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-xs">
+                                Sisa {{ $product->stock }}
+                            </span>
+                        </div>
+
+                        <!-- Product Title & Info -->
+                        <div>
+                            <h3 class="font-serif font-black text-base text-[#2C1A11] leading-snug line-clamp-1 group-hover:text-[#A85816] transition-colors">
+                                {{ $product->name }}
+                            </h3>
+                            @if($product->description)
+                                <p class="text-xs text-[#7A6E65] line-clamp-1 mt-0.5 font-normal">
+                                    {{ $product->description }}
+                                </p>
+                            @endif
+                        </div>
                     </div>
 
-                    <!-- Title & Description -->
-                    <h3 class="font-serif font-bold text-sm text-[#2C1A11] leading-snug line-clamp-1 group-hover:text-[#C98224] transition">
-                        {{ $item->name }}
-                    </h3>
-                    <p class="text-[11px] text-[#6B6661] mt-1 line-clamp-2 leading-relaxed">
-                        {{ $item->description }}
-                    </p>
-                </div>
+                    <!-- Price & Actions -->
+                    <div class="pt-4 border-t border-[#F2ECE2] mt-3 space-y-3">
+                        <div class="flex items-baseline justify-between">
+                            <span class="text-[10px] uppercase font-bold text-[#7A6E65]">Harga</span>
+                            <span class="text-base sm:text-lg font-black text-[#A85816]">
+                                Rp {{ number_format($product->price_idr, 0, ',', '.') }}
+                            </span>
+                        </div>
 
-                <div class="mt-3.5 pt-2.5 border-t border-[#EAE4DC] flex items-center justify-between">
-                    <div>
-                        <span class="text-[9px] text-[#7A7570] uppercase font-semibold block">Harga</span>
-                        <span class="text-xs sm:text-sm font-black text-[#A85816]">Rp {{ number_format($item->price_idr, 0, ',', '.') }}</span>
+                        <!-- 2 Action Buttons: + Troli & Pesan Langsung 3D -->
+                        <div class="grid grid-cols-2 gap-2">
+                            <button type="button" onclick="addToCart({{ json_encode($product) }})"
+                                class="w-full py-2.5 px-2 bg-[#FAF7F2] hover:bg-[#F2ECE2] text-[#2C1A11] rounded-xl text-xs font-bold border border-[#D5CBC0] shadow-sm active:translate-y-0.5 transition cursor-pointer flex items-center justify-center gap-1.5"
+                                title="Tambah ke Troli">
+                                <span>+ Troli</span>
+                            </button>
+
+                            <button type="button" onclick="openCheckoutModal({{ json_encode($product) }})"
+                                class="w-full py-2.5 px-2 rounded-xl text-xs font-bold text-white tracking-wide shadow-[0_3px_0_#7A3E05] hover:brightness-105 active:translate-y-1 active:shadow-none transition-all cursor-pointer flex items-center justify-center"
+                                style="background: linear-gradient(180deg, #DF851A 0%, #B25D07 100%); border-top: 1px solid rgba(254, 215, 170, 0.55);"
+                                title="Pesan Menu Ini Sekarang">
+                                <span>Pesan</span>
+                            </button>
+                        </div>
                     </div>
 
-                    <a href="{{ route('shop') }}" 
-                        class="bg-[#2C1A11] hover:bg-[#C98224] text-[#FFFDF9] text-xs font-bold px-3 py-1.5 rounded-xl shadow-[0_2px_0_#140B06] active:translate-y-0.5 active:shadow-none transition duration-200">
-                        Pesan
-                    </a>
+                </div>
+                @empty
+                <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-[#E8DFD5] text-xs text-[#7A6E65] space-y-1">
+                    <p class="font-bold text-sm text-[#2C1A11]">Belum ada menu tersedia saat ini.</p>
+                    <p>Silakan hubungi kami via WhatsApp untuk memesan menu khusus.</p>
+                </div>
+                @endforelse
+            </div>
+
+            <!-- Empty Notice saat filter tidak ada hasil -->
+            <div id="emptyCategoryNotice" class="hidden py-12 text-center bg-white rounded-3xl border border-[#E8DFD5] text-xs text-[#7A6E65] space-y-1">
+                <p class="font-bold text-sm text-[#2C1A11]">Tidak ada menu dalam kategori ini.</p>
+                <button type="button" onclick="filterCategory('all', document.querySelector('.category-btn'))" class="text-xs font-bold text-[#A85816] hover:underline mt-1 cursor-pointer">
+                    Kembali ke Semua Menu ↺
+                </button>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             4. SECTION: PENILAIAN (CUSTOMER REVIEWS)
+             ========================================== -->
+        <section id="penilaian" class="space-y-6 pt-2">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#ECE5DD] pb-4">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-black text-[#2C1A11] tracking-tight">Penilaian</h2>
+                    <p class="text-xs sm:text-sm text-[#7A6E65] mt-0.5">Ulasan jujur dari pelanggan setia Mey Bakery.</p>
+                </div>
+                <div class="inline-flex items-center gap-1.5 bg-[#FFF8E7] text-[#9A6216] border border-[#FCD34D] px-3.5 py-1.5 rounded-full text-xs font-black self-start sm:self-auto">
+                    <span>⭐ 4.9 / 5.0</span>
+                    <span class="text-[#7A6E65] font-normal">• 500+ Pesanan Puas</span>
                 </div>
             </div>
-            @empty
-            <div class="col-span-4 text-center py-12 bg-[#FFFDF9] rounded-2xl border border-[#E2DDD5] text-xs text-[#7A7570]">
-                Belum ada produk aktif yang terdaftar di database.
-            </div>
-            @endforelse
-        </div>
 
-    </section>
-
-    <!-- 5. SECTION: ULASAN PELANGGAN (WARM VANILA CANVAS) -->
-    <section id="ulasan" class="py-12 md:py-16 bg-[#F5EFE4] border-y border-[#E2DDD5]">
-        <div class="w-full max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
-            <div class="text-center max-w-lg mx-auto mb-8 space-y-1">
-                <span class="text-xs font-bold uppercase tracking-wider text-[#C98224] block">Pengalaman Pembeli</span>
-                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#2C1A11]">Apa Kata Pelanggan Kami?</h2>
-                <p class="text-xs text-[#7A7570]">Ulasan asli dari pelanggan setia yang menikmati kelezatan Mey Bakery.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+            <!-- 4 Modern Minimalist Review Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
                 
-                <!-- Review 1: Aksen Oren Gold -->
-                <div class="bg-[#FFFDF9] p-5 rounded-2xl border border-[#E2DDD5] shadow-[0_2px_0_#E0D9CE] flex flex-col justify-between space-y-3">
-                    <div>
-                        <div class="text-[#DF9A28] text-xs mb-2">★★★★★</div>
-                        <p class="text-xs text-[#5A544F] leading-relaxed">
-                            "Roti lembutnya tahan empuk sampai sore tanpa rasa seret. Harganya sangat masuk akal dibanding toko bakery mall lainnya. Cocok buat langganan sarapan keluarga."
+                <!-- Review 1 -->
+                <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] p-5 shadow-[0_4px_16px_rgba(44,26,17,0.04)] space-y-3 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-1 text-[#DF851A] text-sm">
+                            ★★★★★
+                        </div>
+                        <p class="text-xs text-[#3D251A] leading-relaxed font-medium">
+                            "Roti sangat empuk dan aromanya khas butter premium. Kuenya tidak kemanisan, keluarga sangat suka!"
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-[#EAE4DC] flex items-center gap-2.5">
-                        <div class="w-8 h-8 rounded-full bg-[#DF9A28]/15 text-[#9A6216] font-black flex items-center justify-center text-xs">R</div>
-                        <div>
-                            <p class="text-xs font-serif font-bold text-[#2C1A11]">Rini Wulandari</p>
-                            <p class="text-[10px] text-[#7A7570]">Ibu Rumah Tangga</p>
-                        </div>
+                    <div class="pt-3 border-t border-[#F2ECE2]">
+                        <p class="font-bold text-xs text-[#2C1A11]">Sarah Angelina</p>
+                        <span class="text-[10px] text-[#7A6E65] block">Lamongan • Verified Buyer</span>
                     </div>
                 </div>
 
-                <!-- Review 2: Aksen Abu Modern -->
-                <div class="bg-[#FFFDF9] p-5 rounded-2xl border border-[#E2DDD5] shadow-[0_2px_0_#E0D9CE] flex flex-col justify-between space-y-3">
-                    <div>
-                        <div class="text-[#DF9A28] text-xs mb-2">★★★★★</div>
-                        <p class="text-xs text-[#5A544F] leading-relaxed">
-                            "Pesan paket box kue untuk acara arisan dan kantor. Semuanya rapi, rasanya enak tidak bikin eneg, dan pengiriman kurirnya tepat waktu. Sangat recommended!"
+                <!-- Review 2 -->
+                <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] p-5 shadow-[0_4px_16px_rgba(44,26,17,0.04)] space-y-3 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-1 text-[#DF851A] text-sm">
+                            ★★★★★
+                        </div>
+                        <p class="text-xs text-[#3D251A] leading-relaxed font-medium">
+                            "Pesan dadakan untuk acara ulang tahun, pengiriman kurir toko tepat waktu dan dekorasi kuenya rapi banget."
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-[#EAE4DC] flex items-center gap-2.5">
-                        <div class="w-8 h-8 rounded-full bg-[#64748B]/15 text-[#374151] font-black flex items-center justify-center text-xs">B</div>
-                        <div>
-                            <p class="text-xs font-serif font-bold text-[#2C1A11]">Bagus Setiawan</p>
-                            <p class="text-[10px] text-[#7A7570]">Pesanan Box Acara</p>
-                        </div>
+                    <div class="pt-3 border-t border-[#F2ECE2]">
+                        <p class="font-bold text-xs text-[#2C1A11]">Dimas Prasetyo</p>
+                        <span class="text-[10px] text-[#7A6E65] block">Pelanggan Tetap</span>
                     </div>
                 </div>
 
-                <!-- Review 3: Aksen Coklat Klasik -->
-                <div class="bg-[#FFFDF9] p-5 rounded-2xl border border-[#E2DDD5] shadow-[0_2px_0_#E0D9CE] flex flex-col justify-between space-y-3">
-                    <div>
-                        <div class="text-[#DF9A28] text-xs mb-2">★★★★★</div>
-                        <p class="text-xs text-[#5A544F] leading-relaxed">
-                            "Suka banget sama sistem pemesanan di webnya, langsung ada barcode QRIS dan pilihan rekening transfer yang jelas. Sangat simpel dan bebas ribet."
+                <!-- Review 3 -->
+                <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] p-5 shadow-[0_4px_16px_rgba(44,26,17,0.04)] space-y-3 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-1 text-[#DF851A] text-sm">
+                            ★★★★★
+                        </div>
+                        <p class="text-xs text-[#3D251A] leading-relaxed font-medium">
+                            "Pastry renyah di luar tapi lembut di dalam. Selalu pesan rutin untuk camilan teman kopi di pagi hari."
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-[#EAE4DC] flex items-center gap-2.5">
-                        <div class="w-8 h-8 rounded-full bg-[#3D251A]/15 text-[#2C1A11] font-black flex items-center justify-center text-xs">D</div>
-                        <div>
-                            <p class="text-xs font-serif font-bold text-[#2C1A11]">Dina Maharani</p>
-                            <p class="text-[10px] text-[#7A7570]">Pelanggan Online</p>
+                    <div class="pt-3 border-t border-[#F2ECE2]">
+                        <p class="font-bold text-xs text-[#2C1A11]">Linda Kurnia</p>
+                        <span class="text-[10px] text-[#7A6E65] block">Verified Buyer</span>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] p-5 shadow-[0_4px_16px_rgba(44,26,17,0.04)] space-y-3 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-1 text-[#DF851A] text-sm">
+                            ★★★★★
                         </div>
+                        <p class="text-xs text-[#3D251A] leading-relaxed font-medium">
+                            "Sistem pesannya sangat simpel, invoice digital otomatis keluar dan adminnya ramah sekali di WhatsApp."
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-[#F2ECE2]">
+                        <p class="font-bold text-xs text-[#2C1A11]">Reza Firmansyah</p>
+                        <span class="text-[10px] text-[#7A6E65] block">Pembeli Online</span>
                     </div>
                 </div>
 
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 6. SECTION: LOKASI & KONTAK RESMI -->
-    <section id="lokasi" class="py-12 md:py-16 w-full max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
-        <div class="grid md:grid-cols-12 gap-8 items-center">
+    </main>
+
+    <!-- SLIDE-OVER CART DRAWER -->
+    <div id="cartDrawer" class="fixed inset-0 bg-[#1D120B]/60 backdrop-blur-xs z-50 hidden transition-all duration-300">
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-sm sm:max-w-md bg-white shadow-2xl flex flex-col justify-between p-4 sm:p-6 border-l border-[#E2DDD5] overflow-hidden">
             
-            <div class="md:col-span-6 space-y-4">
-                <span class="text-xs font-bold uppercase tracking-wider text-[#C98224] block">Kunjungi Gerai Kami</span>
-                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#2C1A11]">Pemesanan & Lokasi Gerai</h2>
-                <p class="text-xs sm:text-sm text-[#6B6661] leading-relaxed">
-                    Kami melayani pemesanan langsung di gerai, pesanan katering snack box acara, kue ulang tahun, serta layanan kurir antar langsung ke alamat Anda.
-                </p>
-
-                <div class="space-y-3 pt-1 text-xs text-[#5A544F] bg-[#FFFDF9] p-4 sm:p-5 rounded-2xl border-2 border-[#D8C7B5] shadow-[0_3px_0_#CFC1AF]">
+            <!-- Drawer Header -->
+            <div class="flex items-center justify-between border-b border-[#ECE5DD] pb-3.5 shrink-0">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#3D251A] to-[#DF851A] text-white flex items-center justify-center font-bold text-xs shadow-sm">
+                        🛒
+                    </div>
                     <div>
-                        <span class="text-[#7A7570] font-black block text-[10px] uppercase tracking-wider mb-1">Alamat Gerai Resmi:</span>
-                        <p class="font-bold text-sm text-[#1D120B] leading-snug">Desa Sidomukti, Kecamatan Brondong, Kabupaten Lamongan, Jawa Timur 62263</p>
-                        <a href="https://maps.app.goo.gl/t3jdgJkREApyAzREA" target="_blank" 
-                            class="inline-flex items-center gap-1.5 text-[#A85816] hover:text-[#DF9A28] font-bold text-xs mt-2 transition group">
-                            <span class="text-sm">📍</span>
-                            <span class="underline group-hover:no-underline">Buka Titik Lokasi di Google Maps ↗</span>
-                        </a>
-                    </div>
-                    <div class="pt-2 border-t border-[#EAE4DC]">
-                        <span class="text-[#7A7570] font-black block text-[10px] uppercase tracking-wider mb-0.5">Jam Buka:</span>
-                        <p class="font-bold text-[#1D120B]">Buka Setiap Hari: 07.30 – 21.00 WIB</p>
-                    </div>
-                    <div class="pt-2 border-t border-[#EAE4DC]">
-                        <span class="text-[#7A7570] font-black block text-[10px] uppercase tracking-wider mb-0.5">Pilihan Layanan & Kontak:</span>
-                        <p class="font-bold text-[#1D120B]">Kurir Pengantaran Toko, Ambil Sendiri (Pick-up), & Bayar di Tempat (COD)</p>
-                        <p class="text-[#A85816] font-bold text-xs mt-1">WhatsApp CS: 0812-3456-7890</p>
+                        <h3 class="font-serif font-black text-sm sm:text-base text-[#2C1A11]">Troli Belanja</h3>
+                        <span id="cartDrawerBadgeHeader" class="text-[10px] text-[#7A6E65]">0 Menu Terpilih</span>
                     </div>
                 </div>
+                <button type="button" onclick="toggleCartDrawer(false)" class="w-8 h-8 rounded-xl bg-[#FAF7F2] hover:bg-[#EFE8DC] text-[#2C1A11] flex items-center justify-center font-bold text-xs border border-[#D5CBC0] shadow-sm transition cursor-pointer">
+                    ✕
+                </button>
             </div>
 
-            <!-- Map Frame: Lis Abu & Latar Vanila -->
-            <div class="md:col-span-6 h-72 sm:h-84 rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-[#D8C7B5] shadow-[0_4px_0_#CFC1AF] bg-[#F5EFE4] relative group">
-                <iframe 
-                    class="w-full h-full"
-                    src="https://maps.google.com/maps?q=-6.898962,112.197332&z=15&output=embed" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-                <a href="https://maps.app.goo.gl/t3jdgJkREApyAzREA" target="_blank"
-                    class="absolute bottom-3 right-3 bg-white/95 hover:bg-white text-[#1D120B] text-xs font-bold px-3 py-1.5 rounded-xl border border-[#D8C7B5] shadow-md flex items-center gap-1.5 transition">
-                    <span>Lihat di Maps</span>
-                    <span>↗</span>
-                </a>
+            <!-- Items List Container -->
+            <div id="cartItemsList" class="my-3 flex-1 overflow-y-auto pr-1 space-y-2"></div>
+
+            <!-- Drawer Bottom & CTA -->
+            <div class="border-t border-[#ECE5DD] pt-3.5 space-y-3 shrink-0">
+                <div class="bg-[#FAF7F2] p-3 rounded-2xl border border-[#E2DDD5] space-y-1.5 text-xs">
+                    <div class="flex justify-between items-center text-[#6B5E52]">
+                        <span>Jumlah Menu:</span>
+                        <span id="cartDrawerBundleCount" class="font-bold text-[#2C1A11]">0 menu</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-1.5 border-t border-[#ECE5DD]">
+                        <span class="font-bold text-[#2C1A11]">Total:</span>
+                        <span id="cartDrawerTotal" class="font-black text-base sm:text-lg text-[#A85816]">Rp 0</span>
+                    </div>
+                </div>
+
+                <button type="button" onclick="proceedFromCart()" id="btnCheckoutCart" disabled
+                    class="w-full h-11 flex items-center justify-center gap-2 rounded-xl text-xs font-bold text-white tracking-wide shadow-[0_3px_0_#7A3E05] disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer"
+                    style="background: linear-gradient(180deg, #DF851A 0%, #B25D07 100%);">
+                    <span>Lanjut Pesan Bundle →</span>
+                </button>
             </div>
+        </div>
+    </div>
+
+    <!-- MODAL CHECKOUT CEPAT -->
+    <div id="checkoutModal" class="fixed inset-0 bg-[#1D120B]/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <div class="relative bg-white rounded-2xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-7 shadow-2xl border border-[#E8DFD5] my-auto max-h-[94vh] overflow-y-auto transition-all">
+            
+            <div class="flex items-center justify-between pb-3.5 border-b border-[#ECE5DD]">
+                <div>
+                    <span id="modalTypeBadge" class="text-[10px] font-bold text-[#A85816] bg-[#FFF8E7] px-2.5 py-0.5 rounded-full border border-[#FCD34D]">
+                        Pemesanan Langsung
+                    </span>
+                    <h3 id="modalProductName" class="font-serif font-black text-lg sm:text-xl text-[#2C1A11] mt-1">
+                        Nama Menu
+                    </h3>
+                </div>
+                <button type="button" onclick="closeCheckoutModal()" 
+                    class="w-8 h-8 rounded-full bg-[#FAF7F2] hover:bg-[#F2ECE2] text-[#2C1A11] border border-[#D5CBC0] flex items-center justify-center transition cursor-pointer font-bold text-xs">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Form Pemesanan -->
+            <form action="{{ route('order.process') }}" method="POST" class="mt-4 space-y-3.5">
+                @csrf
+                <input type="hidden" name="product_id" id="formProductId">
+                <input type="hidden" name="bundle_items" id="formBundleItems" value="">
+
+                <!-- Single Item Summary & Quantity -->
+                <div id="singleProductView" class="bg-[#FAF7F2] p-3.5 rounded-xl border border-[#E2DDD5] flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] text-[#7A6E65] uppercase font-bold block">Harga Satuan</span>
+                        <span id="modalProductPrice" class="text-sm sm:text-base font-black text-[#A85816]">Rp 0</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button type="button" onclick="changeModalQty(-1)" class="w-8 h-8 rounded-lg bg-white border border-[#D5CBC0] font-bold text-sm shadow-xs active:translate-y-0.5">-</button>
+                        <input type="number" name="quantity" id="formQuantity" value="1" min="1" readonly class="w-12 text-center bg-transparent font-black text-sm">
+                        <button type="button" onclick="changeModalQty(1)" class="w-8 h-8 rounded-lg bg-white border border-[#D5CBC0] font-bold text-sm shadow-xs active:translate-y-0.5">+</button>
+                    </div>
+                </div>
+
+                <!-- Bundle List (jika checkout dari keranjang) -->
+                <div id="bundleProductView" class="hidden bg-[#FAF7F2] p-3.5 rounded-xl border border-[#E2DDD5] space-y-2">
+                    <span class="text-[10px] text-[#7A6E65] uppercase font-bold block">Daftar Menu Bundle</span>
+                    <div id="modalBundleList" class="space-y-1.5 max-h-36 overflow-y-auto text-xs"></div>
+                </div>
+
+                <!-- Input Nama & No WhatsApp -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-[#2C1A11] uppercase mb-1">Nama Lengkap *</label>
+                        <input type="text" name="customer_name" required placeholder="Nama Anda"
+                            class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white rounded-xl px-3 py-2 text-xs font-medium text-[#2C1A11] outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-[#2C1A11] uppercase mb-1">No. WhatsApp *</label>
+                        <input type="text" name="customer_phone" required placeholder="08xxxxxxxxxx"
+                            class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white rounded-xl px-3 py-2 text-xs font-medium text-[#2C1A11] outline-none">
+                    </div>
+                </div>
+
+                <!-- Target Tanggal & Metode Kirim -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-[#2C1A11] uppercase mb-1">Target Tanggal *</label>
+                        <input type="date" name="delivery_date" value="{{ date('Y-m-d') }}" required
+                            class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white rounded-xl px-3 py-2 text-xs font-medium text-[#2C1A11] outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-[#2C1A11] uppercase mb-1">Metode Pengiriman</label>
+                        <select name="order_type" id="orderTypeSelect" onchange="toggleAddressField()"
+                            class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white rounded-xl px-3 py-2 text-xs font-medium text-[#2C1A11] outline-none">
+                            <option value="delivery">Kurir Toko (Delivery)</option>
+                            <option value="pickup">Ambil Sendiri (Pick-up)</option>
+                            <option value="cod">COD (Bayar di Tempat)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Alamat Antar -->
+                <div id="addressFieldContainer">
+                    <label class="block text-[11px] font-bold text-[#2C1A11] uppercase mb-1">Alamat Pengantaran</label>
+                    <input type="text" name="address" placeholder="Jalan, nomor rumah, patokan..."
+                        class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white rounded-xl px-3 py-2 text-xs font-medium text-[#2C1A11] outline-none">
+                </div>
+
+                <!-- Metode Pembayaran -->
+                <div>
+                    <label class="block text-[11px] font-bold text-[#2C1A11] uppercase mb-1">Metode Pembayaran</label>
+                    <select name="payment_method" id="paymentMethodSelect" onchange="toggleBankSelect()"
+                        class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white rounded-xl px-3 py-2 text-xs font-medium text-[#2C1A11] outline-none">
+                        <option value="qris">QRIS Instant (All E-Wallet / M-Banking)</option>
+                        <option value="transfer">Transfer Bank Resmi</option>
+                        <option value="cod">Tunai / COD saat terima</option>
+                    </select>
+                </div>
+
+                <!-- Pilihan Rekening Bank (Muncul jika pilih Transfer Bank) -->
+                <div id="bankAccountContainer" class="hidden">
+                    <label class="block text-[11px] font-bold text-[#2C1A11] uppercase mb-1">Pilih Rekening Tujuan</label>
+                    <select name="bank_account_id" class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white rounded-xl px-3 py-2 text-xs font-medium text-[#2C1A11] outline-none">
+                        @forelse($bankAccounts as $bank)
+                            <option value="{{ $bank->id }}">{{ $bank->bank_name }} — {{ $bank->account_number }} (a.n {{ $bank->account_name }})</option>
+                        @empty
+                            <option value="">Rekening Utama Toko</option>
+                        @endforelse
+                    </select>
+                </div>
+
+                <!-- Catatan Tambahan -->
+                <div>
+                    <label class="block text-[11px] font-bold text-[#2C1A11] uppercase mb-1">Catatan Pesanan (Opsional)</label>
+                    <input type="text" name="notes" placeholder="Misal: Tulisan ucapan / lilin / request hiasan"
+                        class="w-full bg-[#FAF7F2] border border-[#D5CBC0] focus:border-[#DF851A] focus:bg-white rounded-xl px-3 py-2 text-xs font-medium text-[#2C1A11] outline-none">
+                </div>
+
+                <!-- Subtotal Info -->
+                <div class="bg-[#FAF7F2] p-3 rounded-xl border border-[#E2DDD5] flex items-center justify-between">
+                    <span class="text-xs font-bold text-[#2C1A11]">Total Pembayaran:</span>
+                    <span id="modalCalculatedTotal" class="text-base sm:text-lg font-black text-[#A85816]">Rp 0</span>
+                </div>
+
+                <!-- 2 Opsi Checkout: Simpan ke Web Invoice atau Kirim via WhatsApp Langsung -->
+                <div class="grid grid-cols-2 gap-2.5 pt-2">
+                    <button type="submit" name="checkout_via" value="web"
+                        class="w-full py-3 rounded-xl text-xs font-bold text-white shadow-[0_3px_0_#7A3E05] active:translate-y-0.5 cursor-pointer flex items-center justify-center gap-1.5"
+                        style="background: linear-gradient(180deg, #DF851A 0%, #B25D07 100%);">
+                        <span>Buat Invoice Web</span>
+                    </button>
+
+                    <button type="submit" name="checkout_via" value="whatsapp"
+                        class="w-full py-3 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#059669] to-[#047857] shadow-[0_3px_0_#064E3B] active:translate-y-0.5 cursor-pointer flex items-center justify-center gap-1.5">
+                        <span>Pesan via WA</span>
+                    </button>
+                </div>
+            </form>
 
         </div>
-    </section>
+    </div>
 
-    <!-- 7. MINIMALIST FOOTER (COKLAT PEKAT, TEKS ABU, AKSEN EMAS) -->
-    <footer class="bg-[#1D120B] text-[#9E948C] py-10 border-t border-[#312015] text-xs mt-auto">
-        <div class="w-full max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div>
-                <span class="text-sm font-serif font-bold text-white block">Mey Bakery.</span>
-                <p class="text-[#7A7570] text-[11px] mt-0.5">Roti & Kue Segar Berkualitas • Dibuat dengan Rasa Sepenuh Hati</p>
+
+    <!-- 5. FOOTER MINIMALIS ELEGAN (VERIFIED ADDRESS & LINKS) -->
+    <footer class="bg-white border-t border-[#E8DFD5] py-8 text-center text-xs text-[#7A6E65]">
+        <div class="max-w-7xl mx-auto px-4 space-y-3">
+            <div class="flex items-center justify-center gap-2">
+                <span class="w-6 h-6 rounded-lg bg-[#3D251A] text-white flex items-center justify-center font-serif font-black text-xs">M</span>
+                <span class="font-serif font-black text-base text-[#2C1A11]">Mey Bakery.</span>
+            </div>
+            
+            <p class="font-medium text-[#2C1A11]">
+                Desa Sidomukti, Kecamatan Brondong, Kabupaten Lamongan, Jawa Timur 62263
+            </p>
+
+            <div class="flex items-center justify-center gap-4 text-xs font-semibold text-[#A85816] pt-1">
+                <a href="https://maps.app.goo.gl/t3jdgJkREApyAzREA" target="_blank" class="hover:underline">Buka Titik Maps ↗</a>
+                <span>•</span>
+                <a href="https://wa.me/6281234567890" target="_blank" class="hover:underline">WhatsApp Dapur ↗</a>
+                <span>•</span>
+                <a href="{{ route('admin.dashboard') }}" class="hover:underline">Admin Studio ↗</a>
             </div>
 
-            <div class="flex items-center gap-5 text-xs text-[#D5C4B5]">
-                <a href="{{ route('shop') }}" class="hover:text-[#DF9A28] transition">Menu Belanja</a>
-                <a href="#tentang" class="hover:text-[#DF9A28] transition">Tentang Kami</a>
-                <a href="#lokasi" class="hover:text-[#DF9A28] transition">Lokasi & Kontak</a>
-                <a href="{{ route('login') }}" class="hover:text-[#DF9A28] transition text-[#7A7570]">Admin</a>
-            </div>
-
-            <p class="text-[#7A7570] text-[11px]">© {{ date('Y') }} Mey Bakery. All rights reserved.</p>
+            <p class="text-[11px] text-[#A89F95] pt-2">
+                © {{ date('Y') }} Mey Bakery. Artisan Fresh Bakes & Pâtisserie.
+            </p>
         </div>
     </footer>
+
+
+    <!-- JAVASCRIPT LOGIC (FILTERING, CART, MODAL CHECKOUT) -->
+    <script>
+        // 1. FILTER KATEGORI MENU UTAMA
+        function filterCategory(category, buttonEl) {
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active-cat');
+                btn.classList.add('inactive-cat');
+            });
+            if (buttonEl) {
+                buttonEl.classList.remove('inactive-cat');
+                buttonEl.classList.add('active-cat');
+            }
+
+            const cards = document.querySelectorAll('.product-card');
+            let visibleCount = 0;
+            cards.forEach(card => {
+                const itemCategory = card.getAttribute('data-category');
+                if (category === 'all' || itemCategory === category) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const emptyNotice = document.getElementById('emptyCategoryNotice');
+            if (emptyNotice) {
+                emptyNotice.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+        }
+
+        // 2. TROLI BELANJA (CART)
+        let cart = JSON.parse(localStorage.getItem('mey_bakery_cart') || '[]');
+
+        function saveCart() {
+            localStorage.setItem('mey_bakery_cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function addToCart(product) {
+            const existing = cart.find(item => item.id === product.id);
+            if (existing) {
+                if (existing.qty < product.stock) {
+                    existing.qty++;
+                } else {
+                    alert('Jumlah melebihi stok yang tersedia (' + product.stock + ' unit).');
+                    return;
+                }
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: parseInt(product.price_idr),
+                    stock: product.stock,
+                    image_url: product.image_url,
+                    qty: 1
+                });
+            }
+            saveCart();
+            toggleCartDrawer(true);
+        }
+
+        function changeCartQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== id);
+            } else if (item.qty > item.stock) {
+                item.qty = item.stock;
+                alert('Maksimal stok tercapai.');
+            }
+            saveCart();
+        }
+
+        function toggleCartDrawer(show) {
+            const drawer = document.getElementById('cartDrawer');
+            if (!drawer) return;
+            if (show === undefined) {
+                drawer.classList.toggle('hidden');
+            } else if (show) {
+                drawer.classList.remove('hidden');
+            } else {
+                drawer.classList.add('hidden');
+            }
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cartCountBadge');
+            const drawerBadge = document.getElementById('cartDrawerBadgeHeader');
+            const countLabel = document.getElementById('cartDrawerBundleCount');
+            const totalLabel = document.getElementById('cartDrawerTotal');
+            const listContainer = document.getElementById('cartItemsList');
+            const btnCheckout = document.getElementById('btnCheckoutCart');
+
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            if (badge) badge.innerText = totalQty;
+            if (drawerBadge) drawerBadge.innerText = cart.length + ' Menu Terpilih';
+            if (countLabel) countLabel.innerText = cart.length + ' menu (' + totalQty + ' item)';
+            if (totalLabel) totalLabel.innerText = 'Rp ' + totalPrice.toLocaleString('id-ID');
+
+            if (btnCheckout) {
+                btnCheckout.disabled = cart.length === 0;
+            }
+
+            if (listContainer) {
+                if (cart.length === 0) {
+                    listContainer.innerHTML = `
+                        <div class="py-12 text-center text-xs text-[#7A6E65] space-y-1">
+                            <span class="text-2xl block">🧺</span>
+                            <p class="font-bold text-[#2C1A11]">Troli Anda masih kosong.</p>
+                            <p>Pilih menu favorit Anda di atas.</p>
+                        </div>
+                    `;
+                } else {
+                    listContainer.innerHTML = cart.map(item => `
+                        <div class="bg-[#FAF7F2] p-2.5 rounded-xl border border-[#E2DDD5] flex items-center justify-between gap-2 text-xs">
+                            <div class="flex-1 min-w-0">
+                                <p class="font-bold text-[#2C1A11] truncate">${item.name}</p>
+                                <p class="text-[11px] text-[#A85816] font-semibold">Rp ${(item.price * item.qty).toLocaleString('id-ID')}</p>
+                            </div>
+                            <div class="flex items-center gap-1.5 shrink-0">
+                                <button type="button" onclick="changeCartQty(${item.id}, -1)" class="w-6 h-6 rounded bg-white border border-[#D5CBC0] font-bold text-xs">-</button>
+                                <span class="w-5 text-center font-bold text-xs">${item.qty}</span>
+                                <button type="button" onclick="changeCartQty(${item.id}, 1)" class="w-6 h-6 rounded bg-white border border-[#D5CBC0] font-bold text-xs">+</button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+
+        // 3. CHECKOUT MODAL LOGIC
+        let activeProduct = null;
+        let isBundleMode = false;
+
+        function openCheckoutModal(product) {
+            isBundleMode = false;
+            activeProduct = product;
+
+            document.getElementById('modalTypeBadge').innerText = 'Pemesanan Langsung';
+            document.getElementById('modalProductName').innerText = product.name;
+            document.getElementById('formProductId').value = product.id;
+            document.getElementById('formBundleItems').value = '';
+
+            document.getElementById('singleProductView').classList.remove('hidden');
+            document.getElementById('bundleProductView').classList.add('hidden');
+
+            document.getElementById('formQuantity').value = 1;
+            document.getElementById('modalProductPrice').innerText = 'Rp ' + parseInt(product.price_idr).toLocaleString('id-ID');
+            document.getElementById('modalCalculatedTotal').innerText = 'Rp ' + parseInt(product.price_idr).toLocaleString('id-ID');
+
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function proceedFromCart() {
+            if (cart.length === 0) return;
+            isBundleMode = true;
+            toggleCartDrawer(false);
+
+            document.getElementById('modalTypeBadge').innerText = 'Pemesanan Bundle (' + cart.length + ' Menu)';
+            document.getElementById('modalProductName').innerText = 'Paket Bundle Pilihan Anda';
+            document.getElementById('formProductId').value = cart[0].id;
+            document.getElementById('formBundleItems').value = JSON.stringify(cart);
+
+            document.getElementById('singleProductView').classList.add('hidden');
+            document.getElementById('bundleProductView').classList.remove('hidden');
+
+            const bundleListEl = document.getElementById('modalBundleList');
+            bundleListEl.innerHTML = cart.map(item => `
+                <div class="flex justify-between items-center text-xs py-1 border-b border-[#E2DDD5]/60">
+                    <span class="font-medium text-[#2C1A11] truncate">${item.qty}x ${item.name}</span>
+                    <span class="font-bold text-[#A85816]">Rp ${(item.price * item.qty).toLocaleString('id-ID')}</span>
+                </div>
+            `).join('');
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('modalCalculatedTotal').innerText = 'Rp ' + totalPrice.toLocaleString('id-ID');
+
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        function changeModalQty(delta) {
+            if (isBundleMode || !activeProduct) return;
+            const input = document.getElementById('formQuantity');
+            let current = parseInt(input.value) || 1;
+            current += delta;
+            if (current < 1) current = 1;
+            if (current > activeProduct.stock) {
+                current = activeProduct.stock;
+                alert('Maksimal stok tersisa: ' + activeProduct.stock + ' unit.');
+            }
+            input.value = current;
+
+            const total = current * parseInt(activeProduct.price_idr);
+            document.getElementById('modalCalculatedTotal').innerText = 'Rp ' + total.toLocaleString('id-ID');
+        }
+
+        function toggleAddressField() {
+            const select = document.getElementById('orderTypeSelect');
+            const container = document.getElementById('addressFieldContainer');
+            if (select.value === 'pickup') {
+                container.classList.add('hidden');
+            } else {
+                container.classList.remove('hidden');
+            }
+        }
+
+        function toggleBankSelect() {
+            const select = document.getElementById('paymentMethodSelect');
+            const container = document.getElementById('bankAccountContainer');
+            if (select.value === 'transfer') {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        // Initialize Cart on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartUI();
+        });
+    </script>
 
 </body>
 </html>
