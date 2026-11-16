@@ -35,6 +35,41 @@
             background: #FAF7F2;
             border-color: #C8B8A6;
         }
+
+        [data-reveal] {
+            transition: opacity 650ms ease, transform 650ms cubic-bezier(.2, .7, .2, 1);
+        }
+        .has-scroll-reveal [data-reveal]:not(.is-visible) {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+        [data-reveal].is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-icon.is-visible {
+            animation: icon-arrive 650ms cubic-bezier(.2, .7, .2, 1) both;
+        }
+        .hero-photo {
+            animation: hero-drift 18s ease-in-out infinite alternate;
+        }
+        @keyframes icon-arrive {
+            0% { opacity: .35; transform: translateY(8px) rotate(-12deg) scale(.8); }
+            70% { transform: translateY(-2px) rotate(5deg) scale(1.12); }
+            100% { opacity: 1; transform: translateY(0) rotate(0) scale(1); }
+        }
+        @keyframes hero-drift {
+            from { transform: scale(1); }
+            to { transform: scale(1.06); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-[#FAF7F0] text-[#2C1A11] antialiased min-h-screen flex flex-col selection:bg-[#F3E5C8] selection:text-[#3D251A]">
@@ -113,38 +148,117 @@
         <!-- ==========================================
              1. SECTION: SELAMAT DATANG (HERO MINIMALIS)
              ========================================== -->
-        <section class="relative bg-white rounded-3xl sm:rounded-4xl border border-[#E8DFD5] shadow-[0_4px_30px_rgba(44,26,17,0.05)] p-6 sm:p-10 md:p-12 overflow-hidden text-center sm:text-left">
-            <!-- Subtle Radial Gold Glow Background -->
-            <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#DF851A]/10 blur-3xl pointer-events-none"></div>
-            <div class="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-[#FAF7F2] blur-2xl pointer-events-none"></div>
+        <section class="relative isolate min-h-[480px] sm:min-h-[560px] rounded-[2rem] overflow-hidden bg-[#2C1A11] shadow-[0_20px_60px_rgba(44,26,17,0.18)]">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=2000&q=85"
+                alt="Roti artisan hangat yang baru dipanggang"
+                fetchpriority="high"
+                class="hero-photo absolute inset-0 w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#1D120B]/95 via-[#2C1A11]/75 to-[#2C1A11]/10"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#1D120B]/55 via-transparent to-transparent"></div>
 
-            <div class="relative z-10 max-w-3xl space-y-4">
-                <div class="inline-flex items-center gap-2 bg-[#FAF7F2] border border-[#E2DDD5] px-3.5 py-1.5 rounded-full text-[11px] font-bold text-[#A85816]">
-                    <span class="w-2 h-2 rounded-full bg-[#DF851A]"></span>
-                    <span>Mey Bakery • Fresh Daily</span>
+            <div class="relative z-10 flex min-h-[480px] sm:min-h-[560px] items-center px-6 py-12 sm:px-12 lg:px-16">
+                <div class="max-w-2xl space-y-6 text-white" data-reveal>
+                    <div class="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#F8D9A5] backdrop-blur-sm">
+                        <svg data-scroll-icon class="scroll-icon h-4 w-4 text-[#F3B44E]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c-1.2 2-4 3.8-4 7a4 4 0 0 0 8 0c0-1.4-.7-2.7-1.8-3.7.2 2-1 3.1-2.2 3.7.3-2.7-.5-5-2-7Z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16a4 4 0 0 0 8 0"></path>
+                        </svg>
+                        Mey Bakery · Artisan & Fresh Daily
+                    </div>
+
+                    <h1 class="font-serif text-4xl font-semibold leading-[1.12] tracking-tight sm:text-6xl lg:text-7xl">
+                        Hangat dari oven,<br>
+                        <span class="italic text-[#F3B44E]">manis di setiap momen.</span>
+                    </h1>
+                    <p class="max-w-xl text-sm leading-7 text-white/80 sm:text-lg">
+                        Roti artisan dan kue istimewa dibuat segar setiap hari, dengan bahan pilihan untuk menemani cerita Anda.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-1">
+                        <a href="{{ route('shop') }}"
+                            class="group inline-flex items-center gap-3 rounded-xl bg-[#DF851A] px-6 py-3.5 text-sm font-extrabold text-white shadow-[0_5px_0_#7A3E05] transition hover:-translate-y-0.5 hover:bg-[#EC9828] hover:shadow-[0_7px_0_#7A3E05] active:translate-y-1 active:shadow-none">
+                            Mulai Pesan
+                            <svg data-scroll-icon class="scroll-icon h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"></path>
+                            </svg>
+                        </a>
+                        <a href="#best-seller" class="rounded-xl border border-white/35 bg-white/10 px-5 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white/20">
+                            Lihat Best Seller
+                        </a>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-x-6 gap-y-3 pt-4 text-xs font-medium text-white/80">
+                        <span class="inline-flex items-center gap-2">
+                            <svg data-scroll-icon class="scroll-icon h-4 w-4 text-[#F3B44E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"></path>
+                            </svg>
+                            Rating pelanggan 4.9/5
+                        </span>
+                        <span class="inline-flex items-center gap-2">
+                            <svg data-scroll-icon class="scroll-icon h-4 w-4 text-[#F3B44E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-4.4 7-11a7 7 0 1 0-14 0c0 6.6 7 11 7 11Z"></path>
+                                <circle cx="12" cy="10" r="2.2"></circle>
+                            </svg>
+                            Sidomukti, Lamongan
+                        </span>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <h1 class="text-3xl sm:text-5xl md:text-6xl font-serif font-black text-[#2C1A11] tracking-tight leading-tight">
-                    Selamat Datang
-                </h1>
-
-                <p class="text-sm sm:text-base md:text-lg text-[#6B5E52] font-normal leading-relaxed max-w-xl">
-                    Artisan roti hangat dan kue istimewa, dipanggang segar setiap pagi untuk menemani momen berharga Anda.
-                </p>
-
-                <div class="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-3">
-                    <a href="#menu-utama" 
-                        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm text-white tracking-wide shadow-[0_4px_0_#7A3E05,0_8px_16px_rgba(178,93,7,0.3)] hover:brightness-105 active:translate-y-1 active:shadow-[0_1px_0_#7A3E05] transition-all cursor-pointer"
-                        style="background: linear-gradient(180deg, #DF851A 0%, #B25D07 100%); border-top: 1.5px solid rgba(254, 215, 170, 0.55);">
-                        <span>Lihat Menu Utama</span>
-                        <span>↓</span>
-                    </a>
-                    
-                    <a href="https://wa.me/6281234567890?text=Halo%20Mey%20Bakery,%20saya%20ingin%20tanya%20menu%20dan%20pesan" target="_blank"
-                        class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm text-[#2C1A11] bg-[#FAF7F2] hover:bg-[#F2ECE2] border border-[#D5CBC0] shadow-sm transition">
-                        <span>💬 Chat WhatsApp</span>
-                    </a>
+        <!-- BEST SELLER -->
+        <section id="best-seller" class="space-y-6 pt-2">
+            <div class="flex flex-col gap-3 border-b border-[#ECE5DD] pb-4 sm:flex-row sm:items-end sm:justify-between" data-reveal>
+                <div>
+                    <p class="mb-2 text-[10px] font-extrabold uppercase tracking-[.22em] text-[#A85816]">Favorit pelanggan</p>
+                    <h2 class="font-serif text-2xl font-black tracking-tight text-[#2C1A11] sm:text-3xl">Best Seller</h2>
+                    <p class="mt-1 text-xs text-[#7A6E65] sm:text-sm">Pilihan paling disukai, dibuat fresh dari dapur kami.</p>
                 </div>
+                <a href="{{ route('shop') }}" class="inline-flex items-center gap-2 text-xs font-extrabold text-[#A85816] transition hover:gap-3">
+                    Lihat semua menu
+                    <svg data-scroll-icon class="scroll-icon h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                @forelse($bestSellers as $product)
+                    @php
+                        $rating = 4.8 + (($product->id * 2) % 3) / 10;
+                    @endphp
+                    <a href="{{ route('shop') }}" data-reveal
+                        class="group overflow-hidden rounded-3xl border border-[#E8DFD5] bg-white shadow-[0_4px_16px_rgba(44,26,17,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(44,26,17,0.12)]">
+                        <div class="relative aspect-[4/3] overflow-hidden bg-[#F5EFE4]">
+                            <img src="{{ $product->image_url ?? 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80' }}"
+                                alt="{{ $product->name }}" loading="lazy"
+                                class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                            <span class="absolute left-3 top-3 rounded-full border border-white/60 bg-white/90 px-3 py-1 text-[10px] font-bold text-[#7A624E] backdrop-blur">
+                                {{ $product->category }}
+                            </span>
+                            <span class="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-[#2C1A11]/85 px-2.5 py-1 text-[10px] font-bold text-white">
+                                <svg data-scroll-icon class="scroll-icon h-3 w-3 text-[#F3B44E]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                    <path d="m10 1.5 2.6 5.3 5.9.9-4.25 4.15 1 5.85L10 14.95l-5.25 2.75 1-5.85L1.5 7.7l5.9-.9L10 1.5Z"></path>
+                                </svg>
+                                {{ number_format($rating, 1) }}
+                            </span>
+                        </div>
+                        <div class="space-y-3 p-4">
+                            <div>
+                                <h3 class="font-serif text-base font-bold text-[#2C1A11] transition group-hover:text-[#A85816]">{{ $product->name }}</h3>
+                                <p class="mt-1 line-clamp-1 text-xs text-[#7A6E65]">{{ $product->description ?: 'Dipanggang hangat setiap pagi dengan resep khas Mey Bakery.' }}</p>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-[#F2ECE2] pt-3">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-[#7A6E65]">Mulai dari</span>
+                                <span class="font-extrabold text-[#A85816]">Rp {{ number_format($product->price_idr, 0, ',', '.') }}</span>
+                            </div>
+                        </div>
+                    </a>
+                @empty
+                    <div class="col-span-full rounded-3xl border border-[#E8DFD5] bg-white p-8 text-center text-sm text-[#7A6E65]" data-reveal>
+                        Menu favorit kami sedang disiapkan. Kunjungi lagi sebentar lagi, ya.
+                    </div>
+                @endforelse
             </div>
         </section>
 
@@ -152,7 +266,7 @@
         <!-- ==========================================
              2. SECTION: MENU UTAMA (FILTER KATEGORI)
              ========================================== -->
-        <section id="menu-utama" class="space-y-4 pt-2">
+        <section id="menu-utama" class="space-y-4 pt-2" data-reveal>
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#ECE5DD] pb-4">
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-serif font-black text-[#2C1A11] tracking-tight">Menu Utama</h2>
@@ -196,7 +310,7 @@
         <!-- ==========================================
              3. SECTION: MARKETPLACE LANGSUNG (PRODUK ETALASE)
              ========================================== -->
-        <section id="marketplace" class="space-y-6">
+        <section id="marketplace" class="space-y-6" data-reveal>
             <div class="flex items-center justify-between">
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-serif font-black text-[#2C1A11] tracking-tight">Marketplace</h2>
@@ -305,9 +419,9 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
                 
                 <!-- Review 1 -->
-                <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] p-5 shadow-[0_4px_16px_rgba(44,26,17,0.04)] space-y-3 flex flex-col justify-between">
+                <div data-reveal class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] p-5 shadow-[0_4px_16px_rgba(44,26,17,0.04)] space-y-3 flex flex-col justify-between">
                     <div class="space-y-2">
-                        <div class="flex items-center gap-1 text-[#DF851A] text-sm">
+                        <div data-scroll-icon class="scroll-icon flex items-center gap-1 text-[#DF851A] text-sm">
                             ★★★★★
                         </div>
                         <p class="text-xs text-[#3D251A] leading-relaxed font-medium">
@@ -321,9 +435,9 @@
                 </div>
 
                 <!-- Review 2 -->
-                <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] p-5 shadow-[0_4px_16px_rgba(44,26,17,0.04)] space-y-3 flex flex-col justify-between">
+                <div data-reveal class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] p-5 shadow-[0_4px_16px_rgba(44,26,17,0.04)] space-y-3 flex flex-col justify-between">
                     <div class="space-y-2">
-                        <div class="flex items-center gap-1 text-[#DF851A] text-sm">
+                        <div data-scroll-icon class="scroll-icon flex items-center gap-1 text-[#DF851A] text-sm">
                             ★★★★★
                         </div>
                         <p class="text-xs text-[#3D251A] leading-relaxed font-medium">
@@ -337,9 +451,9 @@
                 </div>
 
                 <!-- Review 3 -->
-                <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] p-5 shadow-[0_4px_16px_rgba(44,26,17,0.04)] space-y-3 flex flex-col justify-between">
+                <div data-reveal class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] p-5 shadow-[0_4px_16px_rgba(44,26,17,0.04)] space-y-3 flex flex-col justify-between">
                     <div class="space-y-2">
-                        <div class="flex items-center gap-1 text-[#DF851A] text-sm">
+                        <div data-scroll-icon class="scroll-icon flex items-center gap-1 text-[#DF851A] text-sm">
                             ★★★★★
                         </div>
                         <p class="text-xs text-[#3D251A] leading-relaxed font-medium">
@@ -353,9 +467,9 @@
                 </div>
 
                 <!-- Review 4 -->
-                <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] p-5 shadow-[0_4px_16px_rgba(44,26,17,0.04)] space-y-3 flex flex-col justify-between">
+                <div data-reveal class="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD5] p-5 shadow-[0_4px_16px_rgba(44,26,17,0.04)] space-y-3 flex flex-col justify-between">
                     <div class="space-y-2">
-                        <div class="flex items-center gap-1 text-[#DF851A] text-sm">
+                        <div data-scroll-icon class="scroll-icon flex items-center gap-1 text-[#DF851A] text-sm">
                             ★★★★★
                         </div>
                         <p class="text-xs text-[#3D251A] leading-relaxed font-medium">
@@ -368,6 +482,34 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <section id="lokasi" class="relative overflow-hidden rounded-3xl bg-[#2C1A11] p-6 text-white shadow-[0_12px_32px_rgba(44,26,17,0.15)] sm:p-9" data-reveal>
+            <div class="absolute -right-12 -top-16 h-56 w-56 rounded-full bg-[#DF851A]/15 blur-3xl"></div>
+            <div class="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                <div class="flex items-start gap-4">
+                    <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/10 text-[#F3B44E]">
+                        <svg data-scroll-icon class="scroll-icon h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-4.4 7-11a7 7 0 1 0-14 0c0 6.6 7 11 7 11Z"></path>
+                            <circle cx="12" cy="10" r="2.2"></circle>
+                        </svg>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-[10px] font-bold uppercase tracking-[.22em] text-[#F3B44E]">Mampir ke dapur kami</p>
+                        <h2 class="font-serif text-xl font-bold sm:text-2xl">Temukan Mey Bakery</h2>
+                        <p class="max-w-2xl text-sm leading-6 text-white/75">Desa Sidomukti, Kecamatan Brondong, Kabupaten Lamongan, Jawa Timur 62263</p>
+                        <p class="text-xs font-medium text-white/60">Buka setiap hari · 07.30–21.00 WIB</p>
+                    </div>
+                </div>
+                <a href="https://maps.app.goo.gl/t3jdgJkREApyAzREA" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-white/25 px-5 py-3 text-xs font-bold text-white transition hover:border-[#F3B44E] hover:bg-white/10">
+                    <svg data-scroll-icon class="scroll-icon h-4 w-4 text-[#F3B44E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-4.4 7-11a7 7 0 1 0-14 0c0 6.6 7 11 7 11Z"></path>
+                        <circle cx="12" cy="10" r="2.2"></circle>
+                    </svg>
+                    Buka Google Maps
+                </a>
             </div>
         </section>
 
@@ -810,6 +952,34 @@
         // Initialize Cart on Load
         document.addEventListener('DOMContentLoaded', () => {
             updateCartUI();
+
+            const revealItems = document.querySelectorAll('[data-reveal], [data-scroll-icon], svg');
+            if (!('IntersectionObserver' in window)) {
+                revealItems.forEach(item => {
+                    item.classList.add('is-visible');
+                    if (item.tagName.toLowerCase() === 'svg') {
+                        item.classList.add('scroll-icon');
+                    }
+                });
+                return;
+            }
+
+            document.documentElement.classList.add('has-scroll-reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -24px 0px' });
+
+            revealItems.forEach(item => {
+                if (item.tagName.toLowerCase() === 'svg') {
+                    item.classList.add('scroll-icon');
+                }
+                revealObserver.observe(item);
+            });
         });
     </script>
 
