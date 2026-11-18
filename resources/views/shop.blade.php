@@ -645,7 +645,6 @@
                 <a href="{{ route('landing') }}" class="hover:text-[#F4EFE6] transition">Beranda</a>
                 <a href="https://maps.google.com/?q=Lamongan,+Jawa+Timur" target="_blank" class="hover:text-[#F4EFE6] transition">Lokasi Maps</a>
                 <a href="https://wa.me/6281234567890" target="_blank" class="hover:text-[#F4EFE6] transition">WhatsApp Admin</a>
-                <a href="{{ route('login') }}" class="hover:text-[#F4EFE6] transition text-[#8C7E72]">Admin</a>
                 <span class="text-[#4D3F33] hidden sm:inline">•</span>
                 <span class="text-[#8C7E72] text-[11px]">&copy; {{ date('Y') }} Mey Bakery</span>
             </div>
