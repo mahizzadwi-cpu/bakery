@@ -29,8 +29,9 @@
     <style>
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(145deg, #0D0B0A 0%, #1A1715 20%, #261A13 45%, #181E24 75%, #0B0A09 100%);
+            background: radial-gradient(circle at 50% 18%, #78695E 0%, #5C4F45 42%, #443A32 100%);
             background-attachment: fixed;
+            color: #FAF6F0;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -42,35 +43,57 @@
             height: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: #12100F;
+            background: #443A32;
         }
         ::-webkit-scrollbar-thumb {
-            background: #3D332B;
+            background: #8C7A6B;
             border-radius: 9999px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #6E5A4B;
+            background: #B5A18C;
+        }
+
+        /* 5-Second Smooth Transition on Every Icon Triggered by Scroll Motion */
+        .scroll-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 5s cubic-bezier(0.16, 1, 0.3, 1), 
+                        filter 5s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, filter;
+        }
+
+        @keyframes iconBreath5s {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translateY(-4px) rotate(2deg) scale(1.06);
+            }
+        }
+        .icon-ambient-5s {
+            animation: iconBreath5s 5s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="text-white antialiased min-h-screen flex flex-col selection:bg-[#B5A18C]/40 selection:text-white">
+<body class="text-[#FAF6F0] antialiased min-h-screen flex flex-col selection:bg-[#B5A18C]/40 selection:text-white">
 
-    <!-- 1. STICKY MODERN CLASSIC HEADER (VINTAGE TRANSPARAN & NATURAL ELEGAN) -->
+    <!-- 1. STICKY MODERN CLASSIC HEADER (VINTAGE TRANSPARAN AGAK CERAH & NATURAL ELEGAN) -->
     <header class="sticky top-0 z-40 transition-all duration-200">
         <!-- Multi-Harmonic Top Accent Line: Vintage Sepia Bronze -->
-        <div class="h-[2px] bg-gradient-to-r from-[#3D342D] via-[#635345] via-[#A89682] to-[#3D342D] w-full"></div>
+        <div class="h-[2px] bg-gradient-to-r from-[#5A4B40] via-[#8C7A6B] via-[#CBBDAA] to-[#5A4B40] w-full"></div>
 
-        <div class="bg-[#13100E]/85 backdrop-blur-md border-b border-white/10 shadow-lg relative">
+        <div class="bg-[#483D36]/80 backdrop-blur-xl border-b border-white/20 shadow-md relative">
             <div class="w-full max-w-[1440px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-10 h-14 sm:h-16 flex items-center justify-between gap-3">
                 
                 <!-- Brand Monogram & Title: Vintage Translucent Emblem -->
                 <a href="{{ route('landing') }}" class="flex items-center gap-2.5 group shrink-0">
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#2D231C]/90 via-[#42342A]/90 to-[#5C493B]/90 backdrop-blur-md text-[#F4EFE6] flex items-center justify-center font-serif font-black text-sm shadow-[0_4px_12px_rgba(0,0,0,0.35)] group-hover:scale-105 transition-transform duration-200 border border-[#C5B49F]/40">
-                        M
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#3D322B]/90 via-[#4F4035]/90 to-[#635345]/90 backdrop-blur-md text-[#FAF6F0] flex items-center justify-center font-serif font-black text-sm shadow-[0_4px_12px_rgba(0,0,0,0.3)] group-hover:scale-105 transition-transform duration-200 border border-[#C5B49F]/40">
+                        <span class="scroll-icon icon-ambient-5s">M</span>
                     </div>
                     <div>
-                        <span class="text-sm sm:text-base font-serif font-bold tracking-tight text-[#F4EFE6] block leading-tight">Mey Bakery.</span>
-                        <span class="text-[9px] tracking-wider uppercase text-[#9E9387] font-extrabold block">Artisan Fresh Bakes</span>
+                        <span class="text-sm sm:text-base font-serif font-bold tracking-tight text-[#FAF6F0] block leading-tight">Mey Bakery.</span>
+                        <span class="text-[9px] tracking-wider uppercase text-[#D5C7B8] font-extrabold block">Artisan Fresh Bakes</span>
                     </div>
                 </a>
 
@@ -612,8 +635,8 @@
         </div>
     </div>
 
-    <!-- 7. CLEAN & MODERN CLASSIC FOOTER (VINTAGE GELAP ELEGAN) -->
-    <footer class="bg-[#0B0908] text-[#9E9387] py-6 sm:py-8 border-t border-white/10 text-xs mt-10">
+    <!-- 7. CLEAN & MODERN CLASSIC FOOTER (VINTAGE ELEGAN) -->
+    <footer class="bg-[#382E28]/95 text-[#D5C7B8] py-6 sm:py-8 border-t border-white/15 text-xs mt-10">
         <div class="w-full max-w-[1440px] 2xl:max-w-[1680px] mx-auto px-3 sm:px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div>
                 <span class="font-serif font-black text-[#F4EFE6] text-base">Mey Bakery.</span>
@@ -927,6 +950,34 @@
                 openBundleCheckoutModal();
             }
         }
+
+        // Dynamic 5-Second Scroll Motion for Every Icon on Page Scroll
+        let isShopScrollingTimer;
+        let lastShopScrollPos = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentPos = window.scrollY;
+            const scrollDiff = currentPos - lastShopScrollPos;
+            const dir = scrollDiff >= 0 ? 1 : -1;
+            lastShopScrollPos = currentPos;
+
+            const icons = document.querySelectorAll('.scroll-icon');
+            icons.forEach((icon, idx) => {
+                icon.style.transition = 'transform 5s cubic-bezier(0.16, 1, 0.3, 1), filter 5s ease';
+                const swayAngle = (idx % 2 === 0 ? 1 : -1) * 8;
+                const floatLift = dir * -10;
+                icon.style.transform = `translateY(${floatLift}px) rotate(${swayAngle}deg) scale(1.18)`;
+                icon.style.filter = 'drop-shadow(0 10px 18px rgba(220, 190, 155, 0.55))';
+            });
+
+            clearTimeout(isShopScrollingTimer);
+            isShopScrollingTimer = setTimeout(() => {
+                icons.forEach(icon => {
+                    icon.style.transform = 'translateY(0px) rotate(0deg) scale(1)';
+                    icon.style.filter = 'none';
+                });
+            }, 700);
+        }, { passive: true });
     </script>
 </body>
 </html>
