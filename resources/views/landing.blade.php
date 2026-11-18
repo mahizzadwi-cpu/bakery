@@ -151,19 +151,10 @@
                 </div>
             </a>
 
-            <!-- Header Right: Cheerful Operational Status & 3D Action Button -->
-            <div class="flex items-center gap-3 sm:gap-4">
-                <!-- Status Operasional Dapur Toko (Fresh Green Cheerful Pill) -->
-                <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-300/80 text-emerald-950 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold shadow-[0_2px_8px_rgba(16,185,129,0.18),0_2px_0_#A7F3D0] backdrop-blur-md">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-                    <span class="whitespace-nowrap">Dapur Buka • 07.30 – 21.00 WIB</span>
-                </div>
-
-                <!-- Tombol Belanja Cepat di Header (3D Elevated) -->
-                <a href="{{ route('shop') }}" 
-                    class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-black text-xs text-[#FAF7F2] bg-[#241812] hover:bg-[#382A20] shadow-[0_4px_0_#120C08,0_8px_18px_rgba(20,14,10,0.3)] active:translate-y-1 active:shadow-none transition-all">
-                    <span>Menu Toko</span>
-                </a>
+            <!-- Status Operasional Dapur Toko (Fresh Green Cheerful Pill) -->
+            <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-300/80 text-emerald-950 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold shadow-[0_2px_8px_rgba(16,185,129,0.18),0_2px_0_#A7F3D0] backdrop-blur-md">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                <span class="whitespace-nowrap">Dapur Buka • 07.30 – 21.00 WIB</span>
             </div>
 
         </div>
