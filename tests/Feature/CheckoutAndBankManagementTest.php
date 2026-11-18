@@ -43,21 +43,13 @@ class CheckoutAndBankManagementTest extends TestCase
         $response->assertSee('821-098-7654');
     }
 
-    public function test_landing_page_shows_best_sellers_and_shop_link(): void
+    public function test_landing_page_shows_store_profile_and_shop_link(): void
     {
-        Product::create([
-            'name' => 'Pain au Chocolat',
-            'category' => 'Pastry',
-            'description' => 'Pastry berlapis dengan cokelat',
-            'price_idr' => 28000,
-            'stock' => 8,
-        ]);
-
         $response = $this->get(route('landing'));
 
         $response->assertOk();
-        $response->assertSee('Best Seller');
-        $response->assertSee('Pain au Chocolat');
+        $response->assertSee('Selamat Datang');
+        $response->assertSee('Mey Bakery');
         $response->assertSee(route('shop'), false);
     }
 
