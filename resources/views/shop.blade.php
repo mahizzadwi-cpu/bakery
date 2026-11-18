@@ -171,28 +171,28 @@
             </div>
         @endif
 
-        <!-- 3. PILIHAN KATEGORI MENU (VINTAGE TRANSPARAN ELEGAN) -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 bg-[#F8F4ED]/90 backdrop-blur-md p-2.5 sm:p-3 rounded-2xl border border-[#D5C7B6] shadow-[0_6px_0_#B09F8D,0_15px_30px_rgba(0,0,0,0.3)] text-[#241812]">
+        <!-- 3. PILIHAN KATEGORI MENU (ORGANIC FLUID PEBBLE DESIGN) -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 bg-[#F8F4ED]/90 backdrop-blur-md p-2.5 sm:p-3 rounded-[28px_12px_28px_12px] border border-[#D5C7B6] shadow-[0_12px_28px_-8px_rgba(35,25,18,0.25)] text-[#241812]">
             
             <!-- Category Filter Pills -->
             <div class="flex items-center gap-1.5 overflow-x-auto text-xs no-scrollbar">
-                <button onclick="filterCategory('all', this)" class="cat-pill active-pill shrink-0 bg-[#3D3025] text-[#F5EFE6] font-bold px-3.5 py-1.5 rounded-xl shadow-[0_2px_0_#1A130F] active:translate-y-0.5 transition-all">
+                <button onclick="filterCategory('all', this)" class="cat-pill active-pill shrink-0 bg-[#3D3025] text-[#F5EFE6] font-bold px-3.5 py-1.5 rounded-full shadow-[0_2px_0_#1A130F] active:translate-y-0.5 transition-all">
                     Semua ({{ $products->count() }})
                 </button>
-                <button onclick="filterCategory('Tart & Cake', this)" class="cat-pill shrink-0 bg-[#EAE2D5] hover:bg-[#DFD5C6] text-[#544335] hover:text-[#241812] font-semibold px-3.5 py-1.5 rounded-xl border border-[#CBBDAA] shadow-[0_1px_0_#B8A795] transition-all">
+                <button onclick="filterCategory('Tart & Cake', this)" class="cat-pill shrink-0 bg-[#EAE2D5] hover:bg-[#DFD5C6] text-[#544335] hover:text-[#241812] font-semibold px-3.5 py-1.5 rounded-full border border-[#CBBDAA] shadow-[0_1px_0_#B8A795] transition-all">
                     Tart & Cake
                 </button>
-                <button onclick="filterCategory('Pastry', this)" class="cat-pill shrink-0 bg-[#EAE2D5] hover:bg-[#DFD5C6] text-[#544335] hover:text-[#241812] font-semibold px-3.5 py-1.5 rounded-xl border border-[#CBBDAA] shadow-[0_1px_0_#B8A795] transition-all">
+                <button onclick="filterCategory('Pastry', this)" class="cat-pill shrink-0 bg-[#EAE2D5] hover:bg-[#DFD5C6] text-[#544335] hover:text-[#241812] font-semibold px-3.5 py-1.5 rounded-full border border-[#CBBDAA] shadow-[0_1px_0_#B8A795] transition-all">
                     Pastry
                 </button>
-                <button onclick="filterCategory('Beverage', this)" class="cat-pill shrink-0 bg-[#EAE2D5] hover:bg-[#DFD5C6] text-[#544335] hover:text-[#241812] font-semibold px-3.5 py-1.5 rounded-xl border border-[#CBBDAA] shadow-[0_1px_0_#B8A795] transition-all">
+                <button onclick="filterCategory('Beverage', this)" class="cat-pill shrink-0 bg-[#EAE2D5] hover:bg-[#DFD5C6] text-[#544335] hover:text-[#241812] font-semibold px-3.5 py-1.5 rounded-full border border-[#CBBDAA] shadow-[0_1px_0_#B8A795] transition-all">
                     Minuman
                 </button>
             </div>
 
             <div class="hidden sm:flex items-center gap-1.5 text-[#544335] text-[11px] font-semibold pr-1">
-                <span class="inline-flex items-center gap-1.5 bg-[#EAE2D5] border border-[#CBBDAA] text-[#544335] px-2.5 py-0.5 rounded-full font-bold shadow-2xs">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#B89658]"></span>
+                <span class="inline-flex items-center gap-1.5 bg-[#EAE2D5] border border-[#CBBDAA] text-[#544335] px-3 py-1 rounded-full font-bold shadow-2xs">
+                    <span class="w-2 h-2 rounded-full bg-[#B89658] animate-ping"></span>
                     <span>Fresh Baked Oven</span>
                 </span>
             </div>
@@ -202,31 +202,31 @@
         <div class="md:hidden">
             <div class="relative w-full">
                 <input type="text" oninput="document.getElementById('searchInput').value = this.value; searchProducts()" placeholder="Cari menu kue, roti..." 
-                    class="w-full bg-[#FAF7F1] border border-[#D5C7B6] rounded-xl pl-8 pr-3 py-2 text-xs font-medium text-[#241812] placeholder-[#8C7D70] outline-none focus:border-[#9E8975] shadow-[0_1px_0_#C5B9A8]">
-                <svg class="w-3.5 h-3.5 text-[#8C7D70] absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    class="w-full bg-[#FAF7F1] border border-[#D5C7B6] rounded-full pl-8 pr-3 py-2 text-xs font-medium text-[#241812] placeholder-[#8C7D70] outline-none focus:border-[#9E8975] shadow-xs">
+                <svg class="w-3.5 h-3.5 text-[#8C7D70] absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
         </div>
 
-        <!-- 4. PRODUCT GRID (KOLOM 5 CARD DI DESKTOP, ASPEK 3:4, VINTAGE AESTHETIC & 3D TACTILE) -->
-        <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-2.5 sm:gap-4 lg:gap-5">
+        <!-- 4. PRODUCT GRID (KOLOM 5, ORGANIC PEBBLE SILHOUETTE, BUKAN KOTAK2 KAKU) -->
+        <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
             @forelse($products as $product)
             @php
                 $rating = 4.8 + (($product->id * 2) % 3) / 10;
                 $reviews = 20 + ($product->id * 5);
             @endphp
-            <div class="menu-grid-item product-item flex flex-col justify-between h-full bg-[#F8F4ED]/92 backdrop-blur-md rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 border border-[#D5C7B6] hover:border-[#9E8975] shadow-[0_6px_0_#B09F8D,0_16px_32px_rgba(0,0,0,0.3)] hover:shadow-[0_10px_0_#8E7F6F,0_24px_45px_rgba(0,0,0,0.4)] hover:-translate-y-1.5 transition-all duration-200 group text-[#241812]" 
+            <div class="menu-grid-item product-item flex flex-col justify-between h-full bg-[#F8F4ED]/92 backdrop-blur-md rounded-[28px_12px_30px_14px] p-3 sm:p-3.5 border border-[#D5C7B6] hover:border-[#9E8975] shadow-[0_14px_30px_-8px_rgba(35,25,18,0.25)] hover:shadow-[0_20px_40px_-10px_rgba(35,25,18,0.35)] hover:-translate-y-1.5 transition-all duration-300 group text-[#241812]" 
                 data-category="{{ $product->category }}" data-name="{{ strtolower($product->name) }}">
                 
                 <div>
-                    <!-- Thumbnail Aspect 3:4 (Portrait) with Soft Cream Frame -->
-                    <div class="relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-[#ECE4D8] mb-2.5 shrink-0 border border-[#D5C7B6]">
+                    <!-- Thumbnail Aspect 3:4 with Soft Organic Frame -->
+                    <div class="relative aspect-[3/4] w-full rounded-[22px_10px_24px_10px] overflow-hidden bg-[#ECE4D8] mb-2.5 shrink-0 border border-[#D5C7B6]">
                         <img src="{{ $product->image_url ?? 'https://placehold.co/300x400/ECE4D8/241812?text=Mey+Bakery' }}" 
                             alt="{{ $product->name }}" 
                             loading="lazy"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         
                         <!-- Vintage Parchment Category Badge -->
-                        <span class="absolute top-1.5 left-1.5 bg-[#FAF7F1]/95 backdrop-blur-xs text-[#544335] font-black text-[9px] px-2.5 py-0.5 rounded-md border border-[#D5C7B6] shadow-xs">
+                        <span class="absolute top-1.5 left-1.5 bg-[#FAF7F1]/95 backdrop-blur-xs text-[#544335] font-black text-[9px] px-2.5 py-0.5 rounded-full border border-[#D5C7B6] shadow-xs">
                             {{ $product->category }}
                         </span>
 
