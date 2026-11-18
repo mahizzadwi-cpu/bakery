@@ -29,6 +29,8 @@
     <style>
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(145deg, #0D0B0A 0%, #1A1715 20%, #261A13 45%, #181E24 75%, #0B0A09 100%);
+            background-attachment: fixed;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -40,43 +42,43 @@
             height: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: #F5EFE4;
+            background: #12100F;
         }
         ::-webkit-scrollbar-thumb {
-            background: #D8CCB8;
+            background: #4A3E36;
             border-radius: 9999px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #B5A48F;
+            background: #DF851A;
         }
     </style>
 </head>
-<body class="bg-[#FAF7F0] text-[#2C1A11] antialiased min-h-screen flex flex-col selection:bg-[#F3E5C8] selection:text-[#3D251A]">
+<body class="text-white antialiased min-h-screen flex flex-col selection:bg-[#DF851A] selection:text-white">
 
-    <!-- 1. STICKY MODERN CLASSIC HEADER (ABU, COKLAT, OREN GOLD & VANILA) -->
+    <!-- 1. STICKY MODERN CLASSIC HEADER (HITAM, ABU & COKLAT GELAP MEWAH) -->
     <header class="sticky top-0 z-40 transition-all duration-200">
         <!-- Multi-Harmonic Top Accent Line: Abu Slate -> Coklat Pekat -> Oren Gold -> Vanila -->
-        <div class="h-[3px] bg-gradient-to-r from-[#64748B] via-[#3D251A] via-[#DF9A28] to-[#F5EFE4] w-full"></div>
+        <div class="h-[3px] bg-gradient-to-r from-[#64748B] via-[#3D251A] via-[#DF851A] to-[#F5EFE4] w-full"></div>
 
-        <div class="bg-[#FFFDF9]/95 backdrop-blur-md border-b border-[#E2DDD5] shadow-xs relative">
+        <div class="bg-[#12100F]/90 backdrop-blur-md border-b border-white/10 shadow-lg relative">
             <div class="w-full max-w-[1440px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-10 h-14 sm:h-16 flex items-center justify-between gap-3">
                 
-                <!-- Brand Monogram & Title: Coklat & Oren Gold -->
+                <!-- Brand Monogram & Title: Coklat & Oren Gold Circle -->
                 <a href="{{ route('landing') }}" class="flex items-center gap-2.5 group shrink-0">
-                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#3D251A] via-[#A85816] to-[#DF9A28] text-white flex items-center justify-center font-serif font-black text-sm shadow-[0_2px_0_#1D120B] group-hover:scale-105 transition-transform duration-200 border border-white/30">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#3D251A] via-[#A85816] to-[#DF851A] text-white flex items-center justify-center font-serif font-black text-sm shadow-[0_0_12px_rgba(223,133,26,0.35)] group-hover:scale-105 transition-transform duration-200 border-2 border-[#DF851A]">
                         M
                     </div>
                     <div>
-                        <span class="text-sm sm:text-base font-serif font-bold tracking-tight text-[#2C1A11] block leading-tight">Mey Bakery.</span>
-                        <span class="text-[9px] tracking-wider uppercase text-[#8C7D70] font-extrabold block">Artisan Fresh Bakes</span>
+                        <span class="text-sm sm:text-base font-serif font-bold tracking-tight text-white block leading-tight">Mey Bakery.</span>
+                        <span class="text-[9px] tracking-wider uppercase text-[#A89F95] font-extrabold block">Artisan Fresh Bakes</span>
                     </div>
                 </a>
 
-                <!-- Compact Search Bar (Vanila Cream & Abu Border) -->
+                <!-- Compact Search Bar (Dark Gray & Warm Border) -->
                 <div class="hidden md:flex flex-1 max-w-sm mx-3">
                     <div class="relative w-full">
                         <input type="text" id="searchInput" oninput="searchProducts()" placeholder="Cari menu kue, roti, atau pastry..." 
-                            class="w-full bg-[#F1EDE6] border border-[#DDD5C8] rounded-xl pl-8 pr-3 py-1.5 text-xs font-medium text-[#2C1A11] placeholder-[#8C7D70] focus:bg-[#FFFDF9] focus:border-[#DF9A28] outline-none transition shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
+                            class="w-full bg-[#1E1B18] border border-white/15 rounded-xl pl-8 pr-3 py-1.5 text-xs font-medium text-white placeholder-[#8C7D70] focus:bg-[#25221F] focus:border-[#DF851A] outline-none transition shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]">
                         <svg class="w-3.5 h-3.5 text-[#8C7D70] absolute left-2.5 top-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
@@ -85,10 +87,10 @@
 
                 <!-- Header Right: Navigasi Estetik & Keranjang -->
                 <div class="flex items-center gap-2 sm:gap-2.5">
-                    <!-- Kembali ke Beranda (Abu & Coklat 3D Button) -->
+                    <!-- Kembali ke Beranda (Dark 3D Button) -->
                     <a href="{{ route('landing') }}" title="Kembali ke Beranda" 
-                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F1EDE6] hover:bg-[#E6DFD3] text-[#3D251A] text-xs font-bold transition border border-[#DDD5C8] shadow-[0_2px_0_#CEC3B4] active:translate-y-0.5 active:shadow-none">
-                        <svg class="w-3.5 h-3.5 text-[#8C7D70]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#1E1B18] hover:bg-[#2A2622] text-[#E5DFD7] text-xs font-bold transition border border-white/15 shadow-[0_2px_0_#0D0C0B] active:translate-y-0.5 active:shadow-none">
+                        <svg class="w-3.5 h-3.5 text-[#A89F95]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
@@ -97,7 +99,7 @@
 
                     <!-- Tombol Troli Belanja: Oren Gold 3D Tactile Pill -->
                     <button onclick="toggleCartDrawer()" title="Buka Troli Belanja" 
-                        class="relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#DF9A28] via-[#C98224] to-[#A85816] text-white font-extrabold text-xs shadow-[0_3px_0_#5C2E0D,0_4px_10px_rgba(201,130,36,0.25)] hover:-translate-y-0.5 hover:shadow-[0_4px_0_#5C2E0D,0_6px_14px_rgba(201,130,36,0.35)] active:translate-y-0.5 active:shadow-[0_1px_0_#5C2E0D] transition-all duration-150 border-t border-white/40 cursor-pointer">
+                        class="relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#DF851A] via-[#C98224] to-[#A85816] text-white font-extrabold text-xs shadow-[0_3px_0_#5C2E0D,0_4px_10px_rgba(201,130,36,0.35)] hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-[0_1px_0_#5C2E0D] transition-all duration-150 border-t border-white/40 cursor-pointer">
                         <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="9" cy="21" r="1"></circle>
                             <circle cx="20" cy="21" r="1"></circle>
@@ -147,7 +149,8 @@
         @endif
 
         <!-- 3. COMPACT CATEGORY BAR (VANILA, COKLAT & ABU 3D PILLS) -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 bg-[#FFFDF9] p-2 sm:p-2.5 rounded-2xl border border-[#E2DDD5] shadow-[0_2px_0_#E0D9CE]">
+        <!-- 3. PILIHAN KATEGORI MENU (CARD TERANG ELEGAN) -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 bg-white p-2.5 sm:p-3 rounded-2xl border-2 border-[#E5DDD2] shadow-[0_6px_0_#B8A99A,0_15px_30px_rgba(0,0,0,0.35)] text-[#1D120B]">
             
             <!-- Category Filter Pills -->
             <div class="flex items-center gap-1.5 overflow-x-auto text-xs no-scrollbar">
@@ -166,8 +169,8 @@
             </div>
 
             <div class="hidden sm:flex items-center gap-1.5 text-[#5A524A] text-[11px] font-semibold pr-1">
-                <span class="inline-flex items-center gap-1.5 bg-[#F1EDE6] border border-[#DDD5C8] text-[#3D251A] px-2.5 py-0.5 rounded-full font-bold">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#DF9A28]"></span>
+                <span class="inline-flex items-center gap-1.5 bg-[#FFF8E7] border border-[#FCD34D] text-[#9A6216] px-2.5 py-0.5 rounded-full font-bold shadow-2xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#DF851A]"></span>
                     <span>Fresh Baked Oven</span>
                 </span>
             </div>
@@ -189,7 +192,7 @@
                 $rating = 4.8 + (($product->id * 2) % 3) / 10;
                 $reviews = 20 + ($product->id * 5);
             @endphp
-            <div class="menu-grid-item product-item flex flex-col justify-between h-full bg-white rounded-2xl p-3 sm:p-3.5 border-2 border-[#D8C7B5] hover:border-[#DF9A28] shadow-[0_4px_0_#CFC1AF] hover:shadow-[0_8px_20px_rgba(201,130,36,0.18),0_5px_0_#A85816] hover:-translate-y-1 transition-all duration-200 group" 
+            <div class="menu-grid-item product-item flex flex-col justify-between h-full bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 border-2 border-[#E5DDD2] hover:border-[#DF851A] shadow-[0_6px_0_#B8A99A,0_16px_32px_rgba(0,0,0,0.35)] hover:shadow-[0_10px_0_#DF851A,0_24px_48px_rgba(223,133,26,0.3)] hover:-translate-y-1.5 transition-all duration-200 group text-[#1D120B]" 
                 data-category="{{ $product->category }}" data-name="{{ strtolower($product->name) }}">
                 
                 <div>
