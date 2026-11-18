@@ -67,20 +67,19 @@
             will-change: transform, filter, border-radius;
         }
 
-        /* Frosted Glass Floating Card (Loss, Translucent, Seamless with Canvas) */
-        .glass-loss {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            box-shadow: 0 16px 36px -10px rgba(20, 14, 10, 0.35);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Bright Warm Porcelain Card (Cerah, Terlihat Jelas di Atas Background Vintage) */
+        .card-cerah {
+            background-color: #FAF7F2;
+            color: #241812;
+            border: 1px solid #D5C7B6;
+            box-shadow: 0 16px 36px -10px rgba(20, 14, 10, 0.4), 0 4px 0 #C5B5A2;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .glass-loss:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.13);
-            border-color: rgba(255, 255, 255, 0.28);
-            box-shadow: 0 24px 48px -12px rgba(20, 14, 10, 0.45);
+        .card-cerah:hover {
+            transform: translateY(-5px);
+            background-color: #FFFFFF;
+            border-color: #A3907D;
+            box-shadow: 0 24px 48px -12px rgba(20, 14, 10, 0.5), 0 6px 0 #8E7A67;
         }
     </style>
 </head>
@@ -124,7 +123,7 @@
 
         <!-- ==============================================================
              1. SECTION: HERO PROFIL TOKO — "LOSS & ABSTRAK"
-             (TANPA TUMPUKAN KOTAK CARD, BEBAS FRAMELESS MENGALIR LANGSUNG DI CANVAS)
+             (BEBAS FRAMELESS MENGALIR LANGSUNG DI CANVAS, TANPA PANAH AI)
              ============================================================== -->
         <section class="relative pt-2 sm:pt-6">
             
@@ -133,9 +132,9 @@
                 <!-- Left Column: Big Artisan Typography & Frameless Content -->
                 <div class="lg:col-span-7 space-y-7 text-center sm:text-left">
                     
-                    <!-- Top Minimal Pill Badge -->
-                    <div class="inline-flex items-center gap-2.5 bg-white/10 text-[#E5D2BC] border border-white/20 px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wide shadow-xs backdrop-blur-md">
-                        <span class="w-5 h-5 abstract-blob bg-white/15 text-xs text-[#FAF6F0]">✨</span>
+                    <!-- Top Minimal Pill Badge (Tanpa Icon AI Sparkle) -->
+                    <div class="inline-flex items-center gap-2 bg-white/10 text-[#E5D2BC] border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-xs backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-[#E5D2BC]"></span>
                         <span>Mey Bakery • Profil Resmi Toko</span>
                     </div>
 
@@ -152,23 +151,22 @@
                         Kelezatan artisan roti hangat dan kue istimewa, dipanggang baru setiap pagi dari dapur rumahan dengan bahan alami pilihan terbaik tanpa pengawet.
                     </p>
 
-                    <!-- TOMBOL UTAMA: "MULAI BELANJA" (LOSS ORGANIC CAPSULES) -->
+                    <!-- TOMBOL UTAMA: "MULAI BELANJA" (BERSIH NATURAL TANPA ICON PANAH AI) -->
                     <div class="pt-2 flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4">
                         <a href="{{ route('shop') }}" 
-                            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 sm:py-4.5 rounded-[32px_14px_36px_16px] font-black text-sm sm:text-base text-[#FAF6F0] tracking-wide hover:-translate-y-1 hover:brightness-110 active:translate-y-1 transition-all duration-200 cursor-pointer select-none group shadow-[0_8px_0_#1E1611,0_16px_30px_rgba(0,0,0,0.45)]"
+                            class="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 sm:py-4.5 rounded-full font-black text-sm sm:text-base text-[#FAF6F0] tracking-wide hover:-translate-y-1 hover:brightness-110 active:translate-y-1 transition-all duration-200 cursor-pointer select-none shadow-[0_8px_0_#1E1611,0_16px_30px_rgba(0,0,0,0.45)]"
                             style="background: linear-gradient(180deg, #382A20 0%, #201712 100%); border-top: 1px solid rgba(229, 210, 188, 0.4);">
                             <span>Mulai Belanja</span>
-                            <span class="w-7 h-7 abstract-blob bg-white/15 text-lg group-hover:translate-x-2 transition-transform duration-300">→</span>
                         </a>
 
                         <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Mey%20Bakery,%20saya%20ingin%20tanya%20seputar%20menu" target="_blank"
-                            class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-[16px_32px_18px_30px] font-bold text-xs sm:text-sm text-[#FAF6F0] bg-white/10 hover:bg-white/20 border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.2)] backdrop-blur-md active:translate-y-1 transition-all">
-                            <span class="w-6 h-6 abstract-blob bg-white/20 text-sm">💬</span>
+                            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-bold text-xs sm:text-sm text-[#FAF6F0] bg-white/10 hover:bg-white/20 border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.2)] backdrop-blur-md active:translate-y-1 transition-all">
+                            <span>💬</span>
                             <span>Tanya WhatsApp</span>
                         </a>
                     </div>
 
-                    <!-- 3 Ringkasan Profil Unggulan — MURNI ABSTRAK IKON FLOATING (BUKAN KOTAK KAKU) -->
+                    <!-- 3 Ringkasan Profil Unggulan — MURNI ABSTRAK IKON FLOATING -->
                     <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg border-t border-white/15">
                         <!-- Pod 1 -->
                         <div class="flex flex-col items-center sm:items-start text-center sm:text-left group">
@@ -198,14 +196,14 @@
 
                 </div>
 
-                <!-- Right Column: Abstract Sculptural Cake Display (Loss, Floating, Organic Glow) -->
+                <!-- Right Column: Abstract Sculptural Cake Display (Loss, Floating, Cerah Badges) -->
                 <div class="lg:col-span-5 flex justify-center">
                     <div class="relative w-full max-w-sm sm:max-w-md animate-float-3d">
                         
                         <!-- Ambient Radial Halo Behind Showcase -->
                         <div class="absolute inset-0 bg-[#E5D2BC]/15 rounded-full blur-3xl -z-10 scale-110 pointer-events-none"></div>
 
-                        <!-- Fluid Organic Arch Silhouette (No Card Wrapper Box) -->
+                        <!-- Fluid Organic Arch Silhouette -->
                         <div class="relative p-2 rounded-[58px_24px_64px_30px] bg-gradient-to-b from-white/25 via-white/10 to-transparent border border-white/25 shadow-[0_24px_50px_-12px_rgba(15,10,6,0.65)] backdrop-blur-sm">
                             <div class="relative aspect-[4/3.8] rounded-[50px_18px_56px_24px] overflow-hidden bg-[#2D231C]">
                                 <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" 
@@ -223,21 +221,21 @@
                             </div>
                         </div>
 
-                        <!-- Floating Translucent Glass Badge 1: Rating Pelanggan -->
-                        <div class="absolute -top-4 -left-3 glass-loss px-4 py-2.5 rounded-[24px_10px_26px_12px] flex items-center gap-2.5">
-                            <span class="w-7 h-7 abstract-blob bg-[#E5D2BC]/20 text-xs text-[#E5D2BC]">★</span>
+                        <!-- Floating Cerahan Badge 1: Rating Pelanggan -->
+                        <div class="absolute -top-4 -left-3 card-cerah px-4 py-2.5 rounded-[22px_10px_24px_12px] flex items-center gap-2.5 shadow-lg">
+                            <span class="w-7 h-7 abstract-blob bg-[#EAE2D5] text-xs text-[#9E814D] font-black">★</span>
                             <div>
-                                <p class="text-xs font-black text-[#FAF6F0] leading-none">4.9 / 5.0</p>
-                                <p class="text-[9px] text-[#D5C7B8] font-semibold mt-0.5">Rating Kepuasan</p>
+                                <p class="text-xs font-black text-[#241812] leading-none">4.9 / 5.0</p>
+                                <p class="text-[9px] text-[#695C51] font-bold mt-0.5">Rating Kepuasan</p>
                             </div>
                         </div>
 
-                        <!-- Floating Translucent Glass Badge 2: Jaminan Kualitas -->
-                        <div class="absolute -bottom-4 -right-2 glass-loss px-4 py-2.5 rounded-[12px_26px_14px_24px] flex items-center gap-2.5">
-                            <span class="w-7 h-7 abstract-blob bg-white/15 text-xs text-[#FAF6F0]">✨</span>
+                        <!-- Floating Cerahan Badge 2: Jaminan Kualitas Halal (Tanpa Sparkle AI) -->
+                        <div class="absolute -bottom-4 -right-2 card-cerah px-4 py-2.5 rounded-[12px_24px_14px_22px] flex items-center gap-2.5 shadow-lg">
+                            <span class="w-7 h-7 abstract-blob bg-emerald-100 text-xs text-emerald-800 font-black">✓</span>
                             <div>
-                                <p class="text-xs font-bold leading-none text-[#FAF6F0]">100% Halal</p>
-                                <p class="text-[9px] text-[#D5C7B8] font-medium mt-0.5">Dapur Higienis</p>
+                                <p class="text-xs font-black leading-none text-[#241812]">100% Halal</p>
+                                <p class="text-[9px] text-[#695C51] font-bold mt-0.5">Dapur Higienis</p>
                             </div>
                         </div>
 
@@ -249,8 +247,7 @@
 
 
         <!-- ==============================================================
-             2. SECTION: PENILAIAN PELANGGAN — LOSS & ABSTRAK
-             (ETHEREAL TRANSLUCENT GLASS CLOUDS, TANPA KOTAK OPAQUE KAKU)
+             2. SECTION: PENILAIAN PELANGGAN — CARD CERAHAN & JELAS
              ============================================================== -->
         <section class="space-y-6 pt-4">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-white/15 pb-4">
@@ -265,85 +262,85 @@
                 </div>
             </div>
 
-            <!-- 4 Dialogue Glass Clouds (Loss, Translucent, Seamless) -->
+            <!-- 4 Review Cards (Warna Cerahan Agar Kelihatan Cardnya) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
                 
                 <!-- Review 1 -->
-                <div class="glass-loss rounded-[38px_14px_42px_18px] p-6 space-y-3.5 flex flex-col justify-between">
+                <div class="card-cerah rounded-[32px_12px_36px_14px] p-6 space-y-4 flex flex-col justify-between">
                     <div class="space-y-2.5">
                         <div class="flex items-center gap-2">
-                            <span class="w-8 h-8 abstract-blob bg-white/10 text-[#E5D2BC] text-sm">★</span>
-                            <span class="text-xs font-black text-[#E5D2BC]">5.0 Bintang</span>
+                            <span class="w-8 h-8 abstract-blob bg-[#EAE2D5] text-[#9E814D] text-sm font-black">★</span>
+                            <span class="text-xs font-black text-[#8C6D38]">5.0 Bintang</span>
                         </div>
-                        <p class="text-xs text-[#FAF6F0]/90 leading-relaxed font-normal">
+                        <p class="text-xs text-[#3D3025] leading-relaxed font-medium">
                             "Roti sangat empuk dan aromanya khas butter premium. Kuenya tidak kemanisan, keluarga sangat suka!"
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-white/10 flex items-center gap-2.5">
-                        <span class="w-7 h-7 abstract-blob bg-[#8C7A6B]/50 text-[#FAF6F0] text-[10px] font-bold border border-white/20">SA</span>
+                    <div class="pt-3 border-t border-[#D5C7B6]/70 flex items-center gap-2.5">
+                        <span class="w-8 h-8 abstract-blob bg-[#5C4A3C] text-[#FAF6F0] text-[11px] font-bold shadow-xs">SA</span>
                         <div>
-                            <p class="font-bold text-xs text-[#FAF6F0]">Sarah Angelina</p>
-                            <span class="text-[10px] text-[#D5C7B8] block">Lamongan • Verified Buyer</span>
+                            <p class="font-black text-xs text-[#241812]">Sarah Angelina</p>
+                            <span class="text-[10px] text-[#695C51] font-semibold block">Lamongan • Pembeli Terverifikasi</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Review 2 -->
-                <div class="glass-loss rounded-[16px_40px_18px_36px] p-6 space-y-3.5 flex flex-col justify-between">
+                <div class="card-cerah rounded-[14px_36px_14px_32px] p-6 space-y-4 flex flex-col justify-between">
                     <div class="space-y-2.5">
                         <div class="flex items-center gap-2">
-                            <span class="w-8 h-8 abstract-blob bg-white/10 text-[#E5D2BC] text-sm">★</span>
-                            <span class="text-xs font-black text-[#E5D2BC]">5.0 Bintang</span>
+                            <span class="w-8 h-8 abstract-blob bg-[#EAE2D5] text-[#9E814D] text-sm font-black">★</span>
+                            <span class="text-xs font-black text-[#8C6D38]">5.0 Bintang</span>
                         </div>
-                        <p class="text-xs text-[#FAF6F0]/90 leading-relaxed font-normal">
+                        <p class="text-xs text-[#3D3025] leading-relaxed font-medium">
                             "Pesan dadakan untuk ulang tahun, pengiriman kurir toko tepat waktu dan hiasan kuenya rapi banget."
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-white/10 flex items-center gap-2.5">
-                        <span class="w-7 h-7 abstract-blob bg-[#8C7A6B]/50 text-[#FAF6F0] text-[10px] font-bold border border-white/20">DP</span>
+                    <div class="pt-3 border-t border-[#D5C7B6]/70 flex items-center gap-2.5">
+                        <span class="w-8 h-8 abstract-blob bg-[#5C4A3C] text-[#FAF6F0] text-[11px] font-bold shadow-xs">DP</span>
                         <div>
-                            <p class="font-bold text-xs text-[#FAF6F0]">Dimas Prasetyo</p>
-                            <span class="text-[10px] text-[#D5C7B8] block">Pelanggan Tetap</span>
+                            <p class="font-black text-xs text-[#241812]">Dimas Prasetyo</p>
+                            <span class="text-[10px] text-[#695C51] font-semibold block">Pelanggan Tetap</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Review 3 -->
-                <div class="glass-loss rounded-[36px_18px_34px_22px] p-6 space-y-3.5 flex flex-col justify-between">
+                <div class="card-cerah rounded-[32px_14px_30px_16px] p-6 space-y-4 flex flex-col justify-between">
                     <div class="space-y-2.5">
                         <div class="flex items-center gap-2">
-                            <span class="w-8 h-8 abstract-blob bg-white/10 text-[#E5D2BC] text-sm">★</span>
-                            <span class="text-xs font-black text-[#E5D2BC]">5.0 Bintang</span>
+                            <span class="w-8 h-8 abstract-blob bg-[#EAE2D5] text-[#9E814D] text-sm font-black">★</span>
+                            <span class="text-xs font-black text-[#8C6D38]">5.0 Bintang</span>
                         </div>
-                        <p class="text-xs text-[#FAF6F0]/90 leading-relaxed font-normal">
+                        <p class="text-xs text-[#3D3025] leading-relaxed font-medium">
                             "Pastry dan croissant-nya renyah di luar, lembut di dalam. Selalu pesan rutin buat teman kopi pagi."
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-white/10 flex items-center gap-2.5">
-                        <span class="w-7 h-7 abstract-blob bg-[#8C7A6B]/50 text-[#FAF6F0] text-[10px] font-bold border border-white/20">LK</span>
+                    <div class="pt-3 border-t border-[#D5C7B6]/70 flex items-center gap-2.5">
+                        <span class="w-8 h-8 abstract-blob bg-[#5C4A3C] text-[#FAF6F0] text-[11px] font-bold shadow-xs">LK</span>
                         <div>
-                            <p class="font-bold text-xs text-[#FAF6F0]">Linda Kurnia</p>
-                            <span class="text-[10px] text-[#D5C7B8] block">Verified Buyer</span>
+                            <p class="font-black text-xs text-[#241812]">Linda Kurnia</p>
+                            <span class="text-[10px] text-[#695C51] font-semibold block">Pembeli Terverifikasi</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Review 4 -->
-                <div class="glass-loss rounded-[20px_36px_16px_40px] p-6 space-y-3.5 flex flex-col justify-between">
+                <div class="card-cerah rounded-[16px_32px_14px_34px] p-6 space-y-4 flex flex-col justify-between">
                     <div class="space-y-2.5">
                         <div class="flex items-center gap-2">
-                            <span class="w-8 h-8 abstract-blob bg-white/10 text-[#E5D2BC] text-sm">★</span>
-                            <span class="text-xs font-black text-[#E5D2BC]">5.0 Bintang</span>
+                            <span class="w-8 h-8 abstract-blob bg-[#EAE2D5] text-[#9E814D] text-sm font-black">★</span>
+                            <span class="text-xs font-black text-[#8C6D38]">5.0 Bintang</span>
                         </div>
-                        <p class="text-xs text-[#FAF6F0]/90 leading-relaxed font-normal">
+                        <p class="text-xs text-[#3D3025] leading-relaxed font-medium">
                             "Sistem pesanannya sangat mudah, invoice keluar otomatis dan respon via WhatsApp super ramah."
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-white/10 flex items-center gap-2.5">
-                        <span class="w-7 h-7 abstract-blob bg-[#8C7A6B]/50 text-[#FAF6F0] text-[10px] font-bold border border-white/20">RF</span>
+                    <div class="pt-3 border-t border-[#D5C7B6]/70 flex items-center gap-2.5">
+                        <span class="w-8 h-8 abstract-blob bg-[#5C4A3C] text-[#FAF6F0] text-[11px] font-bold shadow-xs">RF</span>
                         <div>
-                            <p class="font-bold text-xs text-[#FAF6F0]">Reza Firmansyah</p>
-                            <span class="text-[10px] text-[#D5C7B8] block">Pembeli Online</span>
+                            <p class="font-black text-xs text-[#241812]">Reza Firmansyah</p>
+                            <span class="text-[10px] text-[#695C51] font-semibold block">Pembeli Online</span>
                         </div>
                     </div>
                 </div>
@@ -353,7 +350,7 @@
 
 
         <!-- ==============================================================
-             3. SECTION: ALAMAT TOKO & GOOGLE MAPS — LOSS & INTEGRATED
+             3. SECTION: ALAMAT TOKO & GOOGLE MAPS (LOKASI LAMONGAN KOTA)
              ============================================================== -->
         <section class="space-y-5 pt-4">
             <div class="border-b border-white/15 pb-4">
@@ -363,44 +360,44 @@
 
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
                 
-                <!-- Left: Informasi Detail Alamat (Loss Frosted Glass Pod) -->
-                <div class="md:col-span-5 glass-loss rounded-[42px_16px_48px_22px] p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                <!-- Left: Informasi Detail Alamat (Card Cerahan Jelas) -->
+                <div class="md:col-span-5 card-cerah rounded-[38px_16px_42px_20px] p-6 sm:p-8 flex flex-col justify-between space-y-6">
                     <div class="space-y-4">
-                        <div class="w-12 h-12 abstract-blob bg-gradient-to-tr from-[#6E5A4B] to-[#9E8672] text-[#FAF6F0] flex items-center justify-center font-bold text-xl shadow-md border border-white/20">
+                        <div class="w-12 h-12 abstract-blob bg-[#5C4A3C] text-[#FAF6F0] flex items-center justify-center font-bold text-xl shadow-md border border-white/20">
                             <span>📍</span>
                         </div>
                         
                         <div>
-                            <span class="text-[10px] uppercase font-bold text-[#E5D2BC] tracking-wider block">Alamat Resmi</span>
-                            <p class="font-bold text-base sm:text-lg text-[#FAF6F0] leading-snug mt-1">
-                                Desa Sidomukti, Kecamatan Brondong, Kabupaten Lamongan, Jawa Timur 62263
+                            <span class="text-[10px] uppercase font-black text-[#8C6D38] tracking-wider block">Alamat Resmi</span>
+                            <p class="font-black text-base sm:text-lg text-[#241812] leading-snug mt-1">
+                                Lamongan Kota, Kabupaten Lamongan, Jawa Timur 62211
                             </p>
                         </div>
 
-                        <div class="pt-3 border-t border-white/10 space-y-2 text-xs text-[#D5C7B8]">
+                        <div class="pt-3 border-t border-[#D5C7B6]/70 space-y-2 text-xs text-[#52443A]">
                             <p class="flex items-center gap-2">
-                                <span class="font-bold text-[#FAF6F0]">Jam Buka:</span>
+                                <span class="font-black text-[#241812]">Jam Buka:</span>
                                 <span>07.30 – 21.00 WIB (Setiap Hari)</span>
                             </p>
                             <p class="flex items-center gap-2">
-                                <span class="font-bold text-[#FAF6F0]">Layanan:</span>
+                                <span class="font-black text-[#241812]">Layanan:</span>
                                 <span>Kurir Toko, Pick-up, & COD</span>
                             </p>
                         </div>
                     </div>
 
-                    <a href="https://maps.app.goo.gl/t3jdgJkREApyAzREA" target="_blank"
-                        class="w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-full font-bold text-xs sm:text-sm text-[#FAF6F0] bg-white/10 hover:bg-white/20 border border-white/20 shadow-md active:translate-y-0.5 transition-all">
+                    <!-- Tombol Buka Titik Maps (Tanpa Icon Panah AI) -->
+                    <a href="https://maps.google.com/?q=Lamongan,+Jawa+Timur" target="_blank"
+                        class="w-full inline-flex items-center justify-center px-6 py-4 rounded-full font-bold text-xs sm:text-sm text-[#FAF6F0] bg-[#382A20] hover:bg-[#2A1F17] border border-[#524133] shadow-[0_4px_0_#1E1611] active:translate-y-1 transition-all">
                         <span>Buka Titik di Google Maps</span>
-                        <span class="w-5 h-5 abstract-blob bg-white/20 text-xs">↗</span>
                     </a>
                 </div>
 
-                <!-- Right: Google Maps Embed Card (Organic Silhouette Frame) -->
-                <div class="md:col-span-7 h-72 sm:h-80 md:h-full min-h-[320px] rounded-[22px_48px_24px_42px] overflow-hidden border border-white/20 shadow-[0_20px_45px_-10px_rgba(20,14,10,0.5)] bg-[#2D231C]">
+                <!-- Right: Google Maps Embed Card (Titik Lamongan Kota) -->
+                <div class="md:col-span-7 h-72 sm:h-80 md:h-full min-h-[320px] rounded-[22px_44px_24px_40px] overflow-hidden border border-white/20 shadow-[0_20px_45px_-10px_rgba(20,14,10,0.5)] bg-[#2D231C]">
                     <iframe 
                         class="w-full h-full min-h-[320px]"
-                        src="https://maps.google.com/maps?q=-6.898962,112.197332&z=15&output=embed" 
+                        src="https://maps.google.com/maps?q=Lamongan,+Jawa+Timur&z=14&output=embed" 
                         style="border:0;" 
                         allowfullscreen="" 
                         loading="lazy">
@@ -412,7 +409,7 @@
 
 
         <!-- ==============================================================
-             4. SECTION: SOSIAL MEDIA RESMI BRAND (LOSS ABSTRACT LIQUID PODS)
+             4. SECTION: SOSIAL MEDIA RESMI BRAND (CARD CERAHAN JELAS)
              ============================================================== -->
         <section class="space-y-5 pt-4">
             <div class="border-b border-white/15 pb-4">
@@ -420,45 +417,45 @@
                 <h2 class="text-2xl sm:text-4xl font-serif font-black text-[#FAF6F0] tracking-tight mt-0.5">Sosial Media</h2>
             </div>
 
-            <!-- 3 Abstract Fluid Pods (Loss Glassmorphism) -->
+            <!-- 3 Social Media Cards (Warna Cerahan Jelas) -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
                 
                 <!-- Instagram -->
                 <a href="https://instagram.com" target="_blank" 
-                    class="glass-loss rounded-[36px_14px_38px_18px] p-6 flex items-center gap-4 group">
+                    class="card-cerah rounded-[32px_14px_34px_16px] p-6 flex items-center gap-4 group">
                     <div class="w-12 h-12 abstract-blob bg-gradient-to-tr from-[#833AB4] to-[#C13584] text-white flex items-center justify-center text-xl shadow-md shrink-0 group-hover:scale-110 transition-transform">
                         <span>📸</span>
                     </div>
                     <div>
-                        <span class="text-[10px] uppercase font-bold text-[#E5D2BC] tracking-wider block">Instagram</span>
-                        <p class="font-bold text-sm text-[#FAF6F0] group-hover:text-[#E5D2BC] transition-colors">@meybakery.official</p>
-                        <p class="text-[11px] text-[#D5C7B8] mt-0.5">Galeri foto roti & update harian</p>
+                        <span class="text-[10px] uppercase font-black text-[#8C6D38] tracking-wider block">Instagram</span>
+                        <p class="font-black text-sm text-[#241812] group-hover:text-[#6E5A4B] transition-colors">@meybakery.official</p>
+                        <p class="text-[11px] text-[#695C51] mt-0.5">Galeri foto roti & update harian</p>
                     </div>
                 </a>
 
                 <!-- TikTok -->
                 <a href="https://tiktok.com" target="_blank" 
-                    class="glass-loss rounded-[16px_38px_18px_34px] p-6 flex items-center gap-4 group">
-                    <div class="w-12 h-12 abstract-blob bg-[#1E1713] text-white flex items-center justify-center text-xl shadow-md shrink-0 group-hover:scale-110 transition-transform border border-white/20">
+                    class="card-cerah rounded-[14px_34px_16px_32px] p-6 flex items-center gap-4 group">
+                    <div class="w-12 h-12 abstract-blob bg-[#241812] text-white flex items-center justify-center text-xl shadow-md shrink-0 group-hover:scale-110 transition-transform border border-white/20">
                         <span>🎵</span>
                     </div>
                     <div>
-                        <span class="text-[10px] uppercase font-bold text-[#E5D2BC] tracking-wider block">TikTok</span>
-                        <p class="font-bold text-sm text-[#FAF6F0] group-hover:text-[#E5D2BC] transition-colors">@meybakery</p>
-                        <p class="text-[11px] text-[#D5C7B8] mt-0.5">Video seru proses baking oven</p>
+                        <span class="text-[10px] uppercase font-black text-[#8C6D38] tracking-wider block">TikTok</span>
+                        <p class="font-black text-sm text-[#241812] group-hover:text-[#6E5A4B] transition-colors">@meybakery</p>
+                        <p class="text-[11px] text-[#695C51] mt-0.5">Video seru proses baking oven</p>
                     </div>
                 </a>
 
                 <!-- WhatsApp -->
                 <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Mey%20Bakery,%20saya%20ingin%20memesan" target="_blank" 
-                    class="glass-loss rounded-[34px_16px_36px_20px] p-6 flex items-center gap-4 group">
+                    class="card-cerah rounded-[32px_16px_34px_18px] p-6 flex items-center gap-4 group">
                     <div class="w-12 h-12 abstract-blob bg-gradient-to-tr from-[#059669] to-[#10B981] text-white flex items-center justify-center text-xl shadow-md shrink-0 group-hover:scale-110 transition-transform">
                         <span>💬</span>
                     </div>
                     <div>
-                        <span class="text-[10px] uppercase font-bold text-emerald-400 tracking-wider block">WhatsApp Resmi</span>
-                        <p class="font-bold text-sm text-[#FAF6F0] group-hover:text-emerald-300 transition-colors">0812-3456-7890</p>
-                        <p class="text-[11px] text-[#D5C7B8] mt-0.5">Chat langsung pesanan khusus</p>
+                        <span class="text-[10px] uppercase font-black text-emerald-800 tracking-wider block">WhatsApp Resmi</span>
+                        <p class="font-black text-sm text-[#241812] group-hover:text-emerald-700 transition-colors">0812-3456-7890</p>
+                        <p class="text-[11px] text-[#695C51] mt-0.5">Chat langsung pesanan khusus</p>
                     </div>
                 </a>
 
@@ -467,7 +464,7 @@
 
     </main>
 
-    <!-- 5. FOOTER MINIMALIS VINTAGE ELEGAN (ORGANIC FLOW) -->
+    <!-- 5. FOOTER MINIMALIS VINTAGE ELEGAN (LOKASI LAMONGAN KOTA) -->
     <footer class="bg-[#382E28]/90 border-t border-white/15 py-8 text-center text-xs text-[#D5C7B8] mt-12 relative z-10 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-4 space-y-2">
             <div class="flex items-center justify-center gap-2">
@@ -476,7 +473,7 @@
             </div>
             
             <p class="font-medium text-[#FAF6F0]/90">
-                Desa Sidomukti, Kecamatan Brondong, Kabupaten Lamongan, Jawa Timur 62263
+                Lamongan Kota, Kabupaten Lamongan, Jawa Timur 62211
             </p>
 
             <p class="text-[11px] text-[#D5C7B8]/80 pt-1">

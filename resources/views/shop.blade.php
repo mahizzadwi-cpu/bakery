@@ -214,7 +214,8 @@
                 $rating = 4.8 + (($product->id * 2) % 3) / 10;
                 $reviews = 20 + ($product->id * 5);
             @endphp
-            <div class="menu-grid-item product-item flex flex-col justify-between h-full bg-[#F8F4ED]/92 backdrop-blur-md rounded-[28px_12px_30px_14px] p-3 sm:p-3.5 border border-[#D5C7B6] hover:border-[#9E8975] shadow-[0_14px_30px_-8px_rgba(35,25,18,0.25)] hover:shadow-[0_20px_40px_-10px_rgba(35,25,18,0.35)] hover:-translate-y-1.5 transition-all duration-300 group text-[#241812]" 
+            <div class="menu-grid-item product-item flex flex-col justify-between h-full rounded-[24px_10px_26px_12px] p-3 sm:p-3.5 border border-[#D5C7B6] hover:border-[#A3907D] shadow-[0_16px_36px_-10px_rgba(20,14,10,0.4),0_3px_0_#C5B5A2] hover:shadow-[0_24px_48px_-12px_rgba(20,14,10,0.5),0_5px_0_#8E7A67] hover:-translate-y-1.5 transition-all duration-300 group text-[#241812]" 
+                style="background-color: #FAF7F2;"
                 data-category="{{ $product->category }}" data-name="{{ strtolower($product->name) }}">
                 
                 <div>
@@ -353,7 +354,6 @@
                 <button onclick="proceedFromCart()" id="btnCheckoutCart" disabled
                     class="w-full bg-gradient-to-r from-[#44352A] via-[#5C493B] to-[#3B2C22] hover:brightness-110 disabled:from-[#DDD5C8] disabled:via-[#DDD5C8] disabled:to-[#DDD5C8] disabled:text-[#8C7D70] disabled:shadow-none disabled:cursor-not-allowed text-[#F5EFE6] text-xs font-extrabold py-3.5 px-4 rounded-xl border-t border-white/20 shadow-[0_4px_0_#1A130F,0_10px_20px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 active:translate-y-1 active:shadow-[0_1px_0_#1A130F] transition-all flex items-center justify-center gap-2 cursor-pointer group">
                     <span id="btnCheckoutCartText">Lanjut Pesan Bundle</span>
-                    <span class="group-hover:translate-x-0.5 transition-transform">→</span>
                 </button>
             </div>
         </div>
@@ -627,7 +627,6 @@
                     <button type="submit" 
                         class="relative inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 rounded-2xl font-black text-xs sm:text-sm text-[#F5EFE6] tracking-wide bg-gradient-to-r from-[#44352A] via-[#5A4537] to-[#3B2C22] border-t border-white/25 shadow-[0_5px_0_#1A130F,0_14px_28px_rgba(0,0,0,0.35)] hover:brightness-110 active:translate-y-1 active:shadow-[0_1px_0_#1A130F] transition-all cursor-pointer select-none">
                         <span>Konfirmasi Pesanan</span>
-                        <span>→</span>
                     </button>
                 </div>
 
@@ -640,11 +639,11 @@
         <div class="w-full max-w-[1440px] 2xl:max-w-[1680px] mx-auto px-3 sm:px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div>
                 <span class="font-serif font-black text-[#F4EFE6] text-base">Mey Bakery.</span>
-                <p class="text-[10px] text-[#8C7E72] mt-0.5">Artisan Pâtisserie & Specialty Bakes • Desa Sidomukti, Brondong, Lamongan</p>
+                <p class="text-[10px] text-[#8C7E72] mt-0.5">Artisan Pâtisserie & Specialty Bakes • Lamongan Kota, Jawa Timur</p>
             </div>
             <div class="flex items-center gap-4 text-xs text-[#B8ADA2] flex-wrap justify-center">
                 <a href="{{ route('landing') }}" class="hover:text-[#F4EFE6] transition">Beranda</a>
-                <a href="https://maps.app.goo.gl/t3jdgJkREApyAzREA" target="_blank" class="hover:text-[#F4EFE6] transition">Lokasi Maps ↗</a>
+                <a href="https://maps.google.com/?q=Lamongan,+Jawa+Timur" target="_blank" class="hover:text-[#F4EFE6] transition">Lokasi Maps</a>
                 <a href="https://wa.me/6281234567890" target="_blank" class="hover:text-[#F4EFE6] transition">WhatsApp Admin</a>
                 <a href="{{ route('login') }}" class="hover:text-[#F4EFE6] transition text-[#8C7E72]">Admin</a>
                 <span class="text-[#4D3F33] hidden sm:inline">•</span>

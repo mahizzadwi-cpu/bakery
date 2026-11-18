@@ -197,9 +197,9 @@
                         <p class="flex items-start gap-2.5">
                             <span class="font-bold text-[#16241B] min-w-[70px]">Alamat:</span>
                             <span>
-                                <strong>Desa Sidomukti, Kecamatan Brondong, Kabupaten Lamongan, Jawa Timur 62263</strong>
-                                <a href="https://maps.app.goo.gl/t3jdgJkREApyAzREA" target="_blank" class="text-[#B07844] hover:underline font-bold block mt-0.5">
-                                    Buka Titik Lokasi di Google Maps ↗
+                                <strong>Lamongan Kota, Kabupaten Lamongan, Jawa Timur 62211</strong>
+                                <a href="https://maps.google.com/?q=Lamongan,+Jawa+Timur" target="_blank" class="text-[#B07844] hover:underline font-bold block mt-0.5">
+                                    Buka Titik Lokasi di Google Maps
                                 </a>
                             </span>
                         </p>
