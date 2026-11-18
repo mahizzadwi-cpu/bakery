@@ -162,58 +162,58 @@
 </head>
 <body class="text-[#FAF6F0] antialiased min-h-screen flex flex-col selection:bg-[#B5A18C]/40 selection:text-white">
 
-    <!-- 1. STICKY MODERN CLASSIC HEADER (VINTAGE TRANSPARAN AGAK CERAH & NATURAL ELEGAN) -->
+    <!-- 1. STICKY MODERN CLASSIC HEADER (CERIA, 3D MENONJOL, WARM PORCELAIN & RESPONSIVE DESKTOP) -->
     <header class="sticky top-0 z-40 transition-all duration-200">
-        <!-- Multi-Harmonic Top Accent Line: Vintage Sepia Bronze -->
-        <div class="h-[2px] bg-gradient-to-r from-[#5A4B40] via-[#8C7A6B] via-[#CBBDAA] to-[#5A4B40] w-full"></div>
+        <!-- Multi-Harmonic Top Accent Line: Vintage Gold Ribbon -->
+        <div class="h-[3px] bg-gradient-to-r from-[#9E814D] via-[#D5C7B6] via-[#FAF7F2] to-[#9E814D] w-full"></div>
 
-        <div class="bg-[#483D36]/80 backdrop-blur-xl border-b border-white/20 shadow-md relative">
+        <div class="bg-[#FAF7F2] text-[#241812] border-b-2 border-[#D5C7B6] shadow-[0_10px_30px_-5px_rgba(20,14,10,0.35),0_4px_0_#C5B5A2] backdrop-blur-xl relative">
             <div class="w-full max-w-[1440px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-10 h-14 sm:h-16 flex items-center justify-between gap-3">
                 
-                <!-- Brand Monogram & Title: Vintage Translucent Emblem -->
+                <!-- Brand Monogram & Title: 3D Boutique Emblem -->
                 <a href="{{ route('landing') }}" class="flex items-center gap-2.5 group shrink-0">
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#3D322B]/90 via-[#4F4035]/90 to-[#635345]/90 backdrop-blur-md text-[#FAF6F0] flex items-center justify-center font-serif font-black text-sm shadow-[0_4px_12px_rgba(0,0,0,0.3)] group-hover:scale-105 transition-transform duration-200 border border-[#C5B49F]/40">
+                    <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-[#382A20] via-[#2A1E17] to-[#17100B] text-[#FAF7F2] flex items-center justify-center font-serif font-black text-sm shadow-[0_4px_10px_rgba(20,14,10,0.3),0_2px_0_#120C08,inset_0_1px_1px_rgba(255,255,255,0.4)] group-hover:scale-105 transition-transform duration-200 border border-[#C5B49F]/60">
                         <span class="scroll-icon icon-ambient-5s">M</span>
                     </div>
                     <div>
-                        <span class="text-sm sm:text-base font-serif font-bold tracking-tight text-[#FAF6F0] block leading-tight">Mey Bakery.</span>
-                        <span class="text-[9px] tracking-wider uppercase text-[#D5C7B8] font-extrabold block">Artisan Fresh Bakes</span>
+                        <span class="text-sm sm:text-base font-serif font-black tracking-tight text-[#241812] block leading-tight group-hover:text-[#6E5A4B] transition-colors">Mey Bakery.</span>
+                        <span class="text-[9px] tracking-wider uppercase text-[#736254] font-extrabold block">Artisan Fresh Bakes</span>
                     </div>
                 </a>
 
-                <!-- Compact Search Bar (Dark Vintage Gray & Warm Border) -->
+                <!-- Compact Search Bar (Clean White & Warm Gold Border) -->
                 <div class="hidden md:flex flex-1 max-w-sm mx-3">
                     <div class="relative w-full">
                         <input type="text" id="searchInput" oninput="searchProducts()" placeholder="Cari menu kue, roti, atau pastry..." 
-                            class="w-full bg-[#1E1B18] border border-white/15 rounded-xl pl-8 pr-3 py-1.5 text-xs font-medium text-white placeholder-[#8C7D70] focus:bg-[#25221F] focus:border-[#9E8975] outline-none transition shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]">
-                        <svg class="w-3.5 h-3.5 text-[#8C7D70] absolute left-2.5 top-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            class="w-full bg-white border border-[#D5C7B6] rounded-xl pl-8 pr-3 py-1.5 text-xs font-semibold text-[#241812] placeholder-[#8C7D70] focus:bg-[#FAF7F2] focus:border-[#241812] outline-none transition shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)]">
+                        <svg class="w-3.5 h-3.5 text-[#736254] absolute left-2.5 top-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </div>
                 </div>
 
-                <!-- Header Right: Navigasi Estetik & Keranjang -->
+                <!-- Header Right: Navigasi Estetik & Keranjang (3D Tactile) -->
                 <div class="flex items-center gap-2 sm:gap-2.5">
-                    <!-- Kembali ke Beranda (Vintage Dark Button) -->
+                    <!-- Kembali ke Beranda -->
                     <a href="{{ route('landing') }}" title="Kembali ke Beranda" 
-                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#1E1B18] hover:bg-[#2A2622] text-[#DDD5CB] text-xs font-bold transition border border-white/15 shadow-[0_2px_0_#0D0C0B] active:translate-y-0.5 active:shadow-none">
-                        <svg class="w-3.5 h-3.5 text-[#9E9387]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-[#FAF7F2] text-[#241812] text-xs font-bold transition border border-[#D5C7B6] shadow-[0_2px_0_#C5B5A2] active:translate-y-0.5 active:shadow-none">
+                        <svg class="w-3.5 h-3.5 text-[#736254]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
                         <span class="hidden sm:inline">Beranda</span>
                     </a>
 
-                    <!-- Tombol Troli Belanja: Vintage Translucent Espresso Pill -->
+                    <!-- Tombol Troli Belanja: 3D Elevated Espresso Pill -->
                     <button onclick="toggleCartDrawer()" title="Buka Troli Belanja" 
-                        class="relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#44352A] via-[#5C493B] to-[#3B2C22] text-[#F5EFE6] font-extrabold text-xs shadow-[0_3px_0_#1A130F,0_4px_10px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-[0_1px_0_#1A130F] transition-all duration-150 border-t border-white/20 cursor-pointer">
-                        <svg class="w-4 h-4 text-[#F5EFE6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        class="relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#241812] hover:bg-[#382A20] text-[#FAF7F2] font-black text-xs shadow-[0_3px_0_#120C08,0_6px_14px_rgba(20,14,10,0.3)] hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-none transition-all duration-150 border-t border-white/20 cursor-pointer">
+                        <svg class="w-4 h-4 text-[#FAF7F2]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="9" cy="21" r="1"></circle>
                             <circle cx="20" cy="21" r="1"></circle>
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg>
                         <span class="hidden xs:inline">Keranjang</span>
-                        <span id="cartCountBadge" class="bg-[#FAF7F1] text-[#3D251A] font-extrabold text-[10px] min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1 shadow-2xs">0</span>
+                        <span id="cartCountBadge" class="bg-[#FAF7F2] text-[#241812] font-extrabold text-[10px] min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1 shadow-2xs border border-[#D5C7B6]">0</span>
                     </button>
                 </div>
             </div>
