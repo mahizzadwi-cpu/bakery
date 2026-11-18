@@ -74,6 +74,90 @@
         .icon-ambient-5s {
             animation: iconBreath5s 5s ease-in-out infinite;
         }
+
+        /* Product Card Motion Transitions (Enter & Exit Animations) */
+        .product-item {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                        opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .item-enter {
+            animation: itemEnterAnim 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .item-exit {
+            animation: itemExitAnim 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes itemEnterAnim {
+            0% {
+                opacity: 0;
+                transform: translateY(16px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes itemExitAnim {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-12px) scale(0.94);
+            }
+        }
+
+        /* Modal Smooth Enter & Exit Transition */
+        #checkoutModal {
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #checkoutModal .modal-panel {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #checkoutModal.modal-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #checkoutModal.modal-active .modal-panel {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+        #checkoutModal.modal-leaving {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #checkoutModal.modal-leaving .modal-panel {
+            transform: translateY(20px) scale(0.95);
+            opacity: 0;
+        }
+
+        /* Cart Drawer Smooth Slide Enter & Exit */
+        #cartDrawer {
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #cartDrawer .drawer-panel {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #cartDrawer.drawer-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #cartDrawer.drawer-active .drawer-panel {
+            transform: translateX(0);
+        }
+        #cartDrawer.drawer-leaving {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #cartDrawer.drawer-leaving .drawer-panel {
+            transform: translateX(100%);
+        }
     </style>
 </head>
 <body class="text-[#FAF6F0] antialiased min-h-screen flex flex-col selection:bg-[#B5A18C]/40 selection:text-white">
@@ -207,27 +291,27 @@
             </div>
         </div>
 
-        <!-- 4. PRODUCT GRID (KOLOM 5, ORGANIC PEBBLE SILHOUETTE, BUKAN KOTAK2 KAKU) -->
-        <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
+        <!-- 4. PRODUCT GRID (KOLOM 4 DI DESKTOP, 2 DI MOBILE — EKONOMIS, IDEAL & TRANSISI MASUK-KELUAR) -->
+        <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-5">
             @forelse($products as $product)
             @php
                 $rating = 4.8 + (($product->id * 2) % 3) / 10;
                 $reviews = 20 + ($product->id * 5);
             @endphp
-            <div class="menu-grid-item product-item flex flex-col justify-between h-full rounded-[24px_10px_26px_12px] p-3 sm:p-3.5 border border-[#D5C7B6] hover:border-[#A3907D] shadow-[0_16px_36px_-10px_rgba(20,14,10,0.4),0_3px_0_#C5B5A2] hover:shadow-[0_24px_48px_-12px_rgba(20,14,10,0.5),0_5px_0_#8E7A67] hover:-translate-y-1.5 transition-all duration-300 group text-[#241812]" 
-                style="background-color: #FAF7F2;"
+            <div class="menu-grid-item product-item item-enter flex flex-col justify-between h-full rounded-[20px_10px_20px_12px] sm:rounded-[24px_12px_26px_14px] p-2.5 sm:p-3.5 border border-[#D5C7B6] hover:border-[#A3907D] shadow-[0_10px_24px_-6px_rgba(20,14,10,0.35),0_3px_0_#C5B5A2] hover:shadow-[0_18px_36px_-8px_rgba(20,14,10,0.45),0_5px_0_#8E7A67] hover:-translate-y-1 transition-all duration-300 group text-[#241812]" 
+                style="background-color: #FAF7F2; animation-delay: {{ $loop->index * 35 }}ms;"
                 data-category="{{ $product->category }}" data-name="{{ strtolower($product->name) }}">
                 
                 <div>
-                    <!-- Thumbnail Aspect 3:4 with Soft Organic Frame -->
-                    <div class="relative aspect-[3/4] w-full rounded-[22px_10px_24px_10px] overflow-hidden bg-[#ECE4D8] mb-2.5 shrink-0 border border-[#D5C7B6]">
-                        <img src="{{ $product->image_url ?? 'https://placehold.co/300x400/ECE4D8/241812?text=Mey+Bakery' }}" 
+                    <!-- Thumbnail Aspect Square (1:1) — Lebih Kompak, Ekonomis & Pas di Layar Mobile -->
+                    <div class="relative aspect-square w-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#ECE4D8] mb-2 sm:mb-2.5 shrink-0 border border-[#D5C7B6]">
+                        <img src="{{ $product->image_url ?? 'https://placehold.co/300x300/ECE4D8/241812?text=Mey+Bakery' }}" 
                             alt="{{ $product->name }}" 
                             loading="lazy"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         
-                        <!-- Vintage Parchment Category Badge -->
-                        <span class="absolute top-1.5 left-1.5 bg-[#FAF7F1]/95 backdrop-blur-xs text-[#544335] font-black text-[9px] px-2.5 py-0.5 rounded-full border border-[#D5C7B6] shadow-xs">
+                        <!-- Vintage Category Badge -->
+                        <span class="absolute top-1.5 left-1.5 bg-[#FAF7F2]/95 backdrop-blur-xs text-[#544335] font-black text-[9px] px-2 py-0.5 rounded-full border border-[#D5C7B6] shadow-2xs">
                             {{ $product->category }}
                         </span>
 
@@ -248,35 +332,35 @@
                     </div>
 
                     <!-- Title (Artisan Serif/Sans with Warm Hover) -->
-                    <h3 class="font-bold text-xs sm:text-sm text-[#241812] leading-snug line-clamp-1 group-hover:text-[#6E5A4B] transition-colors">
+                    <h3 class="font-bold text-xs sm:text-sm text-[#241812] leading-tight line-clamp-1 group-hover:text-[#6E5A4B] transition-colors">
                         {{ $product->name }}
                     </h3>
 
-                    <!-- Penilaian Rating Produk: Vintage Muted Stars -->
+                    <!-- Penilaian Rating Produk -->
                     <div class="flex items-center gap-1 mt-0.5 text-[10px]">
-                        <span class="text-[#B89658] font-black">★ {{ number_format($rating, 1) }}</span>
+                        <span class="text-[#9E814D] font-black">★ {{ number_format($rating, 1) }}</span>
                         <span class="text-[#695C51] font-semibold">({{ $reviews }})</span>
                     </div>
 
                     <!-- Deskripsi Ringkas -->
-                    <p class="text-[11px] text-[#52443A] mt-1 line-clamp-1 leading-normal font-medium">
+                    <p class="text-[10px] sm:text-[11px] text-[#52443A] mt-1 line-clamp-1 leading-normal font-medium">
                         {{ $product->description ?: 'Dipanggang hangat setiap pagi dengan resep autentik.' }}
                     </p>
                 </div>
 
                 <!-- Bottom Section: Harga & Action Buttons -->
-                <div class="mt-2.5 pt-2.5 border-t border-[#DFD6C9] flex items-center justify-between gap-1.5">
-                    <div>
-                        <span class="text-[9px] uppercase font-black text-[#695C51] block leading-tight">Harga</span>
-                        <span class="text-xs sm:text-sm font-black text-[#3D2C21] leading-tight block">
+                <div class="mt-2 sm:mt-2.5 pt-2 sm:pt-2.5 border-t border-[#DFD6C9] flex items-center justify-between gap-1">
+                    <div class="min-w-0">
+                        <span class="text-[8px] sm:text-[9px] uppercase font-black text-[#695C51] block leading-none">Harga</span>
+                        <span class="text-xs sm:text-sm font-black text-[#241812] leading-tight block truncate mt-0.5">
                             Rp {{ number_format($product->price_idr, 0, ',', '.') }}
                         </span>
                     </div>
 
-                    <div class="flex items-center gap-1.5">
-                        <!-- Trolley Cart Add Button (Vintage Translucent 3D) -->
+                    <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
+                        <!-- Trolley Cart Add Button -->
                         <button type="button" onclick="addToCart({{ json_encode($product) }})" title="Tambah ke Troli"
-                            class="w-8 h-8 rounded-xl bg-[#FAF7F1] hover:bg-[#EAE2D5] text-[#241812] border border-[#CBBDAA] transition-all flex items-center justify-center shrink-0 cursor-pointer shadow-[0_2px_0_#B8A795] active:translate-y-0.5 active:shadow-none">
+                            class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#FAF7F1] hover:bg-[#EAE2D5] text-[#241812] border border-[#CBBDAA] transition-all flex items-center justify-center shrink-0 cursor-pointer shadow-[0_1.5px_0_#B8A795] active:translate-y-0.5 active:shadow-none">
                             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="9" cy="21" r="1"></circle>
                                 <circle cx="20" cy="21" r="1"></circle>
@@ -284,9 +368,9 @@
                             </svg>
                         </button>
 
-                        <!-- Instant Order / Checkout Button (Vintage Espresso 3D) -->
+                        <!-- Instant Order / Checkout Button -->
                         <button type="button" onclick="openCheckoutModal({{ json_encode($product) }})" 
-                            class="bg-gradient-to-r from-[#44352A] to-[#2A2019] hover:brightness-110 text-[#F5EFE6] text-xs font-black py-1.5 px-3.5 rounded-xl transition-all flex items-center justify-center cursor-pointer border-t border-white/20 shadow-[0_3px_0_#1A130F] active:translate-y-0.5 active:shadow-none">
+                            class="bg-gradient-to-r from-[#382A20] to-[#201712] hover:brightness-110 text-[#FAF6F0] text-[11px] sm:text-xs font-black py-1 sm:py-1.5 px-2.5 sm:px-3.5 rounded-lg sm:rounded-xl transition-all flex items-center justify-center cursor-pointer border-t border-white/20 shadow-[0_2.5px_0_#1A130F] active:translate-y-0.5 active:shadow-none">
                             <span>Beli</span>
                         </button>
                     </div>
@@ -302,11 +386,25 @@
             @endforelse
         </div>
 
+        <!-- 4B. MOBILE FLOATING CART BAR (EKONOMIS & PRAKTIS DI MOBILE SAAT ADA PESANAN) -->
+        <div id="mobileCartBar" class="fixed bottom-4 left-3 right-3 z-30 md:hidden hidden transition-all duration-300 transform translate-y-16 opacity-0 pointer-events-none">
+            <button onclick="toggleCartDrawer(true)" class="w-full bg-gradient-to-r from-[#382A20] via-[#4A3B31] to-[#201712] text-[#FAF6F0] p-3 rounded-2xl shadow-[0_12px_28px_rgba(0,0,0,0.5),0_3px_0_#1A130F] border border-white/20 flex items-center justify-between active:scale-[0.98] transition">
+                <div class="flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-lg bg-[#FAF7F1] text-[#241812] flex items-center justify-center font-black text-xs" id="mobileCartBarQty">0</span>
+                    <span class="text-xs font-bold text-[#FAF6F0]">Menu di Troli</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-black text-[#E5D2BC]" id="mobileCartBarTotal">Rp 0</span>
+                    <span class="text-[10px] bg-white/15 px-2.5 py-1 rounded-full font-bold text-[#FAF6F0]">Buka Troli</span>
+                </div>
+            </button>
+        </div>
+
     </main>
 
     <!-- 5. SLIDE-OVER CART DRAWER (VINTAGE TRANSPARAN ELEGAN) -->
-    <div id="cartDrawer" class="fixed inset-0 bg-[#1D120B]/60 backdrop-blur-xs z-50 hidden transition-all duration-300">
-        <div class="absolute right-0 top-0 bottom-0 w-full max-w-sm sm:max-w-md bg-[#FAF7F1] shadow-2xl flex flex-col justify-between p-4 sm:p-6 border-l border-[#D5C7B6] overflow-hidden text-[#241812]">
+    <div id="cartDrawer" class="fixed inset-0 bg-[#1D120B]/60 backdrop-blur-xs z-50 hidden transition-opacity duration-300 opacity-0 pointer-events-none">
+        <div class="drawer-panel absolute right-0 top-0 bottom-0 w-full max-w-sm sm:max-w-md bg-[#FAF7F1] shadow-2xl flex flex-col justify-between p-4 sm:p-6 border-l border-[#D5C7B6] overflow-hidden text-[#241812] transition-transform duration-300 transform translate-x-full">
             
             <!-- Drawer Header -->
             <div class="flex items-center justify-between border-b border-[#D5C7B6] pb-3.5 shrink-0">
@@ -360,8 +458,8 @@
     </div>
 
     <!-- 6. ERGONOMIC & AESTHETIC CHECKOUT MODAL (VINTAGE TRANSPARAN HD) -->
-    <div id="checkoutModal" class="fixed inset-0 bg-[#1D120B]/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto">
-        <div class="relative bg-[#FAF7F1] rounded-2xl sm:rounded-3xl max-w-lg w-full p-4 sm:p-7 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6),0_8px_0_#A39483] border border-[#D5C7B6] my-auto max-h-[94vh] overflow-y-auto transition-all text-[#241812]">
+    <div id="checkoutModal" class="fixed inset-0 bg-[#1D120B]/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto transition-opacity duration-300 opacity-0 pointer-events-none">
+        <div class="modal-panel relative bg-[#FAF7F1] rounded-2xl sm:rounded-3xl max-w-lg w-full p-4 sm:p-7 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6),0_8px_0_#A39483] border border-[#D5C7B6] my-auto max-h-[94vh] overflow-y-auto text-[#241812] transition-all duration-300 transform scale-95 translate-y-4 opacity-0">
             
             <!-- Top Slim Aesthetic Ribbon Line: Vintage Sepia Bronze -->
             <div class="h-2 w-full bg-gradient-to-r from-[#3D342D] via-[#635345] via-[#A89682] to-[#3D342D] rounded-t-2xl sm:rounded-t-3xl -mt-4 sm:-mt-7 -mx-4 sm:-mx-7 mb-4 sm:mb-5"></div>
@@ -657,7 +755,7 @@
         let isBundleMode = false;
         let cartItems = [];
 
-        // 1. Filter Kategori (Vintage Styling)
+        // 1. Filter Kategori dengan Transisi Pergerakan Masuk & Keluar
         function filterCategory(cat, buttonEl) {
             document.querySelectorAll('.cat-pill').forEach(btn => {
                 btn.classList.remove('bg-[#3D3025]', 'text-[#F5EFE6]', 'shadow-[0_2px_0_#1A130F]');
@@ -667,27 +765,68 @@
             buttonEl.classList.remove('bg-[#EAE2D5]', 'hover:bg-[#DFD5C6]', 'text-[#544335]', 'border', 'border-[#CBBDAA]', 'shadow-[0_1px_0_#B8A795]');
 
             const items = document.querySelectorAll('.menu-grid-item');
+            let visibleIdx = 0;
+
             items.forEach((item) => {
                 const itemCat = item.getAttribute('data-category');
                 const matches = (cat === 'all' || itemCat.toLowerCase().includes(cat.toLowerCase()));
+                
                 if (matches) {
-                    item.classList.remove('hidden');
+                    item.classList.remove('hidden', 'item-exit');
+                    item.classList.add('item-enter');
+                    item.style.animationDelay = `${visibleIdx * 40}ms`;
+                    visibleIdx++;
                 } else {
-                    item.classList.add('hidden');
+                    item.classList.remove('item-enter');
+                    item.classList.add('item-exit');
+                    setTimeout(() => {
+                        if (item.classList.contains('item-exit')) {
+                            item.classList.add('hidden');
+                        }
+                    }, 280);
                 }
             });
         }
 
-        // 2. Pencarian Real-Time
+        // 2. Pencarian Real-Time dengan Transisi Masuk & Keluar
         function searchProducts() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const items = document.querySelectorAll('.menu-grid-item');
+            let visibleIdx = 0;
+
             items.forEach(item => {
                 const name = item.getAttribute('data-name');
-                if (name.includes(query)) {
-                    item.classList.remove('hidden');
+                const matches = name.includes(query);
+
+                if (matches) {
+                    item.classList.remove('hidden', 'item-exit');
+                    item.classList.add('item-enter');
+                    item.style.animationDelay = `${visibleIdx * 40}ms`;
+                    visibleIdx++;
                 } else {
-                    item.classList.add('hidden');
+                    item.classList.remove('item-enter');
+                    item.classList.add('item-exit');
+                    setTimeout(() => {
+                        if (item.classList.contains('item-exit')) {
+                            item.classList.add('hidden');
+                        }
+                    }, 280);
+                }
+            });
+        }
+
+        // Helper untuk Menampilkan Modal Checkout dengan Transisi Zoom Masuk
+        function showModalAnimated() {
+            const modal = document.getElementById('checkoutModal');
+            const panel = modal.querySelector('.modal-panel');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100', 'pointer-events-auto');
+                if (panel) {
+                    panel.classList.remove('scale-95', 'translate-y-4', 'opacity-0');
+                    panel.classList.add('scale-100', 'translate-y-0', 'opacity-100');
                 }
             });
         }
@@ -708,8 +847,8 @@
             recalcOrderTotal();
             onPaymentMethodChange('qris');
             document.querySelectorAll('input[name="payment_method"][value="qris"]').forEach(r => r.checked = true);
-            document.getElementById('checkoutModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            
+            showModalAnimated();
         }
 
         function openBundleCheckoutModal() {
@@ -761,13 +900,24 @@
             onPaymentMethodChange('qris');
             document.querySelectorAll('input[name="payment_method"][value="qris"]').forEach(r => r.checked = true);
 
-            document.getElementById('checkoutModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            showModalAnimated();
         }
 
         function closeCheckoutModal() {
-            document.getElementById('checkoutModal').classList.add('hidden');
+            const modal = document.getElementById('checkoutModal');
+            const panel = modal.querySelector('.modal-panel');
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            if (panel) {
+                panel.classList.remove('scale-100', 'translate-y-0', 'opacity-100');
+                panel.classList.add('scale-95', 'translate-y-4', 'opacity-0');
+            }
             document.body.style.overflow = '';
+            setTimeout(() => {
+                if (modal.classList.contains('opacity-0')) {
+                    modal.classList.add('hidden');
+                }
+            }, 300);
         }
 
         function recalcOrderTotal() {
@@ -851,14 +1001,37 @@
             }
         }
 
+        // Transisi Halus Masuk & Keluar Slide-Over Troli
         function toggleCartDrawer(forceOpen = null) {
             const drawer = document.getElementById('cartDrawer');
-            if (forceOpen === true) {
+            const panel = drawer.querySelector('.drawer-panel');
+            const isCurrentlyOpen = !drawer.classList.contains('hidden') && drawer.classList.contains('opacity-100');
+            const shouldOpen = forceOpen !== null ? forceOpen : !isCurrentlyOpen;
+
+            if (shouldOpen) {
                 drawer.classList.remove('hidden');
-            } else if (forceOpen === false) {
-                drawer.classList.add('hidden');
+                document.body.style.overflow = 'hidden';
+                requestAnimationFrame(() => {
+                    drawer.classList.remove('opacity-0', 'pointer-events-none');
+                    drawer.classList.add('opacity-100', 'pointer-events-auto');
+                    if (panel) {
+                        panel.classList.remove('translate-x-full');
+                        panel.classList.add('translate-x-0');
+                    }
+                });
             } else {
-                drawer.classList.toggle('hidden');
+                drawer.classList.remove('opacity-100', 'pointer-events-auto');
+                drawer.classList.add('opacity-0', 'pointer-events-none');
+                if (panel) {
+                    panel.classList.remove('translate-x-0');
+                    panel.classList.add('translate-x-full');
+                }
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    if (drawer.classList.contains('opacity-0')) {
+                        drawer.classList.add('hidden');
+                    }
+                }, 300);
             }
         }
 
@@ -870,6 +1043,10 @@
             const checkoutBtnText = document.getElementById('btnCheckoutCartText');
             const bundleCountEl = document.getElementById('cartDrawerBundleCount');
             const headerBadge = document.getElementById('cartDrawerBadgeHeader');
+
+            const mobileBar = document.getElementById('mobileCartBar');
+            const mobileQty = document.getElementById('mobileCartBarQty');
+            const mobileTotal = document.getElementById('mobileCartBarTotal');
 
             listEl.innerHTML = '';
             let total = 0;
@@ -893,6 +1070,17 @@
                 if (bundleCountEl) bundleCountEl.innerText = '0 menu (0 item)';
                 if (headerBadge) headerBadge.innerText = '0 Menu';
                 if (checkoutBtnText) checkoutBtnText.innerText = 'Lanjut Pesan Bundle';
+
+                // Sembunyikan Mobile Floating Bar dengan Transisi Slide-down
+                if (mobileBar) {
+                    mobileBar.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+                    mobileBar.classList.add('translate-y-16', 'opacity-0', 'pointer-events-none');
+                    setTimeout(() => {
+                        if (mobileBar.classList.contains('opacity-0')) {
+                            mobileBar.classList.add('hidden');
+                        }
+                    }, 300);
+                }
             } else {
                 checkoutBtn.disabled = false;
                 if (headerBadge) headerBadge.innerText = `${cartItems.length} Menu`;
@@ -931,6 +1119,17 @@
                 });
 
                 if (bundleCountEl) bundleCountEl.innerText = `${cartItems.length} menu (${totalQty} item)`;
+
+                // Tampilkan Mobile Floating Bar dengan Transisi Slide-up
+                if (mobileBar) {
+                    mobileBar.classList.remove('hidden');
+                    requestAnimationFrame(() => {
+                        mobileBar.classList.remove('translate-y-16', 'opacity-0', 'pointer-events-none');
+                        mobileBar.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+                    });
+                    if (mobileQty) mobileQty.innerText = totalQty;
+                    if (mobileTotal) mobileTotal.innerText = 'Rp ' + total.toLocaleString('id-ID');
+                }
             }
 
             countBadge.innerText = totalQty;
