@@ -11,6 +11,9 @@ Route::get('/home', function () {
 })->name('home');
 
 Route::get('/shop', [BakeryController::class, 'shop'])->name('shop');
+Route::get('/order', function () {
+    return redirect()->route('shop');
+})->name('order');
 Route::post('/order', [BakeryController::class, 'processOrder'])->name('order.process');
 Route::get('/invoice/{code}', [BakeryController::class, 'showInvoice'])->name('order.invoice');
 

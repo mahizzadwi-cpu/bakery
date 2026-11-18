@@ -289,7 +289,7 @@
                 <button onclick="closeCheckoutModal()" class="text-[#8C9C90] hover:text-[#16241B] text-xl font-bold">✕</button>
             </div>
 
-            <form action="{{ route('order.process') }}" method="POST" class="space-y-4">
+            <form action="/order" method="POST" class="space-y-4">
                 @csrf
                 <input type="hidden" name="product_id" id="formProductId">
 

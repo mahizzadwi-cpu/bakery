@@ -480,7 +480,7 @@
             </div>
 
             <!-- Form Body -->
-            <form action="{{ route('order.process') }}" method="POST" class="mt-4 space-y-4">
+            <form action="/order" method="POST" class="mt-4 space-y-4">
                 @csrf
                 <input type="hidden" name="product_id" id="formProductId">
                 <input type="hidden" name="bundle_items" id="formBundleItems" value="">
