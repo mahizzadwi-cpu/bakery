@@ -457,24 +457,21 @@
         </div>
     </div>
 
-    <!-- 6. ERGONOMIC & AESTHETIC CHECKOUT MODAL (VINTAGE TRANSPARAN HD) -->
-    <div id="checkoutModal" class="fixed inset-0 bg-[#1D120B]/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto transition-opacity duration-300 opacity-0 pointer-events-none">
-        <div class="modal-panel relative bg-[#FAF7F1] rounded-2xl sm:rounded-3xl max-w-lg w-full p-4 sm:p-7 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6),0_8px_0_#A39483] border border-[#D5C7B6] my-auto max-h-[94vh] overflow-y-auto text-[#241812] transition-all duration-300 transform scale-95 translate-y-4 opacity-0">
+    <!-- 6. ERGONOMIC & MODERN MINIMALIST CHECKOUT MODAL (EKONOMIS, MODERN & SEAMLESS) -->
+    <div id="checkoutModal" class="fixed inset-0 bg-[#1D120B]/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-3 sm:p-5 overflow-y-auto transition-opacity duration-300 opacity-0 pointer-events-none">
+        <div class="modal-panel relative bg-[#FAF8F5] rounded-3xl max-w-lg sm:max-w-2xl w-full p-5 sm:p-7 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6),0_6px_0_#C5B5A2] border border-[#D5C7B6] my-auto text-[#241812] transition-all duration-300 transform scale-95 translate-y-3 opacity-0">
             
-            <!-- Top Slim Aesthetic Ribbon Line: Vintage Sepia Bronze -->
-            <div class="h-2 w-full bg-gradient-to-r from-[#3D342D] via-[#635345] via-[#A89682] to-[#3D342D] rounded-t-2xl sm:rounded-t-3xl -mt-4 sm:-mt-7 -mx-4 sm:-mx-7 mb-4 sm:mb-5"></div>
-
-            <!-- Modal Header (Bersih, Tajam HD, 3D Close Button) -->
-            <div class="flex items-center justify-between pb-4 border-b border-[#D5C7B6]">
+            <!-- Modal Header (Sleek Modern, No Clutter) -->
+            <div class="flex items-start justify-between pb-3.5 border-b border-[#E5DCD0]">
                 <div>
-                    <div class="flex items-center gap-2">
-                        <span id="modalTypeBadge" class="text-[10px] font-black uppercase tracking-wider text-[#F5EFE6] bg-[#3D3025] px-3 py-0.5 rounded-full shadow-xs border border-white/20">Pemesanan Langsung</span>
-                        <span class="text-[10px] font-bold text-[#695C51]">• Konfirmasi Cepat</span>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span id="modalTypeBadge" class="text-[10px] font-bold uppercase tracking-wider text-[#FAF8F5] bg-[#241812] px-2.5 py-0.5 rounded-md shadow-xs">Pemesanan Langsung</span>
+                        <span class="text-[11px] text-[#736559] font-medium">• Konfirmasi Cepat</span>
                     </div>
-                    <h3 id="modalProductName" class="font-serif font-black text-lg sm:text-xl text-[#241812] leading-tight mt-1.5">Nama Menu</h3>
+                    <h3 id="modalProductName" class="font-serif font-black text-xl sm:text-2xl text-[#241812] leading-tight">Nama Menu</h3>
                 </div>
                 <button type="button" onclick="closeCheckoutModal()" 
-                    class="w-9 h-9 rounded-full bg-[#EAE2D5] hover:bg-[#DFD5C6] text-[#241812] border border-[#CBBDAA] shadow-[0_2px_0_#B8A795] active:translate-y-0.5 active:shadow-none flex items-center justify-center transition-all cursor-pointer font-black text-sm" title="Tutup">
+                    class="w-8 h-8 rounded-full bg-[#EFE9DF] hover:bg-[#E5DCD0] text-[#241812] border border-[#DDD3C4] active:scale-95 flex items-center justify-center transition-all cursor-pointer font-bold text-xs shrink-0 ml-2" title="Tutup">
                     ✕
                 </button>
             </div>
@@ -485,245 +482,202 @@
                 <input type="hidden" name="product_id" id="formProductId">
                 <input type="hidden" name="bundle_items" id="formBundleItems" value="">
 
-                <!-- 1A. Mode Pesanan Satuan (Single Item Summary dengan Vintage Card & 3D Stepper) -->
-                <div id="singleProductView" class="bg-[#EAE2D5]/70 p-4 rounded-2xl border border-[#D5C7B6] shadow-[0_2px_0_#C5B9A8] flex items-center justify-between">
+                <!-- 1A. Mode Pesanan Satuan (Compact Modern Strip: Price & Stepper Integrated) -->
+                <div id="singleProductView" class="flex items-center justify-between p-3 bg-[#F4EFE8] rounded-2xl border border-[#E2D8CC]">
                     <div>
-                        <span class="text-[10px] text-[#695C51] uppercase font-black tracking-wider block">Harga Satuan</span>
-                        <span id="modalProductPrice" class="text-base sm:text-lg font-black text-[#3D2C21]">Rp 0</span>
+                        <span class="text-[10px] text-[#7A6D61] uppercase font-bold tracking-wider block">Harga Satuan</span>
+                        <span id="modalProductPrice" class="text-base font-black text-[#241812]">Rp 0</span>
                     </div>
 
-                    <div class="flex items-center gap-2.5">
-                        <span class="text-xs font-black text-[#241812]">Jumlah:</span>
-                        <div class="flex items-center gap-1.5 bg-[#FAF7F1] p-1 rounded-xl border border-[#D5C7B6] shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)]">
-                            <button type="button" onclick="adjustQty(-1)" 
-                                class="w-7 h-7 rounded-lg bg-[#EAE2D5] hover:bg-[#DFD5C6] text-[#241812] font-black text-sm flex items-center justify-center border border-[#CBBDAA] shadow-[0_2px_0_#B8A795] active:translate-y-0.5 active:shadow-none transition cursor-pointer">−</button>
-                            <input type="number" name="quantity" id="formQuantity" value="1" min="1" required readonly
-                                class="w-8 text-center font-black text-sm text-[#241812] outline-none bg-transparent">
-                            <button type="button" onclick="adjustQty(1)" 
-                                class="w-7 h-7 rounded-lg bg-[#EAE2D5] hover:bg-[#DFD5C6] text-[#241812] font-black text-sm flex items-center justify-center border border-[#CBBDAA] shadow-[0_2px_0_#B8A795] active:translate-y-0.5 active:shadow-none transition cursor-pointer">+</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 1B. Mode Pesanan Paket Bundle (Multi-Item Card List) -->
-                <div id="bundleProductsView" class="hidden bg-[#EAE2D5]/70 p-4 rounded-2xl border border-[#D5C7B6] shadow-[0_2px_0_#C5B9A8] space-y-2.5">
-                    <div class="flex items-center justify-between text-xs font-bold text-[#241812] pb-2 border-b border-[#D5C7B6]">
-                        <span class="flex items-center gap-1.5 font-black uppercase tracking-wider">
-                            <span>Rincian Paket Bundle Terpilih</span>
-                        </span>
-                        <span id="bundleModalItemCount" class="text-[10px] text-[#F5EFE6] bg-[#3D3025] px-3 py-0.5 rounded-full font-black shadow-xs">0 Menu</span>
-                    </div>
-                    <div id="bundleModalItemsList" class="space-y-2 max-h-40 overflow-y-auto pr-1"></div>
-                </div>
-
-                <!-- GRUP 1: DATA KONTAK PEMESAN (VINTAGE CARD DENGAN BORDER ALUS) -->
-                <div class="bg-[#FAF7F1] rounded-2xl border border-[#D5C7B6] p-4 space-y-3 shadow-[0_2px_0_#C5B9A8]">
                     <div class="flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-lg bg-[#3D3025] text-[#F5EFE6] text-xs font-black flex items-center justify-center shadow-[0_2px_0_#1A130F] border border-white/20">1</span>
-                        <h4 class="text-xs font-black text-[#241812] uppercase tracking-wider">Data Pemesan</h4>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-xs font-black uppercase tracking-wider text-[#241812] mb-1.5">
-                                Nama Lengkap <span class="text-[#8C5D38]">*</span>
-                            </label>
-                            <input type="text" name="customer_name" required placeholder="Contoh: Sarah Angelina"
-                                class="w-full bg-[#FAF7F1] border border-[#C5B49F] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#241812] placeholder-[#8C7D70] focus:border-[#9E8975] focus:ring-4 focus:ring-[#9E8975]/20 outline-none shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                        <span class="text-xs font-bold text-[#7A6D61]">Jumlah:</span>
+                        <div class="flex items-center bg-white rounded-xl border border-[#D5C7B6] p-0.5 shadow-2xs">
+                            <button type="button" onclick="adjustQty(-1)" 
+                                class="w-7 h-7 rounded-lg bg-[#F4EFE8] hover:bg-[#EAE2D5] text-[#241812] font-black text-xs flex items-center justify-center transition active:scale-95 cursor-pointer">−</button>
+                            <input type="number" name="quantity" id="formQuantity" value="1" min="1" required readonly
+                                class="w-9 text-center font-black text-xs text-[#241812] outline-none bg-transparent">
+                            <button type="button" onclick="adjustQty(1)" 
+                                class="w-7 h-7 rounded-lg bg-[#F4EFE8] hover:bg-[#EAE2D5] text-[#241812] font-black text-xs flex items-center justify-center transition active:scale-95 cursor-pointer">+</button>
                         </div>
+                    </div>
+                </div>
+
+                <!-- 1B. Mode Pesanan Paket Bundle (Multi-Item List) -->
+                <div id="bundleProductsView" class="hidden bg-[#F4EFE8] p-3 rounded-2xl border border-[#E2D8CC] space-y-2">
+                    <div class="flex items-center justify-between text-xs font-bold text-[#241812] pb-1.5 border-b border-[#E2D8CC]">
+                        <span class="font-bold text-[11px] uppercase tracking-wider text-[#7A6D61]">Rincian Bundle</span>
+                        <span id="bundleModalItemCount" class="text-[10px] text-[#FAF8F5] bg-[#241812] px-2.5 py-0.5 rounded-md font-bold">0 Menu</span>
+                    </div>
+                    <div id="bundleModalItemsList" class="space-y-1.5 max-h-36 overflow-y-auto pr-1"></div>
+                </div>
+
+                <!-- FORM GRID SECTION (Modern, Seamless, No Clunky Nested Boxes) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
+                    
+                    <!-- Kolom 1: Kontak & Pengiriman -->
+                    <div class="space-y-3">
                         <div>
-                            <label class="block text-xs font-black uppercase tracking-wider text-[#241812] mb-1.5">
-                                WhatsApp Aktif <span class="text-[#8C5D38]">*</span>
+                            <label class="block text-[11px] font-bold text-[#736559] uppercase tracking-wider mb-1">
+                                Nama Pemesan <span class="text-rose-600">*</span>
+                            </label>
+                            <input type="text" name="customer_name" required placeholder="Nama lengkap Anda"
+                                class="w-full bg-white border border-[#DDD5C8] rounded-xl px-3.5 py-2 text-xs font-semibold text-[#241812] placeholder-[#A89C8F] focus:border-[#241812] focus:ring-2 focus:ring-[#241812]/10 outline-none transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-bold text-[#736559] uppercase tracking-wider mb-1">
+                                WhatsApp Aktif <span class="text-rose-600">*</span>
                             </label>
                             <input type="text" name="customer_phone" required placeholder="08xxxxxxxxxx"
-                                class="w-full bg-[#FAF7F1] border border-[#C5B49F] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#241812] placeholder-[#8C7D70] focus:border-[#9E8975] focus:ring-4 focus:ring-[#9E8975]/20 outline-none shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                class="w-full bg-white border border-[#DDD5C8] rounded-xl px-3.5 py-2 text-xs font-semibold text-[#241812] placeholder-[#A89C8F] focus:border-[#241812] focus:ring-2 focus:ring-[#241812]/10 outline-none transition">
                         </div>
-                    </div>
-                </div>
 
-                <!-- GRUP 2: JADWAL & PENGIRIMAN (VINTAGE CARD) -->
-                <div class="bg-[#FAF7F1] rounded-2xl border border-[#D5C7B6] p-4 space-y-3 shadow-[0_2px_0_#C5B9A8]">
-                    <div class="flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-lg bg-[#3D3025] text-[#F5EFE6] text-xs font-black flex items-center justify-center shadow-[0_2px_0_#1A130F] border border-white/20">2</span>
-                        <h4 class="text-xs font-black text-[#241812] uppercase tracking-wider">Jadwal & Pengantaran</h4>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
-                        <div class="sm:col-span-5">
-                            <label class="block text-xs font-black uppercase tracking-wider text-[#241812] mb-1.5">
-                                Tanggal Acara / Kirim <span class="text-[#8C5D38]">*</span>
+                        <div>
+                            <label class="block text-[11px] font-bold text-[#736559] uppercase tracking-wider mb-1">
+                                Tanggal Acara / Kirim <span class="text-rose-600">*</span>
                             </label>
                             <input type="date" name="delivery_date" value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}" required
-                                class="w-full bg-[#FAF7F1] border border-[#C5B49F] rounded-xl px-3 py-2 text-xs sm:text-sm font-bold text-[#241812] focus:border-[#9E8975] focus:ring-4 focus:ring-[#9E8975]/20 outline-none shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
+                                class="w-full bg-white border border-[#DDD5C8] rounded-xl px-3.5 py-2 text-xs font-semibold text-[#241812] focus:border-[#241812] focus:ring-2 focus:ring-[#241812]/10 outline-none transition">
                         </div>
-                        <div class="sm:col-span-7">
-                            <label class="block text-xs font-black uppercase tracking-wider text-[#241812] mb-1.5">Metode Pengambilan</label>
-                            <div class="grid grid-cols-3 gap-1.5 p-1.5 bg-[#EAE2D5] rounded-xl border border-[#D5C7B6] shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)]">
+                    </div>
+
+                    <!-- Kolom 2: Metode Kirim & Pembayaran -->
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-[#736559] uppercase tracking-wider mb-1">Metode Pengambilan</label>
+                            <div class="grid grid-cols-3 gap-1 bg-[#EFE9DF] p-1 rounded-xl border border-[#DDD3C4]">
                                 <label class="cursor-pointer text-center">
                                     <input type="radio" name="order_type" value="delivery" checked class="hidden peer" onchange="toggleAddressField(true)">
-                                    <span class="block py-2 text-[11px] font-black text-[#695C51] rounded-lg hover:bg-white/80 peer-checked:bg-[#3D3025] peer-checked:text-[#F5EFE6] peer-checked:shadow-[0_2px_0_#1A130F] transition-all select-none">
+                                    <span class="block py-1.5 text-[11px] font-bold text-[#736559] rounded-lg peer-checked:bg-[#241812] peer-checked:text-white transition-all select-none">
                                         Kurir Antar
                                     </span>
                                 </label>
                                 <label class="cursor-pointer text-center">
                                     <input type="radio" name="order_type" value="pickup" class="hidden peer" onchange="toggleAddressField(false)">
-                                    <span class="block py-2 text-[11px] font-black text-[#695C51] rounded-lg hover:bg-white/80 peer-checked:bg-[#3D3025] peer-checked:text-[#F5EFE6] peer-checked:shadow-[0_2px_0_#1A130F] transition-all select-none">
+                                    <span class="block py-1.5 text-[11px] font-bold text-[#736559] rounded-lg peer-checked:bg-[#241812] peer-checked:text-white transition-all select-none">
                                         Ambil Toko
                                     </span>
                                 </label>
                                 <label class="cursor-pointer text-center">
                                     <input type="radio" name="order_type" value="cod" class="hidden peer" onchange="toggleAddressField(true)">
-                                    <span class="block py-2 text-[11px] font-black text-[#695C51] rounded-lg hover:bg-white/80 peer-checked:bg-[#3D3025] peer-checked:text-[#F5EFE6] peer-checked:shadow-[0_2px_0_#1A130F] transition-all select-none">
-                                        Bayar COD
+                                    <span class="block py-1.5 text-[11px] font-bold text-[#736559] rounded-lg peer-checked:bg-[#241812] peer-checked:text-white transition-all select-none">
+                                        COD
                                     </span>
                                 </label>
                             </div>
                         </div>
+
+                        <!-- Alamat Pengiriman Kondisional -->
+                        <div id="addressContainer">
+                            <label class="block text-[11px] font-bold text-[#736559] uppercase tracking-wider mb-1">Alamat Pengiriman</label>
+                            <input type="text" name="address" placeholder="Jalan, kelurahan, patokan lokasi..."
+                                class="w-full bg-white border border-[#DDD5C8] rounded-xl px-3.5 py-2 text-xs font-semibold text-[#241812] placeholder-[#A89C8F] focus:border-[#241812] focus:ring-2 focus:ring-[#241812]/10 outline-none transition">
+                        </div>
+
+                        <!-- Pilihan Pembayaran Modern Segmented -->
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <label class="text-[11px] font-bold text-[#736559] uppercase tracking-wider">Metode Pembayaran</label>
+                                <span class="text-[10px] text-emerald-800 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Bebas Admin</span>
+                            </div>
+                            <div class="grid grid-cols-3 gap-1 bg-[#EFE9DF] p-1 rounded-xl border border-[#DDD3C4]">
+                                <label class="cursor-pointer text-center">
+                                    <input type="radio" name="payment_method" value="qris" checked class="hidden peer" onchange="onPaymentMethodChange('qris')">
+                                    <span class="block py-1.5 text-[11px] font-bold text-[#736559] rounded-lg peer-checked:bg-[#241812] peer-checked:text-white transition-all select-none">
+                                        QRIS
+                                    </span>
+                                </label>
+                                <label class="cursor-pointer text-center">
+                                    <input type="radio" name="payment_method" value="transfer" class="hidden peer" onchange="onPaymentMethodChange('transfer')">
+                                    <span class="block py-1.5 text-[11px] font-bold text-[#736559] rounded-lg peer-checked:bg-[#241812] peer-checked:text-white transition-all select-none">
+                                        Transfer
+                                    </span>
+                                </label>
+                                <label class="cursor-pointer text-center">
+                                    <input type="radio" name="payment_method" value="cod" class="hidden peer" onchange="onPaymentMethodChange('cod')">
+                                    <span class="block py-1.5 text-[11px] font-bold text-[#736559] rounded-lg peer-checked:bg-[#241812] peer-checked:text-white transition-all select-none">
+                                        Tunai
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <!-- Alamat Pengiriman Kondisional -->
-                    <div id="addressContainer">
-                        <label class="block text-xs font-black uppercase tracking-wider text-[#241812] mb-1.5">Alamat Lengkap Pengiriman</label>
-                        <input type="text" name="address" placeholder="Jalan, nomor rumah, kelurahan, patokan lokasi..."
-                            class="w-full bg-[#FAF7F1] border border-[#C5B49F] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#241812] placeholder-[#8C7D70] focus:border-[#9E8975] focus:ring-4 focus:ring-[#9E8975]/20 outline-none shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] transition">
-                    </div>
                 </div>
 
-                <!-- GRUP 3: METODE PEMBAYARAN (VINTAGE TILES) -->
-                <div class="bg-[#FAF7F1] rounded-2xl border border-[#D5C7B6] p-4 space-y-3.5 shadow-[0_2px_0_#C5B9A8]">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <span class="w-6 h-6 rounded-lg bg-[#3D3025] text-[#F5EFE6] text-xs font-black flex items-center justify-center shadow-[0_2px_0_#1A130F] border border-white/20">3</span>
-                            <h4 class="text-xs font-black text-[#241812] uppercase tracking-wider">Metode Pembayaran</h4>
-                        </div>
-                        <span class="text-[10px] font-bold text-[#544335] bg-[#EAE2D5] px-3 py-1 rounded-full border border-[#CBBDAA]">Bebas Biaya Admin</span>
-                    </div>
+                <!-- SUB-PANEL PEMBAYARAN KONDISIONAL (Compact & Minimalist) -->
+                <div id="qrisInfoBox" class="p-2.5 bg-emerald-50/70 border border-emerald-200/80 rounded-xl text-xs flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
+                    <p class="text-[11px] text-emerald-950 font-medium">
+                        Barcode QRIS otomatis terbit pada nota digital siap scan melalui GoPay, OVO, ShopeePay, Dana, & m-Banking.
+                    </p>
+                </div>
 
-                    <div class="grid grid-cols-3 gap-2.5">
-                        <!-- Opsi 1: QRIS (Vintage Espresso 3D Tile) -->
-                        <label class="cursor-pointer">
-                            <input type="radio" name="payment_method" value="qris" checked class="hidden peer" onchange="onPaymentMethodChange('qris')">
-                            <div class="p-3 rounded-xl border border-[#D5C7B6] bg-[#FAF7F1] text-center shadow-[0_2px_0_#C5B9A8] hover:border-[#9E8975] peer-checked:bg-gradient-to-br peer-checked:from-[#3D3025] peer-checked:via-[#524133] peer-checked:to-[#2D221A] peer-checked:text-white peer-checked:border-[#1A130F] peer-checked:shadow-[0_4px_0_#1A130F,0_8px_16px_rgba(0,0,0,0.3)] transition-all select-none">
-                                <span class="text-xs sm:text-sm block font-black leading-none">QRIS</span>
-                                <span class="text-[9px] opacity-90 block mt-1 font-bold">Barcode Instant</span>
-                            </div>
-                        </label>
-
-                        <!-- Opsi 2: Transfer Bank (Vintage Brown Tile) -->
-                        <label class="cursor-pointer">
-                            <input type="radio" name="payment_method" value="transfer" class="hidden peer" onchange="onPaymentMethodChange('transfer')">
-                            <div class="p-3 rounded-xl border border-[#D5C7B6] bg-[#FAF7F1] text-center shadow-[0_2px_0_#C5B9A8] hover:border-[#9E8975] peer-checked:bg-gradient-to-br peer-checked:from-[#3D3025] peer-checked:via-[#524133] peer-checked:to-[#2D221A] peer-checked:text-white peer-checked:border-[#1A130F] peer-checked:shadow-[0_4px_0_#1A130F,0_8px_16px_rgba(0,0,0,0.3)] transition-all select-none">
-                                <span class="text-xs sm:text-sm block font-black leading-none">Transfer</span>
-                                <span class="text-[9px] opacity-90 block mt-1 font-bold">Multi-Bank</span>
-                            </div>
-                        </label>
-
-                        <!-- Opsi 3: Tunai / COD (Vintage Slate Tile) -->
-                        <label class="cursor-pointer">
-                            <input type="radio" name="payment_method" value="cod" class="hidden peer" onchange="onPaymentMethodChange('cod')">
-                            <div class="p-3 rounded-xl border border-[#D5C7B6] bg-[#FAF7F1] text-center shadow-[0_2px_0_#C5B9A8] hover:border-[#9E8975] peer-checked:bg-gradient-to-br peer-checked:from-[#334155] peer-checked:via-[#475569] peer-checked:to-[#1E293B] peer-checked:text-white peer-checked:border-[#0F172A] peer-checked:shadow-[0_4px_0_#0F172A,0_8px_16px_rgba(71,85,105,0.35)] transition-all select-none">
-                                <span class="text-xs sm:text-sm block font-black leading-none">Tunai</span>
-                                <span class="text-[9px] opacity-90 block mt-1 font-bold">Di Lokasi / COD</span>
-                            </div>
-                        </label>
-                    </div>
-
-                    <!-- Panel Info QRIS Barcode (Vintage Info Box) -->
-                    <div id="qrisInfoBox" class="p-4 bg-[#EAE2D5]/80 border border-[#CBBDAA] rounded-2xl text-xs space-y-1.5 shadow-[0_2px_0_#B8A795]">
-                        <div class="flex items-center gap-2 text-[#544335] font-black text-xs">
-                            <span class="w-2.5 h-2.5 rounded-full bg-[#B89658] animate-pulse"></span>
-                            <span>Barcode QRIS Otomatis Terbit pada Nota</span>
-                        </div>
-                        <p class="text-[11px] text-[#52443A] leading-relaxed font-semibold">
-                            Setelah konfirmasi, nota digital otomatis menampilkan barcode QRIS yang siap dipindai melalui BCA Mobile, Livin, GoPay, OVO, ShopeePay, DANA, dan semua m-Banking.
-                        </p>
-                    </div>
-
-                    <!-- Panel Pilihan Rekening Bank Dinamis (Inputan Admin) -->
-                    <div id="bankOptionsContainer" class="hidden p-4 bg-[#EAE2D5]/80 border border-[#CBBDAA] rounded-2xl space-y-2.5">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-black text-[#241812] uppercase tracking-wider block">Pilih Rekening Tujuan:</span>
-                            <span class="text-[10px] font-bold text-[#544335] bg-[#FAF7F1] px-2.5 py-0.5 rounded-full border border-[#D5C7B6]">Kelolaan Admin</span>
-                        </div>
-
-                        <div class="space-y-2 max-h-40 overflow-y-auto pr-1">
-                            @forelse($bankAccounts as $index => $bank)
-                            <label class="block cursor-pointer">
-                                <input type="radio" name="bank_account_id" value="{{ $bank->id }}" {{ $index === 0 ? 'checked' : '' }} class="hidden peer">
-                                <div class="p-3 rounded-xl border border-[#D5C7B6] bg-[#FAF7F1] hover:border-[#241812] shadow-[0_2px_0_#C5B9A8] peer-checked:bg-[#3D3025] peer-checked:text-white peer-checked:border-[#1A130F] peer-checked:shadow-[0_3px_0_#1A130F] transition-all flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-11 h-8 rounded-lg bg-[#241812] peer-checked:bg-[#FAF7F1] text-white peer-checked:text-[#241812] font-black text-xs flex items-center justify-center uppercase tracking-wider shrink-0 transition-colors shadow-2xs">
-                                            {{ substr($bank->bank_name, 0, 4) }}
-                                        </div>
-                                        <div>
-                                            <p class="text-xs font-black leading-tight">{{ $bank->bank_name }}</p>
-                                            <p class="text-[10px] opacity-90 font-mono font-bold">{{ $bank->account_number }} (a.n {{ $bank->account_name }})</p>
-                                        </div>
-                                    </div>
-                                    <span class="text-sm font-black opacity-0 peer-checked:opacity-100 transition-opacity">✓</span>
+                <div id="bankOptionsContainer" class="hidden p-3 bg-[#F4EFE8] border border-[#E2D8CC] rounded-xl space-y-2">
+                    <span class="text-[10px] font-bold text-[#736559] uppercase tracking-wider block">Pilih Rekening Tujuan:</span>
+                    <div class="space-y-1.5 max-h-32 overflow-y-auto pr-1">
+                        @forelse($bankAccounts as $index => $bank)
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="bank_account_id" value="{{ $bank->id }}" {{ $index === 0 ? 'checked' : '' }} class="hidden peer">
+                            <div class="p-2 rounded-lg border border-[#DDD5C8] bg-white hover:border-[#241812] peer-checked:bg-[#241812] peer-checked:text-white peer-checked:border-[#241812] transition-all flex items-center justify-between text-xs">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">{{ $bank->bank_name }}</span>
+                                    <span class="font-mono text-[11px] opacity-80 font-semibold">{{ $bank->account_number }} (a.n {{ $bank->account_name }})</span>
                                 </div>
-                            </label>
-                            @empty
-                            <div class="p-3 rounded-xl bg-[#FAF7F1] border border-[#D5C7B6] text-center text-xs font-semibold text-[#695C51]">
-                                Rekening bank resmi akan dikonfirmasikan via admin WhatsApp.
+                                <span class="font-bold opacity-0 peer-checked:opacity-100">✓</span>
                             </div>
-                            @endforelse
+                        </label>
+                        @empty
+                        <div class="p-2 rounded-lg bg-white border border-[#DDD5C8] text-center text-[11px] text-[#736559]">
+                            Rekening resmi akan diinfokan via WhatsApp admin.
                         </div>
-                    </div>
-
-                    <!-- Panel Info Bayar Tunai / COD -->
-                    <div id="codInfoBox" class="hidden p-4 bg-[#EAE2D5]/80 border border-[#CBBDAA] rounded-2xl text-xs space-y-1.5 shadow-[0_2px_0_#B8A795]">
-                        <div class="flex items-center gap-2 text-[#241812] font-black text-xs">
-                            <span class="w-2.5 h-2.5 rounded-full bg-[#B89658]"></span>
-                            <span>Pembayaran Tunai di Lokasi</span>
-                        </div>
-                        <p class="text-[11px] text-[#52443A] leading-relaxed font-semibold">
-                            Siapkan uang pas sesuai total tagihan saat kurir toko menyerahkan pesanan atau saat Anda mengambil langsung di gerai Mey Bakery.
-                        </p>
+                        @endforelse
                     </div>
                 </div>
 
-                <!-- GRUP 4: SALURAN KONFIRMASI & CATATAN (VINTAGE CARD) -->
-                <div class="bg-[#FAF7F1] rounded-2xl border border-[#D5C7B6] p-4 space-y-3 shadow-[0_2px_0_#C5B9A8]">
-                    <div class="flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-lg bg-[#3D3025] text-[#F5EFE6] text-xs font-black flex items-center justify-center shadow-[0_2px_0_#1A130F] border border-white/20">4</span>
-                        <h4 class="text-xs font-black text-[#241812] uppercase tracking-wider">Jalur Konfirmasi & Catatan</h4>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-xs font-black uppercase tracking-wider text-[#241812] mb-1.5">Jalur Konfirmasi</label>
-                            <div class="grid grid-cols-2 gap-1.5 p-1.5 bg-[#EAE2D5] rounded-xl border border-[#D5C7B6] shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)]">
-                                <label class="cursor-pointer text-center">
-                                    <input type="radio" name="checkout_via" value="web" checked class="hidden peer">
-                                    <span class="block py-2 text-[11px] font-black text-[#695C51] rounded-lg hover:bg-white/80 peer-checked:bg-[#3D3025] peer-checked:text-[#F5EFE6] peer-checked:shadow-[0_2px_0_#1A130F] transition-all select-none">
-                                        Web & QRIS
-                                    </span>
-                                </label>
-                                <label class="cursor-pointer text-center">
-                                    <input type="radio" name="checkout_via" value="whatsapp" class="hidden peer">
-                                    <span class="block py-2 text-[11px] font-black text-[#695C51] rounded-lg hover:bg-white/80 peer-checked:bg-[#3D3025] peer-checked:text-[#F5EFE6] peer-checked:shadow-[0_2px_0_#1A130F] transition-all select-none">
-                                        WhatsApp
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-black uppercase tracking-wider text-[#241812] mb-1.5">Catatan Tambahan (Opsional)</label>
-                            <input type="text" name="notes" placeholder="Tulisan kue, instruksi kurir..."
-                                class="w-full bg-[#FAF7F1] border border-[#C5B49F] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-bold text-[#241812] placeholder-[#8C7D70] focus:border-[#9E8975] focus:ring-4 focus:ring-[#9E8975]/20 outline-none transition shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
-                        </div>
-                    </div>
+                <div id="codInfoBox" class="hidden p-2.5 bg-[#F4EFE8] border border-[#E2D8CC] rounded-xl text-xs flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#736559] shrink-0"></span>
+                    <p class="text-[11px] text-[#241812] font-medium">
+                        Siapkan uang pas saat pesanan diantar kurir atau saat Anda ambil langsung di gerai.
+                    </p>
                 </div>
 
-                <!-- Footer Modal: Total Tagihan & Vintage Espresso Submit Button -->
-                <div class="pt-4 border-t border-[#D5C7B6] flex items-center justify-between gap-4">
+                <!-- SALURAN KONFIRMASI & CATATAN (Compact Row) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 border-t border-[#E5DCD0]">
                     <div>
-                        <span class="text-[10px] text-[#695C51] uppercase font-black tracking-wider block">Total Tagihan:</span>
-                        <p id="modalTotalAmount" class="text-xl sm:text-2xl font-black text-[#3D2C21]">Rp 0</p>
+                        <label class="block text-[11px] font-bold text-[#736559] uppercase tracking-wider mb-1">Jalur Konfirmasi</label>
+                        <div class="grid grid-cols-2 gap-1 bg-[#EFE9DF] p-1 rounded-xl border border-[#DDD3C4]">
+                            <label class="cursor-pointer text-center">
+                                <input type="radio" name="checkout_via" value="web" checked class="hidden peer">
+                                <span class="block py-1.5 text-[11px] font-bold text-[#736559] rounded-lg peer-checked:bg-[#241812] peer-checked:text-white transition-all select-none">
+                                    Web & QRIS
+                                </span>
+                            </label>
+                            <label class="cursor-pointer text-center">
+                                <input type="radio" name="checkout_via" value="whatsapp" class="hidden peer">
+                                <span class="block py-1.5 text-[11px] font-bold text-[#736559] rounded-lg peer-checked:bg-[#241812] peer-checked:text-white transition-all select-none">
+                                    WhatsApp
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-[#736559] uppercase tracking-wider mb-1">Catatan (Opsional)</label>
+                        <input type="text" name="notes" placeholder="Tulisan ucapan kue, pesan kurir..."
+                            class="w-full bg-white border border-[#DDD5C8] rounded-xl px-3.5 py-1.5 text-xs font-semibold text-[#241812] placeholder-[#A89C8F] focus:border-[#241812] focus:ring-2 focus:ring-[#241812]/10 outline-none transition">
+                    </div>
+                </div>
+
+                <!-- Footer Modal: Total Tagihan & 3D Submit Button -->
+                <div class="pt-3 border-t border-[#E5DCD0] flex items-center justify-between gap-4">
+                    <div>
+                        <span class="text-[10px] text-[#736559] uppercase font-bold tracking-wider block">Total Tagihan:</span>
+                        <p id="modalTotalAmount" class="text-xl sm:text-2xl font-black text-[#241812]">Rp 0</p>
                     </div>
                     <button type="submit" 
-                        class="relative inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 rounded-2xl font-black text-xs sm:text-sm text-[#F5EFE6] tracking-wide bg-gradient-to-r from-[#44352A] via-[#5A4537] to-[#3B2C22] border-t border-white/25 shadow-[0_5px_0_#1A130F,0_14px_28px_rgba(0,0,0,0.35)] hover:brightness-110 active:translate-y-1 active:shadow-[0_1px_0_#1A130F] transition-all cursor-pointer select-none">
+                        class="inline-flex items-center justify-center px-8 py-3 rounded-xl font-bold text-xs sm:text-sm text-white bg-[#241812] hover:bg-[#382A20] shadow-[0_3px_0_#120C08,0_6px_14px_rgba(20,14,10,0.25)] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer select-none">
                         <span>Konfirmasi Pesanan</span>
                     </button>
                 </div>
