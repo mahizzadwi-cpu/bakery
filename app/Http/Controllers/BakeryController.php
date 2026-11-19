@@ -10,10 +10,40 @@ use Illuminate\Support\Str;
 
 class BakeryController extends Controller
 {
+    private function getActiveBankAccounts()
+    {
+        $bankAccounts = BankAccount::where('is_active', true)->get();
+
+        if ($bankAccounts->isEmpty()) {
+            return collect([
+                (object)[
+                    'id' => 1,
+                    'bank_name' => 'BCA',
+                    'account_number' => '8290192811',
+                    'account_name' => 'Mey Bakery Official',
+                ],
+                (object)[
+                    'id' => 2,
+                    'bank_name' => 'Mandiri',
+                    'account_number' => '1420019283712',
+                    'account_name' => 'Mey Bakery Official',
+                ],
+                (object)[
+                    'id' => 3,
+                    'bank_name' => 'BRI',
+                    'account_number' => '012301098234501',
+                    'account_name' => 'Mey Bakery Official',
+                ],
+            ]);
+        }
+
+        return $bankAccounts;
+    }
+
     public function landing()
     {
         $products = Product::where('stock', '>', 0)->latest()->get();
-        $bankAccounts = BankAccount::where('is_active', true)->get();
+        $bankAccounts = $this->getActiveBankAccounts();
         $bestSellers = $products->take(4);
 
         return view('landing', compact('products', 'bankAccounts', 'bestSellers'));
@@ -22,7 +52,7 @@ class BakeryController extends Controller
     public function shop()
     {
         $products = Product::where('stock', '>', 0)->latest()->get();
-        $bankAccounts = BankAccount::where('is_active', true)->get();
+        $bankAccounts = $this->getActiveBankAccounts();
 
         return view('shop', compact('products', 'bankAccounts'));
     }
@@ -37,12 +67,15 @@ class BakeryController extends Controller
             'delivery_date' => 'required|date|after_or_equal:today',
             'order_type' => 'required|in:delivery,pickup,cod',
             'payment_method' => 'required|in:qris,transfer,cod',
-            'bank_account_id' => 'nullable|exists:bank_accounts,id',
+            'bank_account_id' => 'nullable',
             'checkout_via' => 'required|in:web,whatsapp',
             'address' => 'nullable|string',
             'notes' => 'nullable|string',
             'bundle_items' => 'nullable|string',
         ]);
+
+        $adminPhone = '6281234567890';
+        $isTunai = ($request->payment_method === 'cod' || $request->order_type === 'cod');
 
         // Cek jika pemesanan berupa Paket Bundle (dari Troli Belanja)
         $bundle = null;
@@ -104,6 +137,7 @@ class BakeryController extends Controller
                 'quantity' => $totalQuantity,
                 'delivery_date' => $request->delivery_date,
                 'order_type' => $request->order_type === 'cod' ? 'delivery' : $request->order_type,
+                'payment_method' => $request->payment_method,
                 'address' => $request->address,
                 'order_notes' => $bundleNoteText,
                 'total_price' => $totalPrice,
@@ -114,7 +148,8 @@ class BakeryController extends Controller
                 $entry['product']->decrement('stock', $entry['qty']);
             }
 
-            if ($request->checkout_via === 'whatsapp') {
+            // Jika pembayaran Tunai atau checkout via WhatsApp, langsung arahkan ke WhatsApp
+            if ($isTunai || $request->checkout_via === 'whatsapp') {
                 $metodeKirim = match ($request->order_type) {
                     'delivery' => 'Kurir Toko (Delivery Order)',
                     'pickup' => 'Ambil di Toko (Self Pick-up)',
@@ -127,7 +162,8 @@ class BakeryController extends Controller
                     'cod' => 'Tunai / COD saat serah terima',
                 };
 
-                $msg = "🧁 *PESANAN BUNDLE BARU - MEY BAKERY*\n";
+                $msgTitle = $isTunai ? "🧁 *PESANAN BUNDLE (TUNAI/COD) - MEY BAKERY*\n" : "🧁 *PESANAN BUNDLE BARU - MEY BAKERY*\n";
+                $msg = $msgTitle;
                 $msg .= "Nomor Pesanan: *#{$orderCode}*\n";
                 $msg .= "─────────────────────────\n";
                 $msg .= "👤 Pemesan : {$request->customer_name}\n";
@@ -149,9 +185,11 @@ class BakeryController extends Controller
                     $msg .= "📝 Catatan  : \"{$request->notes}\"\n";
                 }
                 $msg .= "─────────────────────────\n";
-                $msg .= "Halo Admin Mey Bakery, mohon konfirmasi pesanan bundle #{$orderCode} saya. Terima kasih!";
-
-                $adminPhone = '6281234567890';
+                if ($isTunai) {
+                    $msg .= "Halo Admin Mey Bakery, saya memesan paket bundle dengan pembayaran Tunai/COD untuk pesanan #{$orderCode}. Mohon dikonfirmasi ya. Terima kasih!";
+                } else {
+                    $msg .= "Halo Admin Mey Bakery, mohon konfirmasi pesanan bundle #{$orderCode} saya. Terima kasih!";
+                }
 
                 return redirect()->away("https://wa.me/{$adminPhone}?text=".urlencode($msg));
             }
@@ -186,6 +224,7 @@ class BakeryController extends Controller
             'quantity' => $request->quantity,
             'delivery_date' => $request->delivery_date,
             'order_type' => $request->order_type === 'cod' ? 'delivery' : $request->order_type,
+            'payment_method' => $request->payment_method,
             'address' => $request->address,
             'order_notes' => $request->notes.' [Bayar: '.strtoupper($request->payment_method).$bankDetail.' | Kurir: '.strtoupper($request->order_type).']',
             'total_price' => $totalPrice,
@@ -194,7 +233,8 @@ class BakeryController extends Controller
 
         $product->decrement('stock', $request->quantity);
 
-        if ($request->checkout_via === 'whatsapp') {
+        // Jika pembayaran Tunai atau checkout via WhatsApp, langsung arahkan ke WhatsApp
+        if ($isTunai || $request->checkout_via === 'whatsapp') {
             $metodeKirim = match ($request->order_type) {
                 'delivery' => 'Kurir Toko (Delivery Order)',
                 'pickup' => 'Ambil di Toko (Self Pick-up)',
@@ -207,7 +247,8 @@ class BakeryController extends Controller
                 'cod' => 'Tunai / COD saat serah terima',
             };
 
-            $msg = "🧁 *PESANAN BARU - MEY BAKERY*\n";
+            $msgTitle = $isTunai ? "🧁 *PESANAN BARU (BAYAR TUNAI/COD) - MEY BAKERY*\n" : "🧁 *PESANAN BARU - MEY BAKERY*\n";
+            $msg = $msgTitle;
             $msg .= "Nomor Pesanan: *#{$orderCode}*\n";
             $msg .= "─────────────────────────\n";
             $msg .= "👤 Pemesan : {$request->customer_name}\n";
@@ -226,9 +267,11 @@ class BakeryController extends Controller
                 $msg .= "📝 Catatan : \"{$request->notes}\"\n";
             }
             $msg .= "─────────────────────────\n";
-            $msg .= "Halo Admin Mey Bakery, mohon konfirmasi pesanan #{$orderCode} saya. Terima kasih!";
-
-            $adminPhone = '6281234567890';
+            if ($isTunai) {
+                $msg .= "Halo Admin Mey Bakery, saya memesan dengan pembayaran Tunai/COD untuk pesanan #{$orderCode}. Mohon segera dikonfirmasi ya. Terima kasih!";
+            } else {
+                $msg .= "Halo Admin Mey Bakery, mohon konfirmasi pesanan #{$orderCode} saya. Terima kasih!";
+            }
 
             return redirect()->away("https://wa.me/{$adminPhone}?text=".urlencode($msg));
         }
@@ -240,7 +283,7 @@ class BakeryController extends Controller
     public function showInvoice($code)
     {
         $order = Order::with('product')->where('order_code', $code)->firstOrFail();
-        $bankAccounts = BankAccount::where('is_active', true)->get();
+        $bankAccounts = $this->getActiveBankAccounts();
 
         return view('invoice', compact('order', 'bankAccounts'));
     }

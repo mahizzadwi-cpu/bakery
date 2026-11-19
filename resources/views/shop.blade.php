@@ -636,10 +636,10 @@
                     </div>
                 </div>
 
-                <div id="codInfoBox" class="hidden p-2.5 bg-[#F4EFE8] border border-[#E2D8CC] rounded-xl text-xs flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-[#736559] shrink-0"></span>
-                    <p class="text-[11px] text-[#241812] font-medium">
-                        Siapkan uang pas saat pesanan diantar kurir atau saat Anda ambil langsung di gerai.
+                <div id="codInfoBox" class="hidden p-2.5 bg-amber-50/70 border border-amber-200/80 rounded-xl text-xs flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-600 shrink-0"></span>
+                    <p class="text-[11px] text-amber-950 font-medium">
+                        Pesanan tunai langsung diarahkan ke WhatsApp Admin untuk konfirmasi pesanan. Siapkan uang pas saat pesanan diterima.
                     </p>
                 </div>
 
@@ -678,7 +678,7 @@
                     </div>
                     <button type="submit" 
                         class="inline-flex items-center justify-center px-8 py-3 rounded-xl font-bold text-xs sm:text-sm text-white bg-[#241812] hover:bg-[#382A20] shadow-[0_3px_0_#120C08,0_6px_14px_rgba(20,14,10,0.25)] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer select-none">
-                        <span>Konfirmasi Pesanan</span>
+                        <span id="btnSubmitOrderText">Konfirmasi Pesanan</span>
                     </button>
                 </div>
 
@@ -905,17 +905,21 @@
             const qrisBox = document.getElementById('qrisInfoBox');
             const bankBox = document.getElementById('bankOptionsContainer');
             const codBox = document.getElementById('codInfoBox');
+            const submitText = document.getElementById('btnSubmitOrderText');
 
             if (qrisBox) qrisBox.classList.add('hidden');
             if (bankBox) bankBox.classList.add('hidden');
             if (codBox) codBox.classList.add('hidden');
 
-            if (method === 'qris' && qrisBox) {
-                qrisBox.classList.remove('hidden');
-            } else if (method === 'transfer' && bankBox) {
-                bankBox.classList.remove('hidden');
-            } else if (method === 'cod' && codBox) {
-                codBox.classList.remove('hidden');
+            if (method === 'qris') {
+                if (qrisBox) qrisBox.classList.remove('hidden');
+                if (submitText) submitText.innerText = 'Konfirmasi Pesanan (QRIS)';
+            } else if (method === 'transfer') {
+                if (bankBox) bankBox.classList.remove('hidden');
+                if (submitText) submitText.innerText = 'Lanjut ke Rekening Bank';
+            } else if (method === 'cod') {
+                if (codBox) codBox.classList.remove('hidden');
+                if (submitText) submitText.innerText = 'Pesan via WhatsApp (Tunai)';
             }
         }
 
