@@ -73,15 +73,9 @@
                 <span>Kembali ke Toko</span>
             </a>
 
-            <div class="flex items-center gap-2">
-                <button onclick="window.print()" class="inline-flex items-center gap-2 px-3.5 py-2 bg-white/10 hover:bg-white/15 text-[#FAF7F2] hover:text-white text-xs font-semibold rounded-xl border border-white/15 backdrop-blur-sm transition-all cursor-pointer">
-                    <svg class="w-4 h-4 text-[#EADDCF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-                    <span>Cetak Struk</span>
-                </button>
-                <a href="{{ route('landing') }}" class="text-xs font-semibold text-[#EADDCF] hover:text-white bg-white/10 hover:bg-white/15 px-3 py-2 rounded-xl border border-white/15 backdrop-blur-sm transition-all">
-                    Beranda
-                </a>
-            </div>
+            <a href="{{ route('landing') }}" class="inline-flex items-center text-xs font-semibold text-[#EADDCF] hover:text-white bg-white/10 hover:bg-white/15 px-3.5 py-2 rounded-xl border border-white/15 backdrop-blur-sm transition-all">
+                <span>Beranda</span>
+            </a>
         </div>
 
         <!-- Success Alert if newly submitted -->
